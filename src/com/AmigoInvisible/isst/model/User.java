@@ -16,6 +16,13 @@ public class User implements Serializable {
 	private String perfilsocial;
 	private int lista;
 	
+	public User(String nick, String email, String perfilsocial, int lista){
+		this.nick = nick;
+		this.email = email;
+		this.perfilsocial = perfilsocial;
+		this.lista = lista;
+	}
+	
 	public String getNick() {
 		return nick;
 	}
