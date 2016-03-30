@@ -13,10 +13,15 @@ public class Grupos implements Serializable {
 	@Id
 	private int id;
 	private String moderador;
+	private String preciomax;
 	
 	public int getId() {
 		return id;
 	}
+	public String getPreciomax() {
+		return preciomax;
+	}
+	
 	public String getModerador() {
 		return moderador;
 	}
@@ -26,4 +31,9 @@ public class Grupos implements Serializable {
 	public void setModerador(String moderador) {
 		this.moderador = moderador;
 	}
+	public void setPreciomax(String preciomax) {
+		this.preciomax = preciomax;
+	}
+	
+	
 }
