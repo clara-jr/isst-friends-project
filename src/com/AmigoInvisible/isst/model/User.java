@@ -14,13 +14,11 @@ public class User implements Serializable {
 	private String nick;
 	private String email;
 	private String perfilsocial;
-	private int lista;
 	
 	public User(String nick, String email, String perfilsocial, int lista){
 		this.nick = nick;
 		this.email = email;
 		this.perfilsocial = perfilsocial;
-		this.lista = lista;
 	}
 	
 	public String getNick() {
@@ -41,12 +39,5 @@ public class User implements Serializable {
 	public void setPerfilsocial(String perfilsocial) {
 		this.perfilsocial = perfilsocial;
 	}
-	public int getLista() {
-		return lista;
-	}
-	public void setLista(int lista) {
-		this.lista = lista;
-	}
-	
 	
 }
