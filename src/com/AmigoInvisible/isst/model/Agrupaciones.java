@@ -17,6 +17,7 @@ public class Agrupaciones implements Serializable {
 	private int grupo;
 	private String amigoinv;
 	
+	
 	public int getId() {
 		return id;
 	}
