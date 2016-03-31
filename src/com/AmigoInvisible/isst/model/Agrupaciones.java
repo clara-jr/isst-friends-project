@@ -17,6 +17,12 @@ public class Agrupaciones implements Serializable {
 	private int grupo;
 	private String amigoinv;
 	
+	public Agrupaciones(String user, int grupo, String amigoinv){
+		this.user = user;
+		this.grupo = grupo;
+		this.amigoinv = amigoinv;
+	}
+	
 	
 	public int getId() {
 		return id;
