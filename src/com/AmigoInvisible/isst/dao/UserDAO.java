@@ -1,7 +1,5 @@
 package com.AmigoInvisible.isst.dao;
 
-import java.util.List;
-
 import com.AmigoInvisible.isst.model.User;
 
 public interface UserDAO {
