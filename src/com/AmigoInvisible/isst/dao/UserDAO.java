@@ -11,8 +11,4 @@ public interface UserDAO {
 	public User getUserByEmail(String email);
 	
 	public User getUserByPerfilSocial(String perfilsocial);
-	
-	
-	
-
 }

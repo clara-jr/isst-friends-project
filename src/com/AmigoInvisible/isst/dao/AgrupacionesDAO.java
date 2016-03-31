@@ -14,5 +14,4 @@ public interface AgrupacionesDAO {
 	public List<Agrupaciones> getAgrupacionesByGrupo(int grupo);
 	
 	public List<Agrupaciones> getAgrupByUserAndGrupo(String user, int grupo);
-	
 }
