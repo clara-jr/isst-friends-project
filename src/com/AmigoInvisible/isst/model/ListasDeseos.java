@@ -18,8 +18,8 @@ public class ListasDeseos implements Serializable {
 	private String item;
 	
 	public ListasDeseos(String user, String item){
-		this.setUser(user);
-		this.setItem(item);
+		this.user = user;
+		this.item = item;
 	}
 
 	public String getUser() {
