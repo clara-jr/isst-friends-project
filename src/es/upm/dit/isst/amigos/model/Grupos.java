@@ -1,4 +1,4 @@
-package com.AmigoInvisible.isst.model;
+package es.upm.dit.isst.amigos.model;
 
 import java.io.Serializable;
 

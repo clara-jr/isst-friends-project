@@ -1,4 +1,4 @@
-package com.AmigoInvisible.isst;
+package es.upm.dit.isst.amigos;
 
 import java.io.IOException;
 import javax.servlet.http.*;
