@@ -2,6 +2,7 @@ package es.upm.dit.isst.amigos.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -12,7 +13,7 @@ public class User implements Serializable {
 	
 	@Id
 	private String nick;
-	private String email;
+	private String email; 
 	private String perfilsocial;
 	
 	public User(String nick, String email, String perfilsocial){

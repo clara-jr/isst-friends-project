@@ -6,5 +6,5 @@ public interface LoginDAO {
 	
 	public Login insertLogin(String usuario, String contraseña);
 	
-	public Login getLoginByUsuario(String usuario);
+	public Login getLoginByUser(String user);
 }

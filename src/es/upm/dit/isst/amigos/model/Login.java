@@ -12,19 +12,19 @@ public class Login implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	private String usuario;
+	private String user;
 	private String contraseña;
 	
-	public Login(String usuario, String contraseña){
-		this.usuario = usuario;
+	public Login(String user, String contraseña){
+		this.user = user;
 		this.contraseña = contraseña;
 	}
 	
-	public String getUsuario() {
-		return usuario;
+	public String getUser() {
+		return user;
 	}
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setUser(String user) {
+		this.user = user;
 	}
 	
 	public String getContraseña() {
