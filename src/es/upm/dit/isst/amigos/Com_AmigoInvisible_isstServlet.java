@@ -21,11 +21,11 @@ public class Com_AmigoInvisible_isstServlet extends HttpServlet {
 		AgrupacionesDAOImpl agrupdao = AgrupacionesDAOImpl.getInstance();
 		
 		User user = userdao.insertUser("pepe", "pepe@peponcio.com", "");
-		Login login = logindao.insertLogin("pepe", "mamon");
+		Login login = logindao.insertLogin("pepe", "lol");
 		ListasDeseos lista = listasdao.insertLista("pepe", "Un juguete");
 		ListasDeseos lista2 = listasdao.insertLista("pepe", "Otro juguete");
 		Grupo grupo = gruposdao.insertGrupo("robocop", "30", "5/5/2015");
-		Agrupaciones agrup = agrupdao.insertAgrupacion("pepe", grupo.getId(), "robocock");
+		Agrupaciones agrup = agrupdao.insertAgrupacion("pepe", grupo.getId(), "robocop");
 				
 		User usuario = userdao.getUserByNick("pepe");
 		Login log1 = logindao.getLoginByUser("pepe");
@@ -47,11 +47,30 @@ public class Com_AmigoInvisible_isstServlet extends HttpServlet {
 		resp.getWriter().println("" + login.getContraseña());
 		resp.getWriter().println("" + login.getUser());
 		resp.getWriter().println("LISTAS:");
-		/*for(ListasDeseos temp: list1){
+		for(ListasDeseos temp: list1){
 			resp.getWriter().println(temp.getUser());
 			resp.getWriter().println(temp.getItem());
-		}*/
+		}
+		resp.getWriter().println("GRUPOS:");
+		resp.getWriter().println(grup1.getFecha());
+		resp.getWriter().println(grup1.getModerador());
+		resp.getWriter().println(grup1.getPreciomax());
 		
+		for(Grupo temp: grup2){
+			resp.getWriter().println(temp.getFecha());
+			resp.getWriter().println(temp.getModerador());
+			resp.getWriter().println(temp.getPreciomax());
+			resp.getWriter().println(temp.getId());
+		}
 		
+		resp.getWriter().println("AGRUPACIONES:");
+		for(Agrupaciones temp: agrup1){
+			resp.getWriter().println(temp.getAmigoinv());
+			resp.getWriter().println(temp.getUser());
+			resp.getWriter().println(temp.getGrupo());
+			resp.getWriter().println(temp.getId());
+		}
+
+
 	}
 }

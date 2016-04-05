@@ -9,6 +9,10 @@ public interface AgrupacionesDAO {
 	// Devuelve el model, por si es necesario algun dato autogenerado.
 	public Agrupaciones insertAgrupacion(String user, Long grupo, String amigoinv);
 	
+	public void deleteAgrupacion(Agrupaciones agrupacion);
+	
+	public void deleteListaAgrupaciones(List<Agrupaciones> lista);
+	
 	public List<Agrupaciones> getAgrupacionesByUser(String user);
 	
 	public List<Agrupaciones> getAgrupacionesByGrupo(int grupo);

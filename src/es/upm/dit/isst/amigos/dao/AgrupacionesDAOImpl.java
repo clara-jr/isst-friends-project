@@ -7,6 +7,7 @@ import javax.persistence.Query;
 
 import es.upm.dit.isst.amigos.model.Agrupaciones;
 import es.upm.dit.isst.amigos.model.Grupo;
+import es.upm.dit.isst.amigos.model.ListasDeseos;
 
 public class AgrupacionesDAOImpl implements AgrupacionesDAO {
 
@@ -65,6 +66,23 @@ public class AgrupacionesDAOImpl implements AgrupacionesDAO {
 		List<Agrupaciones> agrupaciones = q.getResultList();
 		em.close();
 		return agrupaciones;
+	}
+
+	@Override
+	public void deleteAgrupacion(Agrupaciones agrupacion) {
+		EntityManager em = EMFService.get().createEntityManager();
+		em.remove(agrupacion);
+		em.close();
+	}
+
+	@Override
+	public void deleteListaAgrupaciones(List<Agrupaciones> lista) {
+		EntityManager em = EMFService.get().createEntityManager();
+		for(Agrupaciones temp: lista){
+			em.remove(temp);
+			em.close();
+		}
+		
 	}
 
 }

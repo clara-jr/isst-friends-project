@@ -8,6 +8,7 @@ import javax.persistence.Query;
 import es.upm.dit.isst.amigos.model.ListasDeseos;
 import es.upm.dit.isst.amigos.model.Login;
 
+
 public class ListasDeseosDAOImpl implements ListasDeseosDAO {
 
 	private static ListasDeseosDAOImpl instance;
@@ -43,6 +44,13 @@ public class ListasDeseosDAOImpl implements ListasDeseosDAO {
 		List<ListasDeseos> logueo = q.getResultList();
 		em.close();
 		return logueo;
+	}
+
+	@Override
+	public void removeLista(ListasDeseos lista) {
+		EntityManager em = EMFService.get().createEntityManager();
+		em.remove(lista);
+		em.close();
 	}
 
 }
