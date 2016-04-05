@@ -36,7 +36,6 @@
     <link rel="stylesheet" href="css/responsive.css">
   </head>
   <body>
-  <h1><%= usernames[0] %><%= emails[1] %><%= excls[2] %></h1>
         <section id="header">
             <div class="container">
                 <div class="row">
