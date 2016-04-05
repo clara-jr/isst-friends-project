@@ -13,7 +13,7 @@ public class ListasDeseos implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@GeneratedValue @Id 
-	private int id;
+	private Long lid;
 	private String user;
 	private String item;
 	

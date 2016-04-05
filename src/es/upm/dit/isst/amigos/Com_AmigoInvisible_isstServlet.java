@@ -24,12 +24,12 @@ public class Com_AmigoInvisible_isstServlet extends HttpServlet {
 		Login login = logindao.insertLogin("pepe", "mamon");
 		ListasDeseos lista = listasdao.insertLista("pepe", "Un juguete");
 		ListasDeseos lista2 = listasdao.insertLista("pepe", "Otro juguete");
-		Grupo grupo = gruposdao.insertGrupo("robocop", "30 €", "5/5/2015");
+		Grupo grupo = gruposdao.insertGrupo("robocop", "30", "5/5/2015");
 		Agrupaciones agrup = agrupdao.insertAgrupacion("pepe", grupo.getId(), "robocock");
 				
 		User usuario = userdao.getUserByNick("pepe");
 		Login log1 = logindao.getLoginByUser("pepe");
-		//List<ListasDeseos> list1 = listasdao.getListaByUser("pepe");
+		List<ListasDeseos> list1 = listasdao.getListaByUser("pepe");
 		Grupo grup1 = gruposdao.getGrupoById(grupo.getId());
 		List<Grupo> grup2 = gruposdao.getGrupoByModerador("robocop");
 		List<Agrupaciones> agrup1 = agrupdao.getAgrupacionesByUser("pepe");

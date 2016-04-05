@@ -23,7 +23,7 @@ public class AgrupacionesDAOImpl implements AgrupacionesDAO {
 	}
 	
 	@Override
-	public Agrupaciones insertAgrupacion(String user, int grupo, String amigoinv) {
+	public Agrupaciones insertAgrupacion(String user, Long grupo, String amigoinv) {
 		EntityManager em = EMFService.get().createEntityManager();
 		Agrupaciones agrupObject = new Agrupaciones(user, grupo, amigoinv);
 		em.persist(agrupObject);

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -11,8 +12,9 @@ public class Grupo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id @GeneratedValue
-	private int id;
+	@Id 
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Long gid;
 	private String moderador;
 	private String preciomax;
 	private String fecha;
@@ -23,8 +25,8 @@ public class Grupo implements Serializable {
 		this.fecha = fecha;
 	}
 	
-	public int getId() {
-		return id;
+	public Long getId() {
+		return gid;
 	}
 	public String getPreciomax() {
 		return preciomax;
@@ -33,8 +35,8 @@ public class Grupo implements Serializable {
 	public String getModerador() {
 		return moderador;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(Long gid) {
+		this.gid = gid;
 	}
 	public void setModerador(String moderador) {
 		this.moderador = moderador;

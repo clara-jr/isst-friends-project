@@ -7,7 +7,7 @@ import es.upm.dit.isst.amigos.model.Grupo;
 public interface GrupoDAO {
 	public Grupo insertGrupo(String moderador, String preciomax, String fecha);
 	
-	public Grupo getGrupoById(int id);
+	public Grupo getGrupoById(Long gid);
 	
 	public List<Grupo> getGrupoByModerador(String moderador);
 }

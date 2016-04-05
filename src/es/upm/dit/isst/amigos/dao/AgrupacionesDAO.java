@@ -7,7 +7,7 @@ import es.upm.dit.isst.amigos.model.Agrupaciones;
 public interface AgrupacionesDAO {
 	
 	// Devuelve el model, por si es necesario algun dato autogenerado.
-	public Agrupaciones insertAgrupacion(String user, int grupo, String amigoinv);
+	public Agrupaciones insertAgrupacion(String user, Long grupo, String amigoinv);
 	
 	public List<Agrupaciones> getAgrupacionesByUser(String user);
 	

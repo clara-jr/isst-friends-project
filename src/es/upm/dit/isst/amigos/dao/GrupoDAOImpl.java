@@ -34,11 +34,11 @@ public class GrupoDAOImpl implements GrupoDAO {
 	}
 
 	@Override
-	public Grupo getGrupoById(int id) {
+	public Grupo getGrupoById(Long gid) {
 		EntityManager em = EMFService.get().createEntityManager();
 		
-		Query q = em.createQuery("SELECT m FROM Grupo m WHERE m.id = :id");
-		q.setParameter("id", id);
+		Query q = em.createQuery("SELECT m FROM Grupo m WHERE m.gid = :gid");
+		q.setParameter("gid", gid);
 		Grupo grupo = (Grupo) q.getSingleResult();
 		em.close();
 		return grupo;
