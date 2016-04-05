@@ -1,3 +1,22 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+
+<%
+  String participants = request.getParameter("participants");
+  int participants_int = Integer.parseInt(request.getParameter("participants"));
+  String mod_name = request.getParameter("mod_name");
+  String money = request.getParameter("money");
+  String date = request.getParameter("date");
+  String msg = request.getParameter("msg");
+  String[] usernames = new String[participants_int];
+  String[] emails = new String[participants_int];
+  String[] excls = new String[participants_int];
+  for(int i=1; i<=participants_int; i++) {
+	  usernames[i-1] = request.getParameter("username"+i);
+	  emails[i-1] = request.getParameter("email"+i);
+	  excls[i-1] = request.getParameter("excl"+i);
+  }
+%>
+                              
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <!-- The HTML 4.01 Transitional DOCTYPE declaration-->
 <!-- above set at the top of the file will set     -->
@@ -21,7 +40,6 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/responsive.css">
   </head>
-
   <body>
         <section id="header">
             <div class="container">
@@ -46,10 +64,10 @@
 								<!-- Collect the nav links, forms, and other content for toggling -->
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                  <li class="active"><a href="index.html">Inicio <span class="sr-only">(current)</span></a></li>
+                  <li><a href="index">Inicio</a></li>
                   <li><a href="participantes.jsp">Participantes</a></li>
                   <li><a href="mensaje.jsp">Mensaje</a></li>
-                  <li><a href="sortear.jsp">¡A Jugar!</a></li>
+                  <li class="active"><a href="sortear.jsp">¡A Jugar! <span class="sr-only">(current)</span></a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
                   <li><a href="registro">Registrarse</a></li>
@@ -57,6 +75,7 @@
                   </ul>
 								</div><!-- /.navbar-collapse -->
 							  </div><!-- /.container-fluid -->
+
 							</nav>
                         </div>
                     </div><!-- .col-md-6 -->
@@ -74,19 +93,31 @@
                     <div class="col-md-12">
                         <div class="block-top">
                             <div class="service-header">
-                                <h3> Te ayudamos a realizar el sorteo para el amigo invisible</h3>
+                                <h3>¡Muy bien! Ya tenemos todos los datos </h3>
+                                <h3>Ahora es el momento de realizar el sorteo </h3>
                                 <br />
-                                <p> Nunca fue tan fácil realizar un sorteo entre amigos y acertar en el regalo <br />
-                                Podéis realizar un sorteo básico recibiendo el resultado en vuestras <br />
-                                direcciones de correo electrónico o pasar a formar parte de esta plataforma y gozar de <br />
-                                un sinfín de posibilidades (gestión de grupos, listas de deseos, chat, etc)
-                               </p>
-                               <br />
-                               <h3> ¿Qué decides? ¡Anímate! </h3>
-                               <br />
-                               <br />
-                               <button onclick="location.href='participantes.jsp';" type="button" class="btn btn-primary" style="margin-right:20px;">Sorteo Básico</button>
-                               <button onclick="location.href='registro';" type="button" class="btn btn-primary" style="margin-left:20px;">Registrarse</button>
+                                <form method="get">
+                                    <input type="hidden" name="participants" value='<%= participants %>'>
+                                	<%
+		                                  String username;
+										  String email;
+										  String excl;
+			                              for(int i=1; i<=participants_int; i++) { 
+			                              	username = "username"+i;
+			                              	email = "email"+i;
+			                              	excl = "excl"+i;
+			                              %>
+			                            	  <input type="hidden" name='<%= username %>' value='<%= usernames[i-1] %>'>
+			                                  <input type="hidden" name='<%= email %>' value='<%= emails[i-1] %>'>
+			                                  <input type="hidden" name='<%= excl %>' value='<%= excls[i-1] %>'>
+			                              <% }
+		                              %>
+	                                <input type="hidden" name="mod_name" value='<%= mod_name %>'>
+	                                <input type="hidden" name="money" value='<%= money %>'>
+	                                <input type="hidden" name="date" value='<%= date %>'>
+	                                <input type="hidden" name="msg" value='<%= msg %>'>
+	                                <button onclick="this.form.action='logica_sorteo'" type="submit" class="btn btn-primary" style="margin-right:20px;">Realizar Sorteo</button>
+                            	</form>
                             </div>
                         </div>
                     </div><!-- .col-md-12 close -->
@@ -97,5 +128,6 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/main.js"></script>
-  </body>
+
+    </body>
 </html>
