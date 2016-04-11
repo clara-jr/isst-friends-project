@@ -5,14 +5,6 @@ xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet>
-		<servlet-name>Com_AmigoInvisible_isst</servlet-name>
-		<servlet-class>es.upm.dit.isst.amigos.Com_AmigoInvisible_isstServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Com_AmigoInvisible_isst</servlet-name>
-		<url-pattern>/com_amigoinvisible_isst</url-pattern>
-	</servlet-mapping>
-	<servlet>
 		<servlet-name>Index</servlet-name>
 		<servlet-class>es.upm.dit.isst.amigos.IndexServlet</servlet-class>
 	</servlet>
@@ -26,7 +18,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Logica_Sorteo</servlet-name>
-		<url-pattern>/logica_sorteo</url-pattern>
+		<url-pattern>/_ah/mail/nombre@aplicacion.appspotmail.com</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
