@@ -1,4 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <!-- The HTML 4.01 Transitional DOCTYPE declaration-->
@@ -110,11 +114,10 @@
                   <li><a href="index">Inicio</a></li>
                   <li class="active"><a href="participantes.jsp">Participantes <span class="sr-only">(current)</span></a></li>
                   <li><a href="mensaje.jsp">Mensaje</a></li>
-                  <li><a href="sortear.jsp">Â¡A Jugar!</a></li>
+                  <li><a href="sortear.jsp">¡A Jugar!</a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
-                  <li><a href="registro">Registrarse</a></li>
-                  <li><a href="login">Iniciar SesiÃ³n</a></li>
+		          <li><a href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
                   </ul>
 								</div><!-- /.navbar-collapse -->
 							  </div><!-- /.container-fluid -->
@@ -135,9 +138,9 @@
                     <div class="col-md-12">
                         <div class="block-top">
                             <div class="service-header">
-                              <h3>Â¿QuiÃ©nes vais a participar?</h3>
+                              <h3>¿Quiénes vais a participar?</h3>
                               <p>Rellena los nombres y direcciones de correo tuyos y de tus amigos <br />
-                                Incluso puedes aÃ±adir exclusiones entre ellos si lo deseas
+                                Incluso puedes añadir exclusiones entre ellos si lo deseas
                              </p>
                              <br />
                              <form class="form-inline" method="post">
@@ -155,7 +158,7 @@
                                   <input type="text" class="form-control" id="exampleInputName3" name="username3" placeholder="Nombre"/><br/>
                                 </div>
                                 <div class="form-group" id="emails">
-                                  <label for="exampleInputEmail">Correo electrÃ³nico</label>
+                                  <label for="exampleInputEmail">Correo electrónico</label>
                                   <input type="email" class="form-control" id="exampleInputEmail1" name="email1" placeholder="E-mail"/><br/>
                                   <input type="email" class="form-control" id="exampleInputEmail2" name="email2" placeholder="E-mail"/><br/>
                                   <input type="email" class="form-control" id="exampleInputEmail3" name="email3" placeholder="E-mail"/><br/>
@@ -168,7 +171,7 @@
                                 </div>
                                 <p style="margin-top:20px;">
                                 <button type="button" class="btn btn-default" style="margin-top:20px;" id="btnAdd">
-                                <span class="glyphicon glyphicon-plus-sign"></span> AÃ±adir un amigo</button>
+                                <span class="glyphicon glyphicon-plus-sign"></span> Añadir un amigo</button>
                                 <button type="button" class="btn btn-default" style="margin-top:20px;" id="btnDel">
                                 <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span> Eliminar un amigo</button>
                                 </p>

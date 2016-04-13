@@ -1,4 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <%
   String participants = request.getParameter("participants");
@@ -62,11 +66,10 @@
                   <li><a href="index">Inicio</a></li>
                   <li><a href="participantes.jsp">Participantes</a></li>
                   <li class="active"><a href="mensaje.jsp">Mensaje <span class="sr-only">(current)</span></a></li>
-                  <li><a href="sortear.jsp">Â¡A Jugar!</a></li>
+                  <li><a href="sortear.jsp">¡A Jugar!</a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
-                  <li><a href="registro">Registrarse</a></li>
-                  <li><a href="login">Iniciar SesiÃ³n</a></li>
+                  <li><a href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
                   </ul>
 								</div><!-- /.navbar-collapse -->
 							  </div><!-- /.container-fluid -->
@@ -104,20 +107,20 @@
                               %>
                               <input type="hidden" name="participants" value='<%= participants %>'>
                                 <div class="form-group" style="max-width:600px; margin-left:auto; margin-right:auto;">
-                                  <label for="exampleInputName">Â¿QuiÃ©n es el organizador del sorteo?</label>
+                                  <label for="exampleInputName">¿Quién es el organizador del sorteo?</label>
                                   <input type="text" class="form-control" id="exampleInputName" name="mod_name">
                                 </div>
                                 <div class="form-group" style="max-width:600px; margin-left:auto; margin-right:auto;">
-                                  <label for="exampleInputMoney">Define la cuantÃ­a mÃ¡xima de los regalos:</label>
+                                  <label for="exampleInputMoney">Define la cuantía máxima de los regalos:</label>
                                   <input type="text" class="form-control" id="exampleInputMoney" name="money">
                                 </div>
                                 <div class="form-group" style="max-width:600px; margin-left:auto; margin-right:auto;">
-                                  <label for="exampleInputDate">Elige el dÃ­a en el que se repartirÃ¡n los regalos:
+                                  <label for="exampleInputDate">Elige el día en el que se repartirán los regalos:
                                   <span class="glyphicon glyphicon-calendar"></span></label>
                                   <input type="text" class="form-control" id="exampleInputDate" name="date">
                                 </div>
                                 <div class="form-group" style="max-width:600px; margin-left:auto; margin-right:auto;">
-                                  <label for="exampleInputMessage">Escribe el mensaje que recibirÃ©is:</label>
+                                  <label for="exampleInputMessage">Escribe el mensaje que recibiréis:</label>
                                   <input type="text" class="form-control" id="exampleInputMessage" name="msg">
                                 </div>
                                 <br />

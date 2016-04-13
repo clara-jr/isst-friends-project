@@ -1,4 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <%
   String participants = request.getParameter("participants");
@@ -67,11 +71,10 @@
                   <li><a href="index">Inicio</a></li>
                   <li><a href="participantes.jsp">Participantes</a></li>
                   <li><a href="mensaje.jsp">Mensaje</a></li>
-                  <li class="active"><a href="sortear.jsp">Â¡A Jugar! <span class="sr-only">(current)</span></a></li>
+                  <li class="active"><a href="sortear.jsp">¡A Jugar! <span class="sr-only">(current)</span></a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
-                  <li><a href="registro">Registrarse</a></li>
-                  <li><a href="login">Iniciar SesiÃ³n</a></li>
+                  <li><a href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
                   </ul>
 								</div><!-- /.navbar-collapse -->
 							  </div><!-- /.container-fluid -->
@@ -93,7 +96,7 @@
                     <div class="col-md-12">
                         <div class="block-top">
                             <div class="service-header">
-                                <h3>Â¡Muy bien! Ya tenemos todos los datos </h3>
+                                <h3>¡Muy bien! Ya tenemos todos los datos </h3>
                                 <h3>Ahora es el momento de realizar el sorteo </h3>
                                 <br />
                                 <form method="get">

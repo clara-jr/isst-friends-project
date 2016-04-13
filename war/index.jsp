@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <!-- The HTML 4.01 Transitional DOCTYPE declaration-->
 <!-- above set at the top of the file will set     -->
@@ -9,6 +14,7 @@
 <html>
   <head>
   	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Amigo Invisible</title>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
@@ -20,6 +26,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/responsive.css">
   </head>
+
   <body>
         <section id="header">
             <div class="container">
@@ -44,14 +51,13 @@
 								<!-- Collect the nav links, forms, and other content for toggling -->
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                  <li><a href="index5.html">Mis Grupos</a></li>
-                  <li class="active"><a href="index7.html">Mis Deseos <span class="sr-only">(current)</span></a></li>
-                  <li><a href="index8.html">Mis Amigos</a></li>
-                  <li><a href="index9.html">Chat</a></li>
+                  <li class="active"><a href="index.html">Inicio <span class="sr-only">(current)</span></a></li>
+                  <li><a href="participantes.jsp">Participantes</a></li>
+                  <li><a href="mensaje.jsp">Mensaje</a></li>
+                  <li><a href="sortear.jsp">¡A Jugar!</a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
-                  <li><a href="index5.html">Registrarse</a></li>
-                  <li><a href="index5.html">Iniciar Sesión</a></li>
+                  <li><a href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
                   </ul>
 								</div><!-- /.navbar-collapse -->
 							  </div><!-- /.container-fluid -->
@@ -72,17 +78,19 @@
                     <div class="col-md-12">
                         <div class="block-top">
                             <div class="service-header">
-                              <p>¡Añade deseos a tu lista para que tu amigo invisible acierte con el regalo!</p>
-                              <br />
-                              <ul style="list-style:none; padding-left:0px; color:#AFB8B8;">
-                                <li>Colonia <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
-                                <li>Auriculares <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
-                              </ul>
-                              <br />
-                              <input type="text" class="form-control" style="width:150px; margin-left:auto; margin-right:auto;">
-                              <br />
-                              <button onclick="location.href='index7.html';" type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-plus-sign"></span> Añadir Deseo</button>
+                                <h3> Te ayudamos a realizar el sorteo para el amigo invisible</h3>
+                                <br />
+                                <p> Nunca fue tan fácil realizar un sorteo entre amigos y acertar en el regalo <br />
+                                Podéis realizar un sorteo básico recibiendo el resultado en vuestras <br />
+                                direcciones de correo electrónico o pasar a formar parte de esta plataforma y gozar de <br />
+                                un sinfín de posibilidades (gestión de grupos, listas de deseos, chat, etc)
+                               </p>
+                               <br />
+                               <h3> ¿Qué decides? ¡Anímate! </h3>
+                               <br />
+                               <br />
+                               <button onclick="location.href='participantes.jsp';" type="button" class="btn btn-primary" style="margin-right:20px;">Sorteo Básico</button>
+                               <button onclick="location.href='registro';" type="button" class="btn btn-primary" style="margin-left:20px;">Registrarse</button>
                             </div>
                         </div>
                     </div><!-- .col-md-12 close -->
@@ -93,6 +101,5 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/main.js"></script>
-
-    </body>
+  </body>
 </html>
