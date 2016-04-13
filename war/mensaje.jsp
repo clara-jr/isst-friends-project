@@ -1,4 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <%
   String participants = request.getParameter("participants");
@@ -59,14 +61,13 @@
 								<!-- Collect the nav links, forms, and other content for toggling -->
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                  <li><a href="index">Inicio</a></li>
+                  <li><a href="index.jsp">Inicio</a></li>
                   <li><a href="participantes.jsp">Participantes</a></li>
                   <li class="active"><a href="mensaje.jsp">Mensaje <span class="sr-only">(current)</span></a></li>
                   <li><a href="sortear.jsp">¡A Jugar!</a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
-                  <li><a href="registro">Registrarse</a></li>
-                  <li><a href="login">Iniciar Sesión</a></li>
+                  <li><a href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
                   </ul>
 								</div><!-- /.navbar-collapse -->
 							  </div><!-- /.container-fluid -->

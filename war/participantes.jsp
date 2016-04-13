@@ -1,4 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <!-- The HTML 4.01 Transitional DOCTYPE declaration-->
@@ -107,14 +109,13 @@
 								<!-- Collect the nav links, forms, and other content for toggling -->
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                  <li><a href="index">Inicio</a></li>
+                  <li><a href="index.jsp">Inicio</a></li>
                   <li class="active"><a href="participantes.jsp">Participantes <span class="sr-only">(current)</span></a></li>
                   <li><a href="mensaje.jsp">Mensaje</a></li>
                   <li><a href="sortear.jsp">¡A Jugar!</a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
-                  <li><a href="registro">Registrarse</a></li>
-                  <li><a href="login">Iniciar Sesión</a></li>
+		          <li><a href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
                   </ul>
 								</div><!-- /.navbar-collapse -->
 							  </div><!-- /.container-fluid -->
@@ -175,7 +176,7 @@
                                 <br />
                                 <div class="row">
                                   <div class="col-md-6">
-                                    <button type="submit" class="btn btn-default" onclick="this.form.action='index.html'"><span class="glyphicon glyphicon-circle-arrow-left"></span> Anterior</button>
+                                    <button type="submit" class="btn btn-default" onclick="this.form.action='index.jsp'"><span class="glyphicon glyphicon-circle-arrow-left"></span> Anterior</button>
                                   </div>
                                   <div class="col-md-6">
                                     <button type="submit" class="btn btn-default" onclick="this.form.action='mensaje.jsp'">Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span></button>

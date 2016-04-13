@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <!-- The HTML 4.01 Transitional DOCTYPE declaration-->
 <!-- above set at the top of the file will set     -->
@@ -44,14 +49,13 @@
 								<!-- Collect the nav links, forms, and other content for toggling -->
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                  <li><a href="index5.html">Mis Grupos</a></li>
-                  <li><a href="index7.html">Mis Deseos</a></li>
-                  <li><a href="index8.html">Mis Amigos</a></li>
-                  <li class="active"><a href="index9.html">Chat <span class="sr-only">(current)</span></a></li>
+                  <li><a href="grupos.jsp">Mis Grupos</a></li>
+                  <li><a href="deseos.jsp">Mis Deseos</a></li>
+                  <li><a href="amigos.jsp">Mis Amigos</a></li>
+                  <li class="active"><a href="chat.jsp">Chat <span class="sr-only">(current)</span></a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
-                  <li><a href="index5.html">Registrarse</a></li>
-                  <li><a href="index5.html">Iniciar Sesión</a></li>
+                  <li><a href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
                   </ul>
 								</div><!-- /.navbar-collapse -->
 							  </div><!-- /.container-fluid -->
@@ -78,10 +82,10 @@
                                  </p>
                                   <br />
                                  <ul style="list-style:none; padding-left:0px; color:#AFB8B8;">
-                                   <li><a href="index9.html"><span class="glyphicon glyphicon-envelope"></span> Chatear con Cristina</a></li> <br />
-                                   <li><a href="index9.html"><span class="glyphicon glyphicon-envelope"></span> Chatear con Pablo</a></li> <br />
-                                   <li><a href="index9.html"><span class="glyphicon glyphicon-envelope"></span> Chatear con Rocío</a></li> <br />
-                                   <li><a href="index9.html"><span class="glyphicon glyphicon-envelope"></span> Chatear con José Manuel</a></li>
+                                   <li><a href="chat.jsp"><span class="glyphicon glyphicon-envelope"></span> Chatear con Cristina</a></li> <br />
+                                   <li><a href="chat.jsp"><span class="glyphicon glyphicon-envelope"></span> Chatear con Pablo</a></li> <br />
+                                   <li><a href="chat.jsp"><span class="glyphicon glyphicon-envelope"></span> Chatear con Rocío</a></li> <br />
+                                   <li><a href="chat.jsp"><span class="glyphicon glyphicon-envelope"></span> Chatear con José Manuel</a></li>
                                  </ul>
                             </div>
                         </div>
