@@ -52,7 +52,7 @@
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
                   <li class="active"><a href="index.jsp">Inicio <span class="sr-only">(current)</span></a></li>
-                  <li><a href="participantes.jsp">Participantes</a></li>
+                  <li><a href="participantes.jsp">Participantes </a></li>
                   <li><a href="mensaje.jsp">Mensaje</a></li>
                   <li><a href="sortear.jsp">¡A Jugar!</a></li>
                   </ul>
