@@ -10,6 +10,6 @@ import javax.servlet.http.*;
 public class IndexServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		resp.setContentType("text/plain");
-		resp.sendRedirect("index.html");
+		resp.sendRedirect("index.jsp");
 	}
 }

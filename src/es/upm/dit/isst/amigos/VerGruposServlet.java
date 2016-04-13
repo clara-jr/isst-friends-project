@@ -41,24 +41,13 @@ public class VerGruposServlet extends HttpServlet {
 				grupos.add(GrupoDAOImpl.getInstance().getGrupoById(temp.getGrupo()));
 				List<Agrupaciones> agrupacionesdelgrupo = AgrupacionesDAOImpl.getInstance().getAgrupacionesByGrupo(temp.getGrupo());
 				agrupacionesporgrupo.put(temp.getGrupo(), agrupacionesdelgrupo.toArray(new Agrupaciones[agrupacionesdelgrupo.size()]));
-				//agrupacionesporgrupo.put(temp.getGrupo(), new Long(5));
 			}
 			
 			req.getSession().setAttribute("usuario", usuario);
 			req.getSession().setAttribute("grupos", grupos);
 			req.getSession().setAttribute("agrupaciones", agrupacionesporgrupo);
-			
-			/*
-			resp.getWriter().println("userservice.getCurrentUser().getEmail():" + userservice.getCurrentUser().getEmail());
-			resp.getWriter().println("userservice.getCurrentUser().getNickname():" + userservice.getCurrentUser().getNickname());
-			resp.getWriter().println("userservice.getCurrentUser().getUserId():" + userservice.getCurrentUser().getUserId());
-			resp.getWriter().println("userservice.getCurrentUser().getUserId():" + userservice.getCurrentUser().getUserId());
-			resp.getWriter().println("<a href=\"" + userservice.createLoginURL(req.getRequestURI()) + "\">Logout</a>");
-*/
-
-
-			
-			resp.sendRedirect("Grupos.jsp");
+						
+			resp.sendRedirect("grupos.jsp");
 			
 				
 			

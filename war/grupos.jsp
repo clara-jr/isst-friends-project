@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <!-- The HTML 4.01 Transitional DOCTYPE declaration-->
 <!-- above set at the top of the file will set     -->
@@ -25,8 +25,9 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/responsive.css">
   </head>
-  <body>
-        <section id="header">
+
+<body>
+	<section id="header">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -55,7 +56,7 @@
                   <li><a href="chat.jsp">Chat</a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
-                  <li><a href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
+ 				  <li><a href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
                   </ul>
 								</div><!-- /.navbar-collapse -->
 							  </div><!-- /.container-fluid -->
@@ -76,47 +77,74 @@
                     <div class="col-md-12">
                         <div class="block-top">
                             <div class="service-header">
-                                <p> Por si eres un despistado aquÃ­ tienes los grupos a los que estÃ¡s apuntado <br />
-                                  Â¡No olvides tampoco comprar el regalo antes de la fecha de entrega de regalos!
+                                <p> Por si eres un despistado aquí tienes los grupos a los que estás apuntado <br />
+                                  ¡No olvides tampoco comprar el regalo antes de la fecha de entrega de regalos!
                                </p>
                                <br />
                                <div class="row">
-                                 <div class="col-md-6">
-                                   <p>Amigos (25/12/2016)</p>
+                                <c:forEach items="${grupos}" var="grupo">
+                                  <div class="col-md-6">
+                                 	<p>${grupo.nombre} (${grupo.fecha})</p>                                 
                                      <ul style="list-style:none; padding-left:0px; color:#AFB8B8;">
-                                       <li>Noelia</li>
-                                       <li>Cristina</li>
-                                       <li>Olalla</li>
-                                       <li>Julia</li>
-                                       <li>Bea</li>
-                                       <li>Mar</li>
-                                       <li>Miriam</li>
-                                       <li>Clara</li>
+                                      <c:forEach items="${agrupaciones[grupo.id]}" var="agrupacion">
+                                       <li>
+                                       <c:out value="${agrupacion.user}"/>
+                                       	<c:if test="${usuario.nick == grupo.moderador && agrupacion.user != usuario.nick}">
+	                                     	<form method="post" style= "display: inline;">
+		                                     	<input type="hidden" name="grupo_id" value='${grupo.id}'>
+		                                     	<input type="hidden" name="usuario" value='${agrupacion.user}'>	                                     
+			                                    <button onclick="this.form.action = 'eliminar_de_grupo';" type="submit" class="btn btn-default" style="margin: 0; padding: 0; background:transparent; border: none;"><span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></button>
+	                                    	</form>  
+	                                   	</c:if>                                 
+                                       </li>
+                                      </c:forEach>
                                      </ul>
-                                   <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign" style="color:red;"></span> Salir del grupo</button>
-                                 </div>
+                                     <c:if test="${usuario.nick != grupo.moderador}">
+	                                   	 <form method="post">
+			                                     	<input type="hidden" name="grupo_id" value='${grupo.id}'>
+			                                     	<input type="hidden" name="usuario" value='${usuario}'>	                                     
+				                                    <button onclick="this.form.action = 'eliminar_de_grupo';" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign" style="color:red;"></span> Salir del grupo</button>
+		                                 </form>
+	                                 </c:if>
+	                                 <c:if test="${usuario.nick == grupo.moderador}">
+	                                   	 <form method="post">
+			                                     	<input type="hidden" name="grupo_id" value='${grupo.id}'>			                                     	                                    
+				                                    <button onclick="this.form.action = 'eliminar_grupo';" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign" style="color:red;"></span> Eliminar grupo</button>
+		                                 </form>
+		                                 <form method="post">
+                                     		<input type="hidden" name="grupo_id" value='${grupo.id}'>
+	                                    	<input type="text" class="form-control" style="width:150px; margin-left:auto; margin-right:auto;">
+	                                   	 	<br />
+	                                    	<button onclick="this.form.action = 'anadir_a_grupo';" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span> Añadir</button>
+                              			 </form>
+	                                 </c:if>                                 
+                                  </div>                                 
+                              	</c:forEach>
                                  <div class="col-md-6">
                                    <p>Familia (06/01/2017)</p>
                                      <ul style="list-style:none; padding-left:0px; color:#AFB8B8;">
-                                       <li>RocÃ­o <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
+                                       <li>Rocío <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
                                        <li>Pablo <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
-                                       <li>JosÃ© Manuel <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
+                                       <li>José Manuel <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
                                        <li>Clara</li>
                                      </ul>
                                      <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign" style="color:red;"></span> Salir del grupo</button>
                                      <br />
                                      <br />
-                                     <input type="text" class="form-control" style="width:150px; margin-left:auto; margin-right:auto;">
+                                     <form method="post">
+                                     	<input type="hidden" name="grupo_id" value='${grupo.id}'>
+	                                    <input type="text" class="form-control" style="width:150px; margin-left:auto; margin-right:auto;">
+	                                    <br />
+	                                    <button onclick="this.form.action = 'añadir_a_grupo';" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span> Añadir</button>
+                                     </form>
                                      <br />
-                                     <button onclick="location.href='grupos.jsp';" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span> AÃ±adir</button>
                                      <br />
-                                     <br />
-                                     <button onclick="location.href='grupos.jsp';" type="button" class="btn btn-primary">Sortear</button>
+                                     <button onclick="location.href='index5.html';" type="button" class="btn btn-primary">Sortear</button>
                                  </div>
                                </div>
                                <br />
                                <br />
-                               <button onclick="location.href='nuevo_grupo.jsp';" type="button" class="btn btn-primary">Nuevo Grupo</button>
+                               <button onclick="location.href='index6.html';" type="button" class="btn btn-primary">Nuevo Grupo</button>
                             </div>
                         </div>
                     </div><!-- .col-md-12 close -->
@@ -128,5 +156,6 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/main.js"></script>
 
-    </body>
+   
+	</body>
 </html>
