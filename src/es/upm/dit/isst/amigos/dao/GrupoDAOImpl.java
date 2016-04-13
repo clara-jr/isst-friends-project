@@ -23,9 +23,9 @@ public class GrupoDAOImpl implements GrupoDAO {
 	}
 	
 	@Override
-	public Grupo insertGrupo(String moderador, String preciomax, String fecha) {
+	public Grupo insertGrupo(String nombre, String moderador, String preciomax, String fecha) {
 		EntityManager em = EMFService.get().createEntityManager();
-		Grupo grupoObject = new Grupo(moderador, preciomax, fecha);
+		Grupo grupoObject = new Grupo(nombre, moderador, preciomax, fecha);
 		em.persist(grupoObject);
 		
 		em.close();
@@ -34,11 +34,11 @@ public class GrupoDAOImpl implements GrupoDAO {
 	}
 
 	@Override
-	public Grupo getGrupoById(Long gid) {
+	public Grupo getGrupoById(Long id) {
 		EntityManager em = EMFService.get().createEntityManager();
 		
-		Query q = em.createQuery("SELECT m FROM Grupo m WHERE m.gid = :gid");
-		q.setParameter("gid", gid);
+		Query q = em.createQuery("SELECT m FROM Grupo m WHERE m.id = :id");
+		q.setParameter("id", id);
 		Grupo grupo = (Grupo) q.getSingleResult();
 		em.close();
 		return grupo;

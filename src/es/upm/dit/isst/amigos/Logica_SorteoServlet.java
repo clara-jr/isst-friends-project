@@ -17,6 +17,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.*;
 
+import es.upm.dit.isst.amigos.logic.*;
+
 @SuppressWarnings("serial")
 public class Logica_SorteoServlet extends HttpServlet {
 	
@@ -49,52 +51,16 @@ public class Logica_SorteoServlet extends HttpServlet {
 			usernames[i-1] = req.getParameter("username"+i);
 			emails[i-1] = req.getParameter("email"+i);
 			if (req.getParameter("excl"+i) != "") {
-				usernames_excls[i-1] = usernames[i-1];
+				usernames_excls[i-1] = usernames[Integer.parseInt(req.getParameter("excl"+i)) - 1];
 			}
 			else {
 				usernames_excls[i-1] = "";
 			}
 		}
-		String[] randomizedArray = new String[participants_int];
-		boolean excl = true;
-		while (excl) {
-			randomizedArray = Randomize(usernames);
-			excl = false;
-		    for (int i = 0; i < randomizedArray.length; i++) {
-			    if (usernames_excls[i] != "") {
-			    	int id_in = Arrays.binarySearch(randomizedArray, usernames[i]);
-			    	if (id_in < randomizedArray.length - 1) {
-			    		if (randomizedArray[id_in+1] == usernames_excls[i]) {
-				    		excl = true;
-						}
-			    	}
-			    	else {
-			    		if (randomizedArray[0] == usernames_excls[i]) {
-				    		excl = true;
-						}
-			    	}
-				}
-			}
-		}
+		String[] randomizedArray = Functions.getInstance().asignador(usernames, usernames_excls);
+
+		Functions.getInstance().enviarEmail(randomizedArray, msg, money, date, mod_name, emails, usernames);
 		
-		for (int i = 0; i < randomizedArray.length; i++) {
-			Message msg_results = new MimeMessage(Session.getDefaultInstance(new Properties(), null));
-			try {
-				msg_results.setFrom(new InternetAddress("nombre@aplicacion.appspotmail.com", "Amigo Invisible")); // nombre (nombre@...) y dominio (...@aplicacion) de la app en GAE
-				msg_results.addRecipient(Message.RecipientType.TO,  new InternetAddress(randomizedArray[i], "Participante en el amigo invisible"));
-				msg_results.setSubject("El sorteo para el amigo invisible se ha realizado correctamente");
-				if (i < randomizedArray.length - 1) {
-					msg_results.setText("Hola " + randomizedArray[i] + " , " + mod_name + " ha organizado un sorteo por el Amigo Invisible con el siguiente asunto: " + msg + "\n Tras realizar el sorteo te informamos de que ¡te ha tocado hacer un regalo a... " + randomizedArray[i+1] + "! \n La cuantía máxima del regalo es de " + money + " € y los regalos se repartirán en la fecha " + date + ". \n ¡A disfrutar del Amigo Invisible! ;)");
-				}
-				else {
-					msg_results.setText("Hola " + randomizedArray[i] + " , " + mod_name + " ha organizado un sorteo por el Amigo Invisible con el siguiente asunto: " + msg + "\n Tras realizar el sorteo te informamos de que ¡te ha tocado hacer un regalo a... " + randomizedArray[0] + "! \n La cuantía máxima del regalo es de " + money + " € y los regalos se repartirán en la fecha " + date + ". \n ¡A disfrutar del Amigo Invisible! ;)");
-				}
-		        Transport.send(msg_results);
-			} catch (MessagingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 		resp.sendRedirect("index.html");
 	}
 }

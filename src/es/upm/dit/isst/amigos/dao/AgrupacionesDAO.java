@@ -15,7 +15,7 @@ public interface AgrupacionesDAO {
 	
 	public List<Agrupaciones> getAgrupacionesByUser(String user);
 	
-	public List<Agrupaciones> getAgrupacionesByGrupo(int grupo);
+	public List<Agrupaciones> getAgrupacionesByGrupo(Long grupo);
 	
 	public List<Agrupaciones> getAgrupByUserAndGrupo(String user, int grupo);
 }

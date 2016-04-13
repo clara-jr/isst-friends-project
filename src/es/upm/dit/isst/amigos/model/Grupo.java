@@ -14,19 +14,21 @@ public class Grupo implements Serializable {
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long gid;
+	private Long id;
+	private String nombre;
 	private String moderador;
 	private String preciomax;
 	private String fecha;
 	
-	public Grupo(String moderador, String preciomax, String fecha) {
+	public Grupo(String nombre, String moderador, String preciomax, String fecha) {
+		this.nombre = nombre;
 		this.moderador = moderador;
 		this.preciomax = preciomax;
 		this.fecha = fecha;
 	}
 	
 	public Long getId() {
-		return gid;
+		return id;
 	}
 	public String getPreciomax() {
 		return preciomax;
@@ -35,8 +37,8 @@ public class Grupo implements Serializable {
 	public String getModerador() {
 		return moderador;
 	}
-	public void setId(Long gid) {
-		this.gid = gid;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public void setModerador(String moderador) {
 		this.moderador = moderador;
@@ -49,6 +51,14 @@ public class Grupo implements Serializable {
 	}
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
 	

@@ -46,7 +46,7 @@ public class AgrupacionesDAOImpl implements AgrupacionesDAO {
 	}
 
 	@Override
-	public List<Agrupaciones> getAgrupacionesByGrupo(int grupo) {
+	public List<Agrupaciones> getAgrupacionesByGrupo(Long grupo) {
 		EntityManager em = EMFService.get().createEntityManager();
 
 		Query q = em.createQuery("SELECT m FROM Agrupaciones m WHERE m.grupo = :grupo");
