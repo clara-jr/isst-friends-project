@@ -49,10 +49,10 @@
 								<!-- Collect the nav links, forms, and other content for toggling -->
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                  <li><a href="index5.html">Mis Grupos</a></li>
-                  <li class="active"><a href="index7.html">Mis Deseos <span class="sr-only">(current)</span></a></li>
-                  <li><a href="index8.html">Mis Amigos</a></li>
-                  <li><a href="index9.html">Chat</a></li>
+                  <li><a href="grupos.jsp">Mis Grupos</a></li>
+                  <li class="active"><a href="deseos.jsp">Mis Deseos <span class="sr-only">(current)</span></a></li>
+                  <li><a href="amigos.jsp">Mis Amigos</a></li>
+                  <li><a href="chat.jsp">Chat</a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
              	  <li><a href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>

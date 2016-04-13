@@ -51,7 +51,7 @@
 								<!-- Collect the nav links, forms, and other content for toggling -->
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                  <li class="active"><a href="index.html">Inicio <span class="sr-only">(current)</span></a></li>
+                  <li class="active"><a href="index.jsp">Inicio <span class="sr-only">(current)</span></a></li>
                   <li><a href="participantes.jsp">Participantes</a></li>
                   <li><a href="mensaje.jsp">Mensaje</a></li>
                   <li><a href="sortear.jsp">¡A Jugar!</a></li>
@@ -90,7 +90,7 @@
                                <br />
                                <br />
                                <button onclick="location.href='participantes.jsp';" type="button" class="btn btn-primary" style="margin-right:20px;">Sorteo Básico</button>
-                               <button onclick="location.href='registro';" type="button" class="btn btn-primary" style="margin-left:20px;">Registrarse</button>
+                               <button onclick="location.href='login';" type="button" class="btn btn-primary" style="margin-left:20px;">Registrarse</button>
                             </div>
                         </div>
                     </div><!-- .col-md-12 close -->

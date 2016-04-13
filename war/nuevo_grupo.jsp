@@ -49,10 +49,10 @@
 								<!-- Collect the nav links, forms, and other content for toggling -->
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                  <li class="active"><a href="index5.html">Mis Grupos <span class="sr-only">(current)</span></a></li>
-                  <li><a href="index7.html">Mis Deseos</a></li>
-                  <li><a href="index8.html">Mis Amigos</a></li>
-                  <li><a href="index9.html">Chat</a></li>
+                  <li class="active"><a href="grupos.jsp">Mis Grupos <span class="sr-only">(current)</span></a></li>
+                  <li><a href="deseos.jsp">Mis Deseos</a></li>
+                  <li><a href="amigos.jsp">Mis Amigos</a></li>
+                  <li><a href="chat.jsp">Chat</a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
  				  <li><a href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
@@ -76,7 +76,7 @@
                     <div class="col-md-12">
                         <div class="block-top">
                             <div class="service-header">
-                              <form action="index5.html">
+                              <form action="grupos.jsp">
                                 <div class="form-inline">
                                    <div class="form-group" style="max-width:200px;">
                                      <label for="exampleInputName">Nombre del grupo</label>

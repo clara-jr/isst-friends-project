@@ -1,6 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
@@ -111,10 +109,10 @@
 								<!-- Collect the nav links, forms, and other content for toggling -->
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                  <li><a href="index">Inicio</a></li>
+                  <li><a href="index.jsp">Inicio</a></li>
                   <li class="active"><a href="participantes.jsp">Participantes <span class="sr-only">(current)</span></a></li>
                   <li><a href="mensaje.jsp">Mensaje</a></li>
-                  <li><a href="sortear.jsp">¡A Jugar!</a></li>
+                  <li><a href="sortear.jsp">Â¡A Jugar!</a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
 		          <li><a href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
@@ -138,9 +136,9 @@
                     <div class="col-md-12">
                         <div class="block-top">
                             <div class="service-header">
-                              <h3>¿Quiénes vais a participar?</h3>
+                              <h3>Â¿QuiÃ©nes vais a participar?</h3>
                               <p>Rellena los nombres y direcciones de correo tuyos y de tus amigos <br />
-                                Incluso puedes añadir exclusiones entre ellos si lo deseas
+                                Incluso puedes aÃ±adir exclusiones entre ellos si lo deseas
                              </p>
                              <br />
                              <form class="form-inline" method="post">
@@ -158,7 +156,7 @@
                                   <input type="text" class="form-control" id="exampleInputName3" name="username3" placeholder="Nombre"/><br/>
                                 </div>
                                 <div class="form-group" id="emails">
-                                  <label for="exampleInputEmail">Correo electrónico</label>
+                                  <label for="exampleInputEmail">Correo electrÃ³nico</label>
                                   <input type="email" class="form-control" id="exampleInputEmail1" name="email1" placeholder="E-mail"/><br/>
                                   <input type="email" class="form-control" id="exampleInputEmail2" name="email2" placeholder="E-mail"/><br/>
                                   <input type="email" class="form-control" id="exampleInputEmail3" name="email3" placeholder="E-mail"/><br/>
@@ -171,14 +169,14 @@
                                 </div>
                                 <p style="margin-top:20px;">
                                 <button type="button" class="btn btn-default" style="margin-top:20px;" id="btnAdd">
-                                <span class="glyphicon glyphicon-plus-sign"></span> Añadir un amigo</button>
+                                <span class="glyphicon glyphicon-plus-sign"></span> AÃ±adir un amigo</button>
                                 <button type="button" class="btn btn-default" style="margin-top:20px;" id="btnDel">
                                 <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span> Eliminar un amigo</button>
                                 </p>
                                 <br />
                                 <div class="row">
                                   <div class="col-md-6">
-                                    <button type="submit" class="btn btn-default" onclick="this.form.action='index.html'"><span class="glyphicon glyphicon-circle-arrow-left"></span> Anterior</button>
+                                    <button type="submit" class="btn btn-default" onclick="this.form.action='index.jsp'"><span class="glyphicon glyphicon-circle-arrow-left"></span> Anterior</button>
                                   </div>
                                   <div class="col-md-6">
                                     <button type="submit" class="btn btn-default" onclick="this.form.action='mensaje.jsp'">Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span></button>

@@ -2,7 +2,6 @@ package es.upm.dit.isst.amigos;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,12 +12,10 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 import es.upm.dit.isst.amigos.dao.UserDAO;
 import es.upm.dit.isst.amigos.dao.UserDAOImpl;
-import es.upm.dit.isst.amigos.model.User;
 
 @SuppressWarnings("serial")
 public class Login_Servlet extends HttpServlet {
 	UserDAO dao = UserDAOImpl.getInstance();
-	//User user = null;
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		resp.setContentType("text/html");
@@ -45,7 +42,6 @@ public class Login_Servlet extends HttpServlet {
 		req.getSession().setAttribute("nick", nick);
 			
 		//Para redirigir el flujo de ejecucion de un servlet de control a un JSP:
-		RequestDispatcher view = req.getRequestDispatcher("grupos.jsp");
-		view.forward(req, resp);
+		resp.sendRedirect("grupos.jsp");
 	}
 }

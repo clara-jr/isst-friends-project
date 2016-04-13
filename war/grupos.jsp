@@ -49,10 +49,10 @@
 								<!-- Collect the nav links, forms, and other content for toggling -->
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                  <li class="active"><a href="index5.html">Mis Grupos <span class="sr-only">(current)</span></a></li>
-                  <li><a href="index7.html">Mis Deseos</a></li>
-                  <li><a href="index8.html">Mis Amigos</a></li>
-                  <li><a href="index9.html">Chat</a></li>
+                  <li class="active"><a href="grupos.jsp">Mis Grupos <span class="sr-only">(current)</span></a></li>
+                  <li><a href="deseos.jsp">Mis Deseos</a></li>
+                  <li><a href="amigos.jsp">Mis Amigos</a></li>
+                  <li><a href="chat.jsp">Chat</a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
                   <li><a href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
@@ -108,15 +108,15 @@
                                      <br />
                                      <input type="text" class="form-control" style="width:150px; margin-left:auto; margin-right:auto;">
                                      <br />
-                                     <button onclick="location.href='index5.html';" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span> Añadir</button>
+                                     <button onclick="location.href='grupos.jsp';" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span> Añadir</button>
                                      <br />
                                      <br />
-                                     <button onclick="location.href='index5.html';" type="button" class="btn btn-primary">Sortear</button>
+                                     <button onclick="location.href='grupos.jsp';" type="button" class="btn btn-primary">Sortear</button>
                                  </div>
                                </div>
                                <br />
                                <br />
-                               <button onclick="location.href='index6.html';" type="button" class="btn btn-primary">Nuevo Grupo</button>
+                               <button onclick="location.href='nuevo_grupo.jsp';" type="button" class="btn btn-primary">Nuevo Grupo</button>
                             </div>
                         </div>
                     </div><!-- .col-md-12 close -->
