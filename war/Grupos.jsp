@@ -112,6 +112,12 @@
 			                                     	<input type="hidden" name="grupo_id" value='${grupo.id}'>			                                     	                                    
 				                                    <button onclick="this.form.action = 'eliminar_grupo';" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign" style="color:red;"></span> Eliminar grupo</button>
 		                                 </form>
+		                                 <form method="post">
+                                     		<input type="hidden" name="grupo_id" value='${grupo.id}'>
+	                                    	<input type="text" class="form-control" style="width:150px; margin-left:auto; margin-right:auto;">
+	                                   	 	<br />
+	                                    	<button onclick="this.form.action = 'anadir_a_grupo';" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span> Añadir</button>
+                              			 </form>
 	                                 </c:if>                                 
                                   </div>                                 
                               	</c:forEach>
