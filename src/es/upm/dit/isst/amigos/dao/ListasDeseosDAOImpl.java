@@ -28,6 +28,7 @@ public class ListasDeseosDAOImpl implements ListasDeseosDAO {
 		EntityManager em = EMFService.get().createEntityManager();
 		ListasDeseos listaObject = new ListasDeseos(user, item);
 		em.persist(listaObject);
+
 		em.close();
 		
 		return listaObject;

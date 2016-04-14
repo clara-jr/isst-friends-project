@@ -51,6 +51,7 @@
                   <ul class="nav navbar-nav">
                   <li><a href="/Grupos">Mis Grupos</a></li>
                   <li class="active"><a href="/listas_deseos">Mis Deseos <span class="sr-only">(current)</span></a></li>
+
                   <li><a href="amigos.jsp">Mis Amigos</a></li>
                   <li><a href="chat.jsp">Chat</a></li>
                   </ul>

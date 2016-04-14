@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
@@ -54,14 +54,14 @@
                   <li class="active"><a href="index.jsp">Inicio <span class="sr-only">(current)</span></a></li>
                   <li><a href="participantes.jsp">Participantes </a></li>
                   <li><a href="mensaje.jsp">Mensaje</a></li>
-                  <li><a href="sortear.jsp">¡A Jugar!</a></li>
+                  <li><a href="sortear.jsp">�A Jugar!</a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
                   				<c:if test="${not empty pageContext.request.userPrincipal}">
-								    <li><a href="/Login"/>Cerrar Sesión</a></li>
+								    <li><a href="/Login"/>Cerrar Sesi�n</a></li>
 								</c:if>
 								<c:if test="${empty pageContext.request.userPrincipal}">
-								    <li><a href="/Login"/>Iniciar Sesión</a></li>
+								    <li><a href="/Login"/>Iniciar Sesi�n</a></li>
 								</c:if>
                   </ul>
 								</div><!-- /.navbar-collapse -->
@@ -85,16 +85,16 @@
                             <div class="service-header">
                                 <h3> Te ayudamos a realizar el sorteo para el amigo invisible</h3>
                                 <br />
-                                <p> Nunca fue tan fÃ¡cil realizar un sorteo entre amigos y acertar en el regalo <br />
-                                PodÃ©is realizar un sorteo bÃ¡sico recibiendo el resultado en vuestras <br />
-                                direcciones de correo electrÃ³nico o pasar a formar parte de esta plataforma y gozar de <br />
-                                un sinfÃ­n de posibilidades (gestiÃ³n de grupos, listas de deseos, chat, etc)
+                                <p> Nunca fue tan fácil realizar un sorteo entre amigos y acertar en el regalo <br />
+                                Podéis realizar un sorteo básico recibiendo el resultado en vuestras <br />
+                                direcciones de correo electrónico o pasar a formar parte de esta plataforma y gozar de <br />
+                                un sinfín de posibilidades (gestión de grupos, listas de deseos, chat, etc)
                                </p>
                                <br />
-                               <h3> Â¿QuÃ© decides? Â¡AnÃ­mate! </h3>
+                               <h3> ¿Qué decides? ¡Anímate! </h3>
                                <br />
                                <br />
-                               <button onclick="location.href='participantes.jsp';" type="button" class="btn btn-primary" style="margin-right:20px;">Sorteo BÃ¡sico</button>
+                               <button onclick="location.href='participantes.jsp';" type="button" class="btn btn-primary" style="margin-right:20px;">Sorteo Básico</button>
                                <button onclick="location.href='login';" type="button" class="btn btn-primary" style="margin-left:20px;">Registrarse</button>
                             </div>
                         </div>

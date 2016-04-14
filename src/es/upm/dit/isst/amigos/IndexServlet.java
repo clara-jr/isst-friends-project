@@ -13,3 +13,4 @@ public class IndexServlet extends HttpServlet {
 		resp.sendRedirect("index.jsp");
 	}
 }
+
