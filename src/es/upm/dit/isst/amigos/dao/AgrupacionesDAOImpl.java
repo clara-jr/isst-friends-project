@@ -6,8 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import es.upm.dit.isst.amigos.model.Agrupaciones;
-import es.upm.dit.isst.amigos.model.Grupo;
-import es.upm.dit.isst.amigos.model.ListasDeseos;
 
 public class AgrupacionesDAOImpl implements AgrupacionesDAO {
 

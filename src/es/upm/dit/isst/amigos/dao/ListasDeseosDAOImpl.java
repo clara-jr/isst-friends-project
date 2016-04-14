@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import es.upm.dit.isst.amigos.model.ListasDeseos;
-import es.upm.dit.isst.amigos.model.Login;
 
 
 public class ListasDeseosDAOImpl implements ListasDeseosDAO {

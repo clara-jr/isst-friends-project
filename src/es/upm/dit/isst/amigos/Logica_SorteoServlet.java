@@ -4,17 +4,8 @@ package es.upm.dit.isst.amigos;
  *
  */
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.Properties;
 import java.util.Random;
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.*;
 
 import es.upm.dit.isst.amigos.logic.*;

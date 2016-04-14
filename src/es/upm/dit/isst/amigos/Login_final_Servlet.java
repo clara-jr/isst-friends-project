@@ -19,12 +19,10 @@ public class Login_final_Servlet extends HttpServlet {
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		UserService userService = UserServiceFactory.getUserService();
-		String urllinktext = "hola";
 		String email = userService.getCurrentUser().getEmail();
 		String nick = userService.getCurrentUser().getNickname();
 		
 		dao.insertUser(nick, email, "");
-		req.getSession().setAttribute("urlLinktext", urllinktext);;
 		
 		resp.sendRedirect("/Grupos");
 	}
