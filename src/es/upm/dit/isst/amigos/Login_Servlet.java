@@ -13,15 +13,17 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 @SuppressWarnings("serial")
 public class Login_Servlet extends HttpServlet {
-	
+
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		resp.setContentType("text/html");
-		
+
 		UserService userService = UserServiceFactory.getUserService();
 		String url = userService.createLoginURL("/login_final");
-				
-		
-		//Para redirigir el flujo de ejecucion de un servlet de control a un JSP:
+
+		if (req.getUserPrincipal() != null){
+			url = userService.createLogoutURL("/index");
+		}
+
 		resp.sendRedirect(url);
 	}
 }

@@ -13,7 +13,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>Login</servlet-name>
 		<url-pattern>/Login</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>LoginFinal</servlet-name>
 		<servlet-class>es.upm.dit.isst.amigos.Login_final_Servlet</servlet-class>
@@ -22,7 +22,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>LoginFinal</servlet-name>
 		<url-pattern>/login_final</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>Com_AmigoInvisible_isst</servlet-name>
 		<servlet-class>es.upm.dit.isst.amigos.Com_AmigoInvisible_isstServlet</servlet-class>
@@ -30,14 +30,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 		<servlet-name>Com_AmigoInvisible_isst</servlet-name>
 		<url-pattern>/com_amigoinvisible_isst</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>Deseos</servlet-name>
-		<servlet-class>es.upm.dit.isst.amigos.DeseosServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Deseos</servlet-name>
-		<url-pattern>/Deseos</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>VerGrupos</servlet-name>
@@ -63,7 +55,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>Logica_Sorteo</servlet-name>
 		<url-pattern>/logica_sorteo</url-pattern>
 	</servlet-mapping>
-	
+
 			<servlet>
 		<servlet-name>Listas_Deseos</servlet-name>
 		<servlet-class>es.upm.dit.isst.amigos.Listas_DeseosServlet</servlet-class>
