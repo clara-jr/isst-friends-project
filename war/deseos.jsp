@@ -50,7 +50,8 @@
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
                   <li><a href="/Grupos">Mis Grupos</a></li>
-                  <li class="active"><a href="/Deseos">Mis Deseos <span class="sr-only">(current)</span></a></li>
+                  <li class="active"><a href="/listas_deseos">Mis Deseos <span class="sr-only">(current)</span></a></li>
+
                   <li><a href="amigos.jsp">Mis Amigos</a></li>
                   <li><a href="chat.jsp">Chat</a></li>
                   </ul>
@@ -85,14 +86,25 @@
                               <br />
                               <ul style="list-style:none; padding-left:0px; color:#AFB8B8;">
                                 <c:forEach items="${deseos}" var="deseo">
-                                <li>${deseo.item} <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
+                                <li><c:out value="${deseo.item}" /> <form method="post" style= "display: inline;">
+		                                     	<input type="hidden" name="lock" value="false">
+		                                     	<input type="hidden" name="item" value='${deseo.item}'>	                                     
+			                                    <button onclick="this.form.action = 'listas_deseos';" type="submit" class="btn btn-default" style="margin: 0; padding: 0; background:transparent; border: none;"><span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></button>
+	                                    	</form>  </li>
                                 </c:forEach>
                               </ul>
                               <br />
-                              <input type="text" class="form-control" style="width:150px; margin-left:auto; margin-right:auto;">
+                                <form action ="/listas_deseos" method="post">
+                                <input type="text" required name ="item" class="form-control" 
+                                style="width:150px; margin-left:auto; margin-right:auto;">
+                                <br>
+                                <input type="hidden" name="lock" value="true"/>
+                              	<input type="submit" value="Añadir deseo"
+                              	 type="button" class="btn btn-default"/> 
+                              	<span class="glyphicon glyphicon-plus-sign"></span>
+                              	</form>             
                               <br />
-                              <button onclick="location.href='deseos.jsp';" type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-plus-sign"></span> Añadir Deseo</button>
+                              <c:out value="${user}" />
                             </div>
                         </div>
                     </div><!-- .col-md-12 close -->

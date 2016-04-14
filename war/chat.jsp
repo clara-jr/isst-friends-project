@@ -49,8 +49,9 @@
 								<!-- Collect the nav links, forms, and other content for toggling -->
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
+                    
                   <li><a href="/Grupos">Mis Grupos</a></li>
-                  <li><a href="/Deseos">Mis Deseos</a></li>
+                  <li><a href="/listas_deseos">Mis Deseos</a></li>
                   <li><a href="amigos.jsp">Mis Amigos</a></li>
                   <li class="active"><a href="chat.jsp">Chat <span class="sr-only">(current)</span></a></li>
                   </ul>

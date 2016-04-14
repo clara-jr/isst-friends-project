@@ -1,7 +1,6 @@
 package es.upm.dit.isst.amigos;
 
 import java.io.IOException;
-import java.util.List;
 
 import es.upm.dit.isst.amigos.dao.*;
 import es.upm.dit.isst.amigos.model.*;
@@ -15,7 +14,6 @@ public class Com_AmigoInvisible_isstServlet extends HttpServlet {
 		resp.setContentType("text/plain");
 		
 		UserDAOImpl userdao = UserDAOImpl.getInstance();
-		LoginDAOImpl logindao = LoginDAOImpl.getInstance();
 		ListasDeseosDAOImpl listasdao = ListasDeseosDAOImpl.getInstance();
 		GrupoDAOImpl gruposdao = GrupoDAOImpl.getInstance();
 		AgrupacionesDAOImpl agrupdao = AgrupacionesDAOImpl.getInstance();
