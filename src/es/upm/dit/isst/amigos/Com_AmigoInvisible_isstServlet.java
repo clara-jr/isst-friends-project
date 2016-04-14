@@ -22,7 +22,7 @@ public class Com_AmigoInvisible_isstServlet extends HttpServlet {
 		
 		ListasDeseos lista = listasdao.insertLista("nachoperegrino94", "Un juguete");
 		ListasDeseos lista2 = listasdao.insertLista("nachoperegrino94", "Otro juguete");
-		Grupo grupo = gruposdao.insertGrupo("prueba","clarajimenezrecio", "30", "5/5/2015");
+		Grupo grupo = gruposdao.insertGrupo("prueba","nachoperegrino94", "30", "5/5/2015");
 		Agrupaciones agrup = agrupdao.insertAgrupacion("clarajimenezrecio", grupo.getId(), "");
 		agrupdao.insertAgrupacion("nachoperegrino94", grupo.getId(), "");
 		agrupdao.insertAgrupacion("Linda", grupo.getId(), "");

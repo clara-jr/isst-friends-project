@@ -22,7 +22,6 @@ public class Login_Servlet extends HttpServlet {
 		String url = userService.createLoginURL("/login_final");
 				
 		
-		//Para redirigir el flujo de ejecucion de un servlet de control a un JSP:
 		resp.sendRedirect(url);
 	}
 }
