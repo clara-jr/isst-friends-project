@@ -49,8 +49,8 @@
 								<!-- Collect the nav links, forms, and other content for toggling -->
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                  <li><a href="grupos.jsp">Mis Grupos</a></li>
-                  <li class="active"><a href="deseos.jsp">Mis Deseos <span class="sr-only">(current)</span></a></li>
+                  <li><a href="/Grupos">Mis Grupos</a></li>
+                  <li class="active"><a href="/Deseos">Mis Deseos <span class="sr-only">(current)</span></a></li>
                   <li><a href="amigos.jsp">Mis Amigos</a></li>
                   <li><a href="chat.jsp">Chat</a></li>
                   </ul>
@@ -81,17 +81,18 @@
                     <div class="col-md-12">
                         <div class="block-top">
                             <div class="service-header">
-                              <p>Â¡AÃ±ade deseos a tu lista para que tu amigo invisible acierte con el regalo!</p>
+                              <p>Añade deseos a tu lista para que tu amigo invisible acierte con el regalo!</p>
                               <br />
                               <ul style="list-style:none; padding-left:0px; color:#AFB8B8;">
-                                <li>Colonia <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
-                                <li>Auriculares <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
+                                <c:forEach items="${deseos}" var="deseo">
+                                <li>${deseo.item} <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
+                                </c:forEach>
                               </ul>
                               <br />
                               <input type="text" class="form-control" style="width:150px; margin-left:auto; margin-right:auto;">
                               <br />
-                              <button onclick="location.href='index7.html';" type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-plus-sign"></span> AÃ±adir Deseo</button>
+                              <button onclick="location.href='deseos.jsp';" type="button" class="btn btn-default">
+                                <span class="glyphicon glyphicon-plus-sign"></span> Añadir Deseo</button>
                             </div>
                         </div>
                     </div><!-- .col-md-12 close -->

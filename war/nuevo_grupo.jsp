@@ -97,8 +97,8 @@
 								<!-- Collect the nav links, forms, and other content for toggling -->
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                  <li class="active"><a href="grupos.jsp">Mis Grupos <span class="sr-only">(current)</span></a></li>
-                  <li><a href="deseos.jsp">Mis Deseos</a></li>
+                  <li class="active"><a href="/Grupos">Mis Grupos <span class="sr-only">(current)</span></a></li>
+                  <li><a href="/Deseos">Mis Deseos</a></li>
                   <li><a href="amigos.jsp">Mis Amigos</a></li>
                   <li><a href="chat.jsp">Chat</a></li>
                   </ul>

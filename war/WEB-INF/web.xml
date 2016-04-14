@@ -31,7 +31,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>Com_AmigoInvisible_isst</servlet-name>
 		<url-pattern>/com_amigoinvisible_isst</url-pattern>
 	</servlet-mapping>
-	
+	<servlet>
+		<servlet-name>Deseos</servlet-name>
+		<servlet-class>es.upm.dit.isst.amigos.DeseosServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Deseos</servlet-name>
+		<url-pattern>/Deseos</url-pattern>
+	</servlet-mapping>
 	<servlet>
 		<servlet-name>VerGrupos</servlet-name>
 		<servlet-class>es.upm.dit.isst.amigos.VerGruposServlet</servlet-class>
