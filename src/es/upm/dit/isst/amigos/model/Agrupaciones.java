@@ -12,7 +12,7 @@ public class Agrupaciones implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id @GeneratedValue
-	private Long aid;
+	private Long id;
 	private String user;
 	private Long grupo;
 	private String amigoinv;
@@ -25,10 +25,10 @@ public class Agrupaciones implements Serializable {
 	
 	
 	public Long getId() {
-		return aid;
+		return id;
 	}
 	public void setId(Long id) {
-		this.aid = id;
+		this.id = id;
 	}
 	public String getUser() {
 		return user;

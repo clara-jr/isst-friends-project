@@ -37,7 +37,12 @@ public class UserDAOImpl implements UserDAO {
 		
 		Query q = em.createQuery("SELECT m FROM User m WHERE m.nick=:nick");
 		q.setParameter("nick", nick);
-		User usuario = (User) q.getSingleResult();
+		User usuario;
+		try{
+			usuario = (User) q.getSingleResult();
+		}catch(Exception e){
+			return null;
+		}
 		em.close();
 		return usuario;
 	}

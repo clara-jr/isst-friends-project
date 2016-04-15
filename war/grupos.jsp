@@ -13,12 +13,12 @@
 
 <html>
   <head>
-  	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,300,700,600,500' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -32,23 +32,23 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="block-left">
-							<nav class="navbar navbar-default" role="navigation">
-							  <div class="container-fluid">
-								<!-- Brand and toggle get grouped for better mobile display -->
-								<div class="navbar-header">
-								  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-									<span class="sr-only">Toggle navigation</span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-								  </button>
+              <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  </button>
                   <div class="nav-logo">
                   <a href="#"><img src="img/logo.png" alt="logo"></a>
                   </div>
-								</div>
+                </div>
 
-								<!-- Collect the nav links, forms, and other content for toggling -->
-								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
                   <li class="active"><a href="/Grupos">Mis Grupos <span class="sr-only">(current)</span></a></li>
                   <li><a href="/listas_deseos">Mis Deseos</a></li>
@@ -63,9 +63,9 @@
 								    <li><a href="/Login"/>Iniciar Sesión</a></li>
 								</c:if>
                   </ul>
-								</div><!-- /.navbar-collapse -->
-							  </div><!-- /.container-fluid -->
-							</nav>
+                </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+              </nav>
                         </div>
                     </div><!-- .col-md-6 -->
 
@@ -89,7 +89,7 @@
                                <div class="row">
                                 <c:forEach items="${grupos}" var="grupo">
                                   <div class="col-md-6">
-                                 	<p>${grupo.nombre} (${grupo.fecha})</p>                                 
+                                 	<p>${grupo.nombre} (${grupo.fecha})</p>
                                      <ul style="list-style:none; padding-left:0px; color:#AFB8B8;">
                                       <c:forEach items="${agrupaciones[grupo.id]}" var="agrupacion">
                                        <li>
@@ -146,5 +146,7 @@
         <script src="js/main.js"></script>
 
    
+
 	</body>
 </html>
+
