@@ -11,8 +11,8 @@ public interface AgrupacionesDAO {
 	
 	public void deleteAgrupacion(Agrupaciones agrupacion);
 	
-	public void deleteListaAgrupaciones(List<Agrupaciones> lista);
-	
+	public void updateAgrupacion(Agrupaciones agrupacion);
+		
 	public List<Agrupaciones> getAgrupacionesByUser(String user);
 	
 	public List<Agrupaciones> getAgrupacionesByGrupo(Long grupo);

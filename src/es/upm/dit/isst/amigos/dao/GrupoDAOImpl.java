@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import es.upm.dit.isst.amigos.model.Agrupaciones;
 import es.upm.dit.isst.amigos.model.Grupo;
 
 public class GrupoDAOImpl implements GrupoDAO {
@@ -52,6 +53,17 @@ public class GrupoDAOImpl implements GrupoDAO {
 		List<Grupo> grupo = q.getResultList();
 		em.close();
 		return grupo;
+	}
+
+	@Override
+	public void deleteGrupo(Grupo grupo) {
+		EntityManager em = EMFService.get().createEntityManager();
+		Query q = em.createQuery("SELECT m FROM Grupo m WHERE m.id = :id");
+		q.setParameter("id", grupo.getId());
+		Grupo grupox = (Grupo) q.getSingleResult();
+		em.remove(em.contains(grupox) ? grupox : em.merge(grupox));
+		em.close();
+		
 	}
 
 }

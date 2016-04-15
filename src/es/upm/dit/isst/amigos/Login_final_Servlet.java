@@ -19,6 +19,7 @@ public class Login_final_Servlet extends HttpServlet {
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		UserService userService = UserServiceFactory.getUserService();
+
 		String email = userService.getCurrentUser().getEmail();
 		String nick = userService.getCurrentUser().getNickname();
 		

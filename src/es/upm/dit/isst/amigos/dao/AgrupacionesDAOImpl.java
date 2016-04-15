@@ -73,18 +73,21 @@ public class AgrupacionesDAOImpl implements AgrupacionesDAO {
 	@Override
 	public void deleteAgrupacion(Agrupaciones agrupacion) {
 		EntityManager em = EMFService.get().createEntityManager();
-		em.remove(em.contains(agrupacion) ? agrupacion : em.merge(agrupacion));
+
+		Query q = em.createQuery("SELECT m FROM Agrupaciones m WHERE m.id = :id");
+		q.setParameter("id", agrupacion.getId());
+		Agrupaciones agrupacionx = (Agrupaciones) q.getSingleResult();
+		em.remove(em.contains(agrupacionx) ? agrupacionx : em.merge(agrupacionx));
+
 		em.close();
+	
 	}
 
 	@Override
-	public void deleteListaAgrupaciones(List<Agrupaciones> lista) {
+	public void updateAgrupacion(Agrupaciones agrupacion) {
 		EntityManager em = EMFService.get().createEntityManager();
-		for(Agrupaciones temp: lista){
-			em.remove(temp);
-			em.close();
-		}
-		
+		em.merge(agrupacion);
+		em.close();
 	}
 
 }

@@ -10,4 +10,6 @@ public interface GrupoDAO {
 	public Grupo getGrupoById(Long id);
 	
 	public List<Grupo> getGrupoByModerador(String moderador);
+	
+	public void deleteGrupo(Grupo grupo);
 }
