@@ -13,8 +13,15 @@ public class Com_AmigoInvisible_isstServlet extends HttpServlet {
 			throws IOException {
 		resp.setContentType("text/plain");
 		
-		UserDAOImpl userdao = UserDAOImpl.getInstance();
-		ListasDeseosDAOImpl listasdao = ListasDeseosDAOImpl.getInstance();
+		UserDAOImpl dao = UserDAOImpl.getInstance();
+		
+		dao.insertUser("Nacho1", "email1", "social1");
+		dao.insertUser("Nacho2", "email2", "social2");
+		dao.insertUser("Nacho3", "email3", "social3");
+		dao.insertUser("Nacho4", "email4", "social4");
+		
+		
+		/*ListasDeseosDAOImpl listasdao = ListasDeseosDAOImpl.getInstance();
 		GrupoDAOImpl gruposdao = GrupoDAOImpl.getInstance();
 		AgrupacionesDAOImpl agrupdao = AgrupacionesDAOImpl.getInstance();
 		
@@ -25,8 +32,9 @@ public class Com_AmigoInvisible_isstServlet extends HttpServlet {
 		agrupdao.insertAgrupacion("nachoperegrino94", grupo.getId(), "");
 		agrupdao.insertAgrupacion("Linda", grupo.getId(), "");
 		agrupdao.insertAgrupacion("Javier", grupo.getId(), "");
-		agrupdao.insertAgrupacion("Penelope", grupo.getId(), "");
-
+		agrupdao.insertAgrupacion("Penelope", grupo.getId(), ""); */
+		
+		
 				
 		/*User usuario = userdao.getUserByNick("nachoperegrino94");
 		//Login log1 = logindao.getLoginByUser("nachoperegrino94");
@@ -40,7 +48,6 @@ public class Com_AmigoInvisible_isstServlet extends HttpServlet {
 		
 				
 		resp.getWriter().println("Hello, world");
-		
 		/*resp.getWriter().println("Hola " + usuario.getNick());
 		resp.getWriter().println("Email: " + usuario.toString());
 		

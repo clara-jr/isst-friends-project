@@ -22,14 +22,22 @@ public class VerGruposServlet extends HttpServlet {
 	 * @param resp
 	 * @throws IOException
 	 */
+	
+	GrupoDAO dao = GrupoDAOImpl.getInstance();
+	AgrupacionesDAO agrupao = AgrupacionesDAOImpl.getInstance();
+	UserDAO usao = UserDAOImpl.getInstance();
+	
+	UserService userservice = UserServiceFactory.getUserService();
+	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		UserService userservice = UserServiceFactory.getUserService();
+
 		if (req.getUserPrincipal() == null ){
 			resp.getWriter().println("<p>No deberías estar aquí.</p>"
 							+ "<a href=\"" + userservice.createLoginURL(req.getRequestURI()) +
                                      "\">Logueate</a> o <a href=\"\\\">vete</a>");
 		}
-		else{
+		
+		else {
 			
 			User usuario = UserDAOImpl.getInstance().getUserByEmail(userservice.getCurrentUser().getEmail());
 			List<Agrupaciones> agrupuser = AgrupacionesDAOImpl.getInstance().getAgrupacionesByUser(usuario.getNick());
@@ -47,10 +55,81 @@ public class VerGruposServlet extends HttpServlet {
 			req.getSession().setAttribute("grupos", grupos);
 			req.getSession().setAttribute("agrupaciones", agrupacionesporgrupo);
 						
-			resp.sendRedirect("grupos.jsp");
+			resp.sendRedirect("grupos.jsp");		
 			
-				
+		}
+	}
+	
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {	
+
+		String user = req.getParameter("usuario");
+		Long id = Long.valueOf(req.getParameter("grupo_id"));
+		String lock = req.getParameter("lock");
+		String item = req.getParameter("item");
+
+		String v = "true";
+		String f = "false";
+		boolean existe = true;
+		
+		if(lock.equals(v)) {
 			
+			if (item.equals("Rick Astley")) {
+				resp.sendRedirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ"); // NEVER GONNA GIVE YOU UP!
+			}
+			
+			try {
+				User prueba = usao.getUserByNick(item);
+			}
+			catch (Exception e) {
+				existe = false;
+			}
+			
+			if (existe) {
+			agrupao.insertAgrupacion(item, id, "");
+			}
+			
+			User usuario = UserDAOImpl.getInstance().getUserByEmail(userservice.getCurrentUser().getEmail());
+			List<Agrupaciones> agrupuser = AgrupacionesDAOImpl.getInstance().getAgrupacionesByUser(usuario.getNick());
+			List<Grupo> grupos = new ArrayList<Grupo>();
+			HashMap<Long, Agrupaciones[] > agrupacionesporgrupo = new HashMap<Long, Agrupaciones[] >();
+			
+	
+			for (Agrupaciones temp: agrupuser){
+				grupos.add(GrupoDAOImpl.getInstance().getGrupoById(temp.getGrupo()));
+				List<Agrupaciones> agrupacionesdelgrupo = AgrupacionesDAOImpl.getInstance().getAgrupacionesByGrupo(temp.getGrupo());
+				agrupacionesporgrupo.put(temp.getGrupo(), agrupacionesdelgrupo.toArray(new Agrupaciones[agrupacionesdelgrupo.size()]));
+			}
+			
+			req.getSession().setAttribute("usuario", usuario);
+			req.getSession().setAttribute("grupos", grupos);
+			req.getSession().setAttribute("agrupaciones", agrupacionesporgrupo);
+						
+			resp.sendRedirect("grupos.jsp");	
+		}				
+		
+		if (lock.equals(f)) {
+			
+			Agrupaciones seleccion = agrupao.getAgrupByUserAndGrupo(user, id);
+			
+			agrupao.deleteAgrupacion(seleccion);	
+			
+			User usuario = UserDAOImpl.getInstance().getUserByEmail(userservice.getCurrentUser().getEmail());
+			List<Agrupaciones> agrupuser = AgrupacionesDAOImpl.getInstance().getAgrupacionesByUser(usuario.getNick());
+			List<Grupo> grupos = new ArrayList<Grupo>();
+			HashMap<Long, Agrupaciones[] > agrupacionesporgrupo = new HashMap<Long, Agrupaciones[] >();
+			
+	
+			for (Agrupaciones temp: agrupuser){
+				grupos.add(GrupoDAOImpl.getInstance().getGrupoById(temp.getGrupo()));
+				List<Agrupaciones> agrupacionesdelgrupo = AgrupacionesDAOImpl.getInstance().getAgrupacionesByGrupo(temp.getGrupo());
+				agrupacionesporgrupo.put(temp.getGrupo(), agrupacionesdelgrupo.toArray(new Agrupaciones[agrupacionesdelgrupo.size()]));
+			}
+			
+			req.getSession().setAttribute("usuario", usuario);
+			req.getSession().setAttribute("grupos", grupos);
+			req.getSession().setAttribute("agrupaciones", agrupacionesporgrupo);
+						
+			resp.sendRedirect("grupos.jsp");	
 		}
 	}
 }

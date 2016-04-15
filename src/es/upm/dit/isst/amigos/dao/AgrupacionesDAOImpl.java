@@ -57,13 +57,14 @@ public class AgrupacionesDAOImpl implements AgrupacionesDAO {
 	}
 
 	@Override
-	public List<Agrupaciones> getAgrupByUserAndGrupo(String user, int grupo) {
+	public Agrupaciones getAgrupByUserAndGrupo(String user, Long grupo) {
 		EntityManager em = EMFService.get().createEntityManager();
 
 		Query q = em.createQuery("SELECT m FROM Agrupaciones m WHERE m.user = :user AND m.grupo = :grupo");
 		q.setParameter("grupo", grupo);
 		q.setParameter("user", user);
-		List<Agrupaciones> agrupaciones = q.getResultList();
+		
+		Agrupaciones agrupaciones = (Agrupaciones) q.getSingleResult();
 		em.close();
 		return agrupaciones;
 	}
@@ -72,7 +73,7 @@ public class AgrupacionesDAOImpl implements AgrupacionesDAO {
 	@Override
 	public void deleteAgrupacion(Agrupaciones agrupacion) {
 		EntityManager em = EMFService.get().createEntityManager();
-		em.remove(agrupacion);
+		em.remove(em.contains(agrupacion) ? agrupacion : em.merge(agrupacion));
 		em.close();
 	}
 

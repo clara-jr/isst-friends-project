@@ -65,6 +65,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/listas_deseos</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+	  <servlet-name>CreadorGrupos</servlet-name>
+	  <servlet-class>es.upm.dit.isst.amigos.CreadorGruposServlet</servlet-class>
+	 </servlet>
+	 <servlet-mapping>
+	  <servlet-name>CreadorGrupos</servlet-name>
+	  <url-pattern>/creadorgrupos</url-pattern>
+	 </servlet-mapping>
+ 
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
