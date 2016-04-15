@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import es.upm.dit.isst.amigos.model.ListasDeseos;
-import es.upm.dit.isst.amigos.model.Login;
 
 
 public class ListasDeseosDAOImpl implements ListasDeseosDAO {
@@ -29,7 +28,7 @@ public class ListasDeseosDAOImpl implements ListasDeseosDAO {
 		EntityManager em = EMFService.get().createEntityManager();
 		ListasDeseos listaObject = new ListasDeseos(user, item);
 		em.persist(listaObject);
-		
+
 		em.close();
 		
 		return listaObject;
@@ -49,8 +48,22 @@ public class ListasDeseosDAOImpl implements ListasDeseosDAO {
 	@Override
 	public void removeLista(ListasDeseos lista) {
 		EntityManager em = EMFService.get().createEntityManager();
-		em.remove(lista);
+		em.remove(em.contains(lista) ? lista : em.merge(lista));
 		em.close();
+	}
+	
+	@Override
+	public ListasDeseos getItem(String user, String item) {
+		EntityManager em = EMFService.get().createEntityManager();
+		
+		Query q = em.createQuery("SELECT m FROM ListasDeseos m WHERE m.user = :user AND m.item = :item");
+		q.setParameter("user", user);
+		q.setParameter("item", item);
+		
+		ListasDeseos res = (ListasDeseos) q.getSingleResult();
+		em.close();
+		
+		return res;
 	}
 
 }

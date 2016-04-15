@@ -49,13 +49,19 @@
 								<!-- Collect the nav links, forms, and other content for toggling -->
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                  <li><a href="grupos.jsp">Mis Grupos</a></li>
-                  <li><a href="deseos.jsp">Mis Deseos</a></li>
+                    
+                  <li><a href="/Grupos">Mis Grupos</a></li>
+                  <li><a href="/listas_deseos">Mis Deseos</a></li>
                   <li><a href="amigos.jsp">Mis Amigos</a></li>
                   <li class="active"><a href="chat.jsp">Chat <span class="sr-only">(current)</span></a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
-                  <li><a href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
+                  				<c:if test="${not empty pageContext.request.userPrincipal}">
+								    <li><a href="/Login"/>Cerrar Sesión</a></li>
+								</c:if>
+								<c:if test="${empty pageContext.request.userPrincipal}">
+								    <li><a href="/Login"/>Iniciar Sesión</a></li>
+								</c:if>
                   </ul>
 								</div><!-- /.navbar-collapse -->
 							  </div><!-- /.container-fluid -->

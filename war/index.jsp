@@ -54,10 +54,15 @@
                   <li class="active"><a href="index.jsp">Inicio <span class="sr-only">(current)</span></a></li>
                   <li><a href="participantes.jsp">Participantes </a></li>
                   <li><a href="mensaje.jsp">Mensaje</a></li>
-                  <li><a href="sortear.jsp">Â¡A Jugar!</a></li>
+                  <li><a href="sortear.jsp">¡A Jugar!</a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
-                  <li><a href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
+                  				<c:if test="${not empty pageContext.request.userPrincipal}">
+								    <li><a href="/Login"/>Cerrar Sesión</a></li>
+								</c:if>
+								<c:if test="${empty pageContext.request.userPrincipal}">
+								    <li><a href="/Login"/>Iniciar Sesión</a></li>
+								</c:if>
                   </ul>
 								</div><!-- /.navbar-collapse -->
 							  </div><!-- /.container-fluid -->

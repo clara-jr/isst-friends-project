@@ -24,6 +24,54 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/responsive.css">
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#btnAdd').click(function() {
+                var num     = $('.clonedInput input').length; // how many "duplicatable" input fields we currently have
+                var newNum  = new Number(num + 1);      // the numeric ID of the new input field being added
+                $('#participants').val(newNum);
+ 
+                // create the new element via clone(), and manipulate it's ID using newNum value
+                var newNumber = $('#example' + num).clone().attr('id', 'example' + newNum);
+                var newName = $('#exampleInputName' + num).clone().attr('id', 'exampleInputName' + newNum);
+                var newExcl = $('#exampleInput' + num).clone().attr('id', 'exampleInput' + newNum);
+ 
+                // manipulate the name/id values of the input inside the new element
+                newNumber.attr('id', 'example' + newNum).text(newNum);
+                newName.attr('id', 'exampleInputName' + newNum).attr('name', 'username' + newNum);
+                newExcl.attr('id', 'exampleInput' + newNum).attr('name', 'excl' + newNum);
+ 
+                // insert the new element after the last "duplicatable" input field
+                $('#example' + num).after(newNumber);
+                $('#exampleInputName' + num).after(newName);
+                $('#exampleInputName' + newNum).before("</br>");
+                $('#exampleInput' + num).after(newExcl);
+                $('#exampleInput' + newNum).before("</br>");
+                
+                // enable the "remove" button
+                $('#btnDel').removeAttr('disabled');
+            });
+            $('#btnDel').click(function() {
+                var num = $('.clonedInput input').length; // how many "duplicatable" input fields we currently have
+                $('#example' + num).remove();     // remove the last element
+                $('#exampleInputName' + num).remove();
+                $('#exampleInput' + num).remove();
+                $('#usernames').find('br:last').remove();
+                $('#excls').find('br:last').remove();
+                
+                $('#participants').val(num-1);
+ 
+                // if only one element remains, disable the "remove" button
+                if (num == 4)
+                    $('#btnDel').attr('disabled','disabled');
+            });
+            $('#btnDel').attr('disabled','disabled');
+        });
+    </script>
+    
   </head>
   <body>
         <section id="header">
@@ -49,13 +97,18 @@
 								<!-- Collect the nav links, forms, and other content for toggling -->
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                  <li class="active"><a href="grupos.jsp">Mis Grupos <span class="sr-only">(current)</span></a></li>
-                  <li><a href="deseos.jsp">Mis Deseos</a></li>
+                  <li class="active"><a href="/Grupos">Mis Grupos <span class="sr-only">(current)</span></a></li>
+                  <li><a href="/Deseos">Mis Deseos</a></li>
                   <li><a href="amigos.jsp">Mis Amigos</a></li>
                   <li><a href="chat.jsp">Chat</a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
- 				  <li><a href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
+ 				  				<c:if test="${not empty pageContext.request.userPrincipal}">
+								    <li><a href="/Login"/>Cerrar Sesión</a></li>
+								</c:if>
+								<c:if test="${empty pageContext.request.userPrincipal}">
+								    <li><a href="/Login"/>Iniciar Sesión</a></li>
+								</c:if>
                   </ul>
 								</div><!-- /.navbar-collapse -->
 							  </div><!-- /.container-fluid -->
@@ -83,7 +136,7 @@
                                      <input type="text" class="form-control" id="exampleInputName"><br/>
                                    </div>
                                    <div class="form-group" style="max-width:200px;">
-                                     <label for="exampleInputMoney">Importe mÃ¡ximo</label>
+                                     <label for="exampleInputMoney">Importe máximo</label>
                                      <input type="text" class="form-control" id="exampleInputMoney"><br/>
                                    </div>
                                    <div class="form-group" style="max-width:200px;">
@@ -93,32 +146,44 @@
                                  </div>
                                  <br />
                                  <div class="form-inline">
-                                   <div class="form-group">
+                                 <input type="hidden" id="participants" name="participants" value="3">
+	                               <div class="form-group">
+	                                 <label for="exampleInputName"></label>
+	                                 <p id="example1">1</p>
+	                                 <p id="example2">2</p>
+	                                 <p id="example3">3</p>
+	                               </div>
+                                   <div class="form-group clonedInput" id="usernames">
                                      <label for="exampleInputName">Nombre de usuario</label>
-                                     <input type="text" class="form-control" id="exampleInputName" placeholder="Nombre"><br/>
-                                     <input type="text" class="form-control" id="exampleInputName" placeholder="Nombre"><br/>
-                                     <input type="text" class="form-control" id="exampleInputName" placeholder="Nombre">
-                                   </div>
-                                   <div class="form-group">
+                                     <input type="text" class="form-control" id="exampleInputName1" name="username1" placeholder="Nombre"/><br/>
+                                  	 <input type="text" class="form-control" id="exampleInputName2" name="username2" placeholder="Nombre"/><br/>
+                                  	 <input type="text" class="form-control" id="exampleInputName3" name="username3" placeholder="Nombre"/><br/>
+                                </div>
+                                   <div class="form-group" id="excls">
                                      <label for="exampleInput">Excluir <span class="glyphicon glyphicon-question-sign"></span></label>
-                                     <input type="text" class="form-control" id="exampleInput"><br/>
-                                     <input type="text" class="form-control" id="exampleInput"><br/>
-                                     <input type="text" class="form-control" id="exampleInput">
+                                     <input type="text" class="form-control" name="excl1" id="exampleInput1"/><br/>
+                                     <input type="text" class="form-control" name="excl2" id="exampleInput2"/><br/>
+                                     <input type="text" class="form-control" name="excl3" id="exampleInput3"/><br/>
                                    </div>
                                  </div>
+                                 <p style="margin-top:20px;">
+                                <button type="button" class="btn btn-default" style="margin-top:20px;" id="btnAdd">
+                                <span class="glyphicon glyphicon-plus-sign"></span> Añadir un amigo</button>
+                                <button type="button" class="btn btn-default" style="margin-top:20px;" id="btnDel">
+                                <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span> Eliminar un amigo</button>
+                                </p>
                                  <br />
                                  <div class="form-group" style="max-width:600px; margin-left:auto; margin-right:auto;">
-                                   <label for="exampleInputMessage">Escribe el mensaje que recibirÃ©is:</label>
+                                   <label for="exampleInputMessage">Escribe el mensaje que recibiréis:</label>
                                    <input type="text" class="form-control" id="exampleInputMessage">
                                  </div>
-                                 <p style="margin-top:20px;"><span class="glyphicon glyphicon-plus-sign"></span> AÃ±adir un amigo mÃ¡s</p>
                                  <br />
                                  <div class="row">
                                    <div class="col-md-6">
-                                     <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-left"></span> Anterior</button>
+                                     <button type="submit" class="btn btn-default" onclick="this.form.action='Grupos'"><span class="glyphicon glyphicon-circle-arrow-left"></span> Anterior</button>
                                    </div>
                                    <div class="col-md-6">
-                                     <button type="submit" class="btn btn-default">Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span></button>
+                                     <button type="submit" class="btn btn-default" onclick="this.form.action='sorteo_avanzado'">Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span></button>
                                    </div>
                                  </div>
                                </form>

@@ -1,7 +1,6 @@
 package es.upm.dit.isst.amigos.logic;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Properties;
@@ -12,9 +11,6 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.servlet.http.*;
-
-import es.upm.dit.isst.amigos.dao.AgrupacionesDAOImpl;
 
 public class Functions {
 	

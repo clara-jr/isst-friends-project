@@ -49,13 +49,19 @@
 								<!-- Collect the nav links, forms, and other content for toggling -->
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                  <li><a href="grupos.jsp">Mis Grupos</a></li>
-                  <li class="active"><a href="deseos.jsp">Mis Deseos <span class="sr-only">(current)</span></a></li>
+                  <li><a href="/Grupos">Mis Grupos</a></li>
+                  <li class="active"><a href="/listas_deseos">Mis Deseos <span class="sr-only">(current)</span></a></li>
+
                   <li><a href="amigos.jsp">Mis Amigos</a></li>
                   <li><a href="chat.jsp">Chat</a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
-             	  <li><a href="<c:url value="${url}"/>"><c:out value="${urlLinktext}"/></a></li>
+             	  				<c:if test="${not empty pageContext.request.userPrincipal}">
+								    <li><a href="/Login"/>Cerrar Sesión</a></li>
+								</c:if>
+								<c:if test="${empty pageContext.request.userPrincipal}">
+								    <li><a href="/Login"/>Iniciar Sesión</a></li>
+								</c:if>
                   </ul>
 								</div><!-- /.navbar-collapse -->
 							  </div><!-- /.container-fluid -->
@@ -76,17 +82,29 @@
                     <div class="col-md-12">
                         <div class="block-top">
                             <div class="service-header">
-                              <p>Â¡AÃ±ade deseos a tu lista para que tu amigo invisible acierte con el regalo!</p>
+                              <p>Añade deseos a tu lista para que tu amigo invisible acierte con el regalo!</p>
                               <br />
                               <ul style="list-style:none; padding-left:0px; color:#AFB8B8;">
-                                <li>Colonia <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
-                                <li>Auriculares <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
+                                <c:forEach items="${deseos}" var="deseo">
+                                <li><c:out value="${deseo.item}" /> <form method="post" style= "display: inline;">
+		                                     	<input type="hidden" name="lock" value="false">
+		                                     	<input type="hidden" name="item" value='${deseo.item}'>	                                     
+			                                    <button onclick="this.form.action = 'listas_deseos';" type="submit" class="btn btn-default" style="margin: 0; padding: 0; background:transparent; border: none;"><span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></button>
+	                                    	</form>  </li>
+                                </c:forEach>
                               </ul>
                               <br />
-                              <input type="text" class="form-control" style="width:150px; margin-left:auto; margin-right:auto;">
+                                <form action ="/listas_deseos" method="post">
+                                <input type="text" required name ="item" class="form-control" 
+                                style="width:150px; margin-left:auto; margin-right:auto;">
+                                <br>
+                                <input type="hidden" name="lock" value="true"/>
+                              	<input type="submit" value="Añadir deseo"
+                              	 type="button" class="btn btn-default"/> 
+                              	<span class="glyphicon glyphicon-plus-sign"></span>
+                              	</form>             
                               <br />
-                              <button onclick="location.href='index7.html';" type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-plus-sign"></span> AÃ±adir Deseo</button>
+                              <c:out value="${user}" />
                             </div>
                         </div>
                     </div><!-- .col-md-12 close -->

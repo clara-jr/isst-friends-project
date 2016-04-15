@@ -6,8 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import es.upm.dit.isst.amigos.model.Agrupaciones;
-import es.upm.dit.isst.amigos.model.Grupo;
-import es.upm.dit.isst.amigos.model.ListasDeseos;
 
 public class AgrupacionesDAOImpl implements AgrupacionesDAO {
 
@@ -22,6 +20,8 @@ public class AgrupacionesDAOImpl implements AgrupacionesDAO {
 			instance = new AgrupacionesDAOImpl();
 		return instance;
 	}
+	
+	// FALTA AÑADIR UN METODO PARA UPDATEAR UN ENTITY Y QUITAR SU AMIGO INVISIBLE
 	
 	@Override
 	public Agrupaciones insertAgrupacion(String user, Long grupo, String amigoinv) {
