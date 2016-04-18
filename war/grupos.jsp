@@ -97,8 +97,9 @@
                                        	<c:if test="${usuario.nick == grupo.moderador && agrupacion.user != usuario.nick}">
 	                                     	<form method="post" style= "display: inline;">
 		                                     	<input type="hidden" name="grupo_id" value='${grupo.id}'>
-		                                     	<input type="hidden" name="usuario" value='${agrupacion.user}'>	                                     
-			                                    <button onclick="this.form.action = 'eliminar_de_grupo';" type="submit" class="btn btn-default" style="margin: 0; padding: 0; background:transparent; border: none;"><span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></button>
+		                                     	<input type="hidden" name="usuario" value='${agrupacion.user}'>
+		                                     	<input type="hidden" name="lock" value="false">	                                     
+			                                    <button onclick="this.form.action = 'Grupos';" type="submit" class="btn btn-default" style="margin: 0; padding: 0; background:transparent; border: none;"><span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></button>
 	                                    	</form>  
 	                                   	</c:if>                                 
                                        </li>
@@ -107,8 +108,9 @@
                                      <c:if test="${usuario.nick != grupo.moderador}">
 	                                   	 <form method="post">
 			                                     	<input type="hidden" name="grupo_id" value='${grupo.id}'>
-			                                     	<input type="hidden" name="usuario" value='${usuario}'>	                                     
-				                                    <button onclick="this.form.action = 'eliminar_de_grupo';" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign" style="color:red;"></span> Salir del grupo</button>
+			                                     	<input type="hidden" name="usuario" value='${usuario}'>
+			                                     	<input type="hidden" name="lock" value="false">		                                     
+				                                    <button onclick="this.form.action = 'Grupos';" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign" style="color:red;"></span> Salir del grupo</button>
 		                                 </form>
 	                                 </c:if>
 	                                 <c:if test="${usuario.nick == grupo.moderador}">
@@ -116,11 +118,16 @@
 			                                     	<input type="hidden" name="grupo_id" value='${grupo.id}'>			                                     	                                    
 				                                    <button onclick="this.form.action = 'eliminar_grupo';" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign" style="color:red;"></span> Eliminar grupo</button>
 		                                 </form>
-		                                 <form method="post">
+		                                 
+		                                 <form action="/Grupos" method="post">
                                      		<input type="hidden" name="grupo_id" value='${grupo.id}'>
-	                                    	<input type="text" class="form-control" style="width:150px; margin-left:auto; margin-right:auto;">
+                                     		<input type="hidden" name="lock" value="true">	
+	                                    	<input type="text" required name="item" class="form-control" 
+	                                    	style="width:150px; margin-left:auto; margin-right:auto;">
 	                                   	 	<br />
-	                                    	<button onclick="this.form.action = 'anadir_a_grupo';" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span> Añadir</button>
+	                                    	<input type="submit" value="Añadir" 
+	                                    	type="button" class="btn btn-default"/> 
+                              				<span class="glyphicon glyphicon-plus-sign"></span>
                               			 </form>
                               			 <form method="post">
                                      		<input type="hidden" name="grupo_id" value='${grupo.id}'>	             

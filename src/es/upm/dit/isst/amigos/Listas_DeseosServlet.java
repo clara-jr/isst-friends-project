@@ -42,26 +42,19 @@ public class Listas_DeseosServlet extends HttpServlet {
 		String lock = req.getParameter("lock");
 		String v = "true";
 		String f = "false";
-		boolean existe = true;
 		
 		if(lock.equals(v)) {
 			
 			try {
 				dao.getItem(req.getUserPrincipal().toString(), item);
+				dao.insertLista(req.getUserPrincipal().toString(), item);
 			}
 			catch (Exception e) {
-				existe = false;
-			}
-				
-			if (existe == false) {				
-			dao.insertLista(req.getUserPrincipal().toString(), item);
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			
-			User usuario = UserDAOImpl.getInstance().getUserByEmail(userservice.getCurrentUser().getEmail());
-			List<ListasDeseos> deseos = ListasDeseosDAOImpl.getInstance().getListaByUser(usuario.getEmail());
-
-			req.getSession().setAttribute("deseos", new ArrayList<ListasDeseos>(deseos));
-			resp.sendRedirect("deseos.jsp");
+			resp.sendRedirect("/listas_deseos");
 		}				
 		
 		if (lock.equals(f)) {
@@ -70,13 +63,9 @@ public class Listas_DeseosServlet extends HttpServlet {
 			
 			if (item != null) {
 				dao.removeLista(seleccion);
-			}		
+			}
 			
-			User usuario = UserDAOImpl.getInstance().getUserByEmail(userservice.getCurrentUser().getEmail());
-			List<ListasDeseos> deseos = ListasDeseosDAOImpl.getInstance().getListaByUser(usuario.getEmail());
-
-			req.getSession().setAttribute("deseos", new ArrayList<ListasDeseos>(deseos));
-			resp.sendRedirect("deseos.jsp");
+			resp.sendRedirect("/listas_deseos");
 		}
 	}
 }

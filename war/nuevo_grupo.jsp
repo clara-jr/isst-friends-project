@@ -98,7 +98,7 @@
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
                   <li class="active"><a href="/Grupos">Mis Grupos <span class="sr-only">(current)</span></a></li>
-                  <li><a href="/Deseos">Mis Deseos</a></li>
+                  <li><a href="/listas_deseos">Mis Deseos</a></li>
                   <li><a href="amigos.jsp">Mis Amigos</a></li>
                   <li><a href="chat.jsp">Chat</a></li>
                   </ul>
@@ -129,26 +129,26 @@
                     <div class="col-md-12">
                         <div class="block-top">
                             <div class="service-header">
-                              <form action="grupos.jsp">
+                              <form action="grupos.jsp" method="post">
                                 <div class="form-inline">
                                    <div class="form-group" style="max-width:200px;">
                                      <label for="exampleInputName">Nombre del grupo</label>
-                                     <input type="text" class="form-control" id="exampleInputName"><br/>
+                                     <input type="text" class="form-control" name=groupname><br/>
                                    </div>
                                    <div class="form-group" style="max-width:200px;">
                                      <label for="exampleInputMoney">Importe máximo</label>
-                                     <input type="text" class="form-control" id="exampleInputMoney"><br/>
+                                     <input type="text" class="form-control" name=maxprice><br/>
                                    </div>
                                    <div class="form-group" style="max-width:200px;">
                                      <label for="exampleInputDate">Fecha <span class="glyphicon glyphicon-calendar"></span></label>
-                                     <input type="text" class="form-control" id="exampleInputDate"><br/>
+                                     <input type="text" class="form-control" name="date"><br/>
                                    </div>
                                  </div>
                                  <br />
                                  <div class="form-inline">
                                  <input type="hidden" id="participants" name="participants" value="3">
 	                               <div class="form-group">
-	                                 <label for="exampleInputName"></label>
+	                                 <label for="exampleInputName" style= "display: inline;"></label>
 	                                 <p id="example1">1</p>
 	                                 <p id="example2">2</p>
 	                                 <p id="example3">3</p>
@@ -183,7 +183,7 @@
                                      <button type="submit" class="btn btn-default" onclick="this.form.action='Grupos'"><span class="glyphicon glyphicon-circle-arrow-left"></span> Anterior</button>
                                    </div>
                                    <div class="col-md-6">
-                                     <button type="submit" class="btn btn-default" onclick="this.form.action='sorteo_avanzado'">Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span></button>
+                                     <button type="submit" class="btn btn-default" onclick="this.form.action= 'creadorgrupos'">Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span></button>
                                    </div>
                                  </div>
                                </form>
