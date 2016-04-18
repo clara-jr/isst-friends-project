@@ -1,13 +1,10 @@
 package es.upm.dit.isst.amigos;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Arrays;
-import java.util.Properties;
 
 import es.upm.dit.isst.amigos.dao.*;
 import es.upm.dit.isst.amigos.model.*;
+import es.upm.dit.isst.amigos.logic.*;
 
 import javax.servlet.http.*;
 
@@ -40,8 +37,9 @@ public class CreadorGruposServlet extends HttpServlet {
 				User user = userdao.getUserByNick(req.getParameter("username"+i)); // Comprueba que los usuarios existen 
 				agrupdao.insertAgrupacion(req.getParameter("username"+i), id, ""); 
 			} catch(Exception e) {
-				// resp.getWriter().println("Usuario no registrado.");
-				break;
+				// Si alguno no está registrado, lo registramos y le mandamos un correo informativo con un link al login de google
+				userdao.insertUser(req.getParameter("username"+i), req.getParameter("username"+i)+"@gmail.com", "");
+				Functions.getInstance().aviso(req.getParameter("username"+i), nickname);
 			}
 		}
 		
