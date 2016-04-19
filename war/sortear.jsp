@@ -59,7 +59,7 @@
 									<span class="icon-bar"></span>
 								  </button>
                   <div class="nav-logo">
-                  <a href="#"><img src="img/logo.png" alt="logo"></a>
+                  <img src="img/logo.png" alt="logo">
                   </div>
 								</div>
 
