@@ -95,5 +95,21 @@ public class Functions {
 		
 	}
 	
+	public void aviso(String nick, String mod_name) throws IOException{
+		
+		Message msg_results = new MimeMessage(Session.getDefaultInstance(new Properties(), null));
+		try {
+			msg_results.setFrom(new InternetAddress("nombre@aplicacion.appspotmail.com", "Amigo Invisible")); // nombre (nombre@...) y dominio (...@aplicacion) de la app en GAE
+			msg_results.addRecipient(Message.RecipientType.TO,  new InternetAddress(nick+"@gmail.com", "Participante en el amigo invisible"));
+			msg_results.setSubject("Invitación para pertenecer a un grupo del Amigo Invisible");
+			msg_results.setText("Hola " + nick + " , " + mod_name + " ha organizado un sorteo por el Amigo Invisible en nuestra aplicación y para aceptar la participación en el mismo, debes pinchar en el siguiente enlace: \n http://1-dot-isst-grupo17-amigos-1284.appspot.com/Login");
+			Transport.send(msg_results);
+		} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+		}
+		
+	}
+	
 	
 }

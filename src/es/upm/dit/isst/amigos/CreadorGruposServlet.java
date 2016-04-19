@@ -1,6 +1,7 @@
 package es.upm.dit.isst.amigos;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
@@ -8,6 +9,7 @@ import java.util.Properties;
 
 import es.upm.dit.isst.amigos.dao.*;
 import es.upm.dit.isst.amigos.model.*;
+import es.upm.dit.isst.amigos.logic.*;
 
 import javax.servlet.http.*;
 
@@ -45,6 +47,8 @@ public class CreadorGruposServlet extends HttpServlet {
 				}
  
 			} catch(Exception e2) {
+				userdao.insertUser(req.getParameter("username"+i), req.getParameter("username"+i)+"@gmail.com", "");
+				Functions.getInstance().aviso(req.getParameter("username"+i), nickname);
 				continue;
 			}
 		}

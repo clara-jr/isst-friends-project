@@ -14,6 +14,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 import es.upm.dit.isst.amigos.dao.*;
 import es.upm.dit.isst.amigos.model.*;
+import es.upm.dit.isst.amigos.logic.*;
 
 @SuppressWarnings("serial")
 public class VerGruposServlet extends HttpServlet {
@@ -91,9 +92,6 @@ public class VerGruposServlet extends HttpServlet {
 			catch (Exception e1) {
 				repetido = false;
 			}
-			System.out.println("Item: " + item);
-			System.out.println("Repetido: "+ repetido);
-			System.out.println("Existe: " + existe);
 			
 			if (existe && !repetido) {
 			agrupao.insertAgrupacion(item, id, "");
