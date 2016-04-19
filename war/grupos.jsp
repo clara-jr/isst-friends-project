@@ -43,7 +43,7 @@
                   <span class="icon-bar"></span>
                   </button>
                   <div class="nav-logo">
-                  <a href="#"><img src="img/logo.png" alt="logo"></a>
+                  <img src="img/logo.png" alt="logo">
                   </div>
                 </div>
 
@@ -124,14 +124,13 @@
                                      		<input type="hidden" name="lock" value="true">	
 	                                    	<input type="text" required name="item" class="form-control" 
 	                                    	style="width:150px; margin-left:auto; margin-right:auto;">
-	                                   	 	<br />
+	                                   	 	<label style="font-size:1.1em;"> @gmail.com </label><br><br>
 	                                    	<input type="submit" value="Añadir" 
 	                                    	type="button" class="btn btn-default"/> 
                               				<span class="glyphicon glyphicon-plus-sign"></span>
                               			 </form>
                               			 <form method="post">
                                      		<input type="hidden" name="grupo_id" value='${grupo.id}'>	             
-	                                   	 	<br/>
 	                                    	<button onclick="this.form.action = 'sorteo_avanzado';" type="submit" class="btn btn-primary">Sortear</button>
                               			 </form>                              	
 	                                 </c:if>                                 
