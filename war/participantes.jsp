@@ -111,7 +111,7 @@
                   <ul class="nav navbar-nav">
                   <li><a href="index.jsp">Inicio</a></li>
                   <li class="active"><a href="participantes.jsp">Participantes <span class="sr-only">(current)</span></a></li>
-                  <li><a href="mensaje.jsp">Mensaje</a></li>
+                  <li><a href="/com_amigoinvisible_isst">Mensaje</a></li>
                   <li><a href="sortear.jsp">¡A Jugar!</a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
