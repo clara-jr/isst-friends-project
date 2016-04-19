@@ -70,6 +70,7 @@ public class VerGruposServlet extends HttpServlet {
 		String v = "true";
 		String f = "false";
 		boolean existe = true;
+		boolean repetido = true;
 		
 		if(lock.equals(v)) {
 			
@@ -84,7 +85,17 @@ public class VerGruposServlet extends HttpServlet {
 				existe = false;
 			}
 			
-			if (existe) {
+			try {
+				Agrupaciones testagr = agrupao.getAgrupByUserAndGrupo(item, id);
+			}
+			catch (Exception e1) {
+				repetido = false;
+			}
+			System.out.println("Item: " + item);
+			System.out.println("Repetido: "+ repetido);
+			System.out.println("Existe: " + existe);
+			
+			if (existe && !repetido) {
 			agrupao.insertAgrupacion(item, id, "");
 			}
 			
