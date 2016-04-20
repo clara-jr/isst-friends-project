@@ -21,14 +21,14 @@ public class AgrupacionesDAOImpl implements AgrupacionesDAO {
 		return instance;
 	}
 	
-	// FALTA AÑADIR UN METODO PARA UPDATEAR UN ENTITY Y QUITAR SU AMIGO INVISIBLE
+	// FALTA AÑADIR UN METODO PARA UPDATEAR UN ENTITY Y AÑADIR SU AMIGO INVISIBLE
 	
 	@Override
 
 	public Agrupaciones insertAgrupacion(String user, Long grupo, String amigoinv, String exclusion ) {
 
 		EntityManager em = EMFService.get().createEntityManager();
-		Agrupaciones agrupObject = new Agrupaciones(user, grupo, amigoinv);
+		Agrupaciones agrupObject = new Agrupaciones(user, grupo, amigoinv, exclusion);
 		
 		em.persist(agrupObject);		
 		em.close();

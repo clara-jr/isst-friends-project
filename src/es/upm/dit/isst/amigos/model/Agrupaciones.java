@@ -18,10 +18,11 @@ public class Agrupaciones implements Serializable {
 	private String amigoinv;
 	private String exclusion;
 	
-	public Agrupaciones(String user, Long grupo, String amigoinv){
+	public Agrupaciones(String user, Long grupo, String amigoinv, String exclusion){
 		this.user = user;
 		this.grupo = grupo;
 		this.amigoinv = amigoinv;
+		this.exclusion = exclusion;
 	}
 	
 	
@@ -49,13 +50,9 @@ public class Agrupaciones implements Serializable {
 	public void setAmigoinv(String amigoinv) {
 		this.amigoinv = amigoinv;
 	}
-
-
 	public String getExclusion() {
 		return exclusion;
 	}
-
-
 	public void setExclusion(String exclusion) {
 		this.exclusion = exclusion;
 	}
