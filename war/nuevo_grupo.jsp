@@ -37,17 +37,21 @@
                 // create the new element via clone(), and manipulate it's ID using newNum value
                 var newNumber = $('#example' + num).clone().attr('id', 'example' + newNum);
                 var newName = $('#exampleInputName' + num).clone().attr('id', 'exampleInputName' + newNum);
+                var newAdd = $('#exampleInputAdd' + num).clone().attr('id', 'exampleInputAdd' + newNum);
                 var newExcl = $('#exampleInput' + num).clone().attr('id', 'exampleInput' + newNum);
  
                 // manipulate the name/id values of the input inside the new element
                 newNumber.attr('id', 'example' + newNum).text(newNum);
                 newName.attr('id', 'exampleInputName' + newNum).attr('name', 'username' + newNum);
+                newAdd.attr('id', 'exampleInputAdd' + newNum).attr('name', 'add' + newNum);
                 newExcl.attr('id', 'exampleInput' + newNum).attr('name', 'excl' + newNum);
  
                 // insert the new element after the last "duplicatable" input field
                 $('#example' + num).after(newNumber);
                 $('#exampleInputName' + num).after(newName);
                 $('#exampleInputName' + newNum).before("</br>");
+                $('#exampleInputAdd' + num).after(newAdd);
+                $('#exampleInputAdd' + newNum).before("</br>");
                 $('#exampleInput' + num).after(newExcl);
                 $('#exampleInput' + newNum).before("</br>");
                 
@@ -58,8 +62,10 @@
                 var num = $('.clonedInput input').length; // how many "duplicatable" input fields we currently have
                 $('#example' + num).remove();     // remove the last element
                 $('#exampleInputName' + num).remove();
+                $('#exampleInputAdd' + num).remove();
                 $('#exampleInput' + num).remove();
                 $('#usernames').find('br:last').remove();
+                $('#adds').find('br:last').remove();
                 $('#excls').find('br:last').remove();
                 
                 $('#participants').val(num-1);
@@ -90,7 +96,7 @@
 									<span class="icon-bar"></span>
 								  </button>
                   <div class="nav-logo">
-                  <a href="#"><img src="img/logo.png" alt="logo"></a>
+                  <img src="img/logo.png" alt="logo">
                   </div>
 								</div>
 
@@ -148,18 +154,28 @@
                                  <div class="form-inline">
                                  <input type="hidden" id="participants" name="participants" value="3">
 	                               <div class="form-group">
-	                                 <label for="exampleInputName" style= "display: inline;"></label>
+	                                 <label for="exampleInputName"></label>
+	                                 <br>
 	                                 <p id="example1">1</p>
 	                                 <p id="example2">2</p>
 	                                 <p id="example3">3</p>
 	                               </div>
-                                   <div class="form-group clonedInput" id="usernames">
-                                     <label for="exampleInputName">Nombre de usuario</label>
-                                     <input type="text" class="form-control" id="exampleInputName1" name="username1" placeholder="Nombre"/><br/>
-                                  	 <input type="text" class="form-control" id="exampleInputName2" name="username2" placeholder="Nombre"/><br/>
-                                  	 <input type="text" class="form-control" id="exampleInputName3" name="username3" placeholder="Nombre"/><br/>
-                                </div>
-                                   <div class="form-group" id="excls">
+                               	   
+                               	   <div class="form-group clonedInput" id="usernames" style="max-width:200px;">
+                               	   	<label for="exampleInputName">Nombre de usuario</label>
+                               	   	<input type="text" class="form-control" id="exampleInputName1" name="username1" placeholder="Nombre"/><br/>
+                               	   	<input type="text" class="form-control" id="exampleInputName2" name="username2" placeholder="Nombre"/><br/>
+                               	   	<input type="text" class="form-control" id="exampleInputName3" name="username3" placeholder="Nombre"/><br/>
+                               	   	</div>
+                               	   	
+                               	   	<div class="form-group" id="adds" style="max-width:150px;">
+                               	   	<label for="exampleInputName">&nbsp</label>
+                               	   	<input type="text" class="form-control" id="exampleInputAdd1" name="add1" value="@gmail.com" readonly/><br/>
+                               	   	<input type="text" class="form-control" id="exampleInputAdd2" name="add2" value="@gmail.com" readonly/><br/>
+                               	   	<input type="text" class="form-control" id="exampleInputAdd3" name="add3" value="@gmail.com" readonly/><br/>
+                               	   	</div>
+                               	   	
+                                   <div class="form-group" id="excls" style="max-width:350px;">
                                      <label for="exampleInput">Excluir <span class="glyphicon glyphicon-question-sign"></span></label>
                                      <input type="text" class="form-control" name="excl1" id="exampleInput1"/><br/>
                                      <input type="text" class="form-control" name="excl2" id="exampleInput2"/><br/>

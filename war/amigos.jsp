@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
@@ -42,7 +42,7 @@
 									<span class="icon-bar"></span>
 								  </button>
                   <div class="nav-logo">
-                  <a href="#"><img src="img/logo.png" alt="logo"></a>
+                  <img src="img/logo.png" alt="logo">
                   </div>
 								</div>
 
@@ -56,10 +56,10 @@
                   </ul>
 								  <ul class="nav navbar-nav dcha">
 								  <c:if test="${not empty pageContext.request.userPrincipal}">
-								    <li><a href="/Login"/>Cerrar Sesi�n</a></li>
+								    <li><a href="/Login"/>Cerrar Sesión</a></li>
 								</c:if>
 								<c:if test="${empty pageContext.request.userPrincipal}">
-								    <li><a href="/Login"/>Iniciar Sesi�n</a></li>
+								    <li><a href="/Login"/>Iniciar Sesión</a></li>
 								</c:if>                
                   </ul>
 								</div><!-- /.navbar-collapse -->
@@ -103,7 +103,7 @@
                                       </ul>
                                   </div>
                                   <div class="col-md-6">
-                                    <p>Lista de deseos de Rocío</p>
+                                    <p>Lista de deseos de RocÃ­o</p>
                                       <ul style="list-style:none; padding-left:0px; color:#AFB8B8;">
                                         <li>Paraguas <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
                                         <li>Pashmina <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
@@ -111,7 +111,7 @@
                                       </ul>
                                   </div>
                                   <div class="col-md-6">
-                                    <p>Lista de deseos de José Manuel</p>
+                                    <p>Lista de deseos de JosÃ© Manuel</p>
                                       <ul style="list-style:none; padding-left:0px; color:#AFB8B8;">
                                         <li>Cartera <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
                                         <li>Corbata <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
@@ -43,8 +43,7 @@
 									<span class="icon-bar"></span>
 									<span class="icon-bar"></span>
 								  </button>
-                  <div class="nav-logo">
-                  <a href="#"><img src="img/logo.png" alt="logo"></a>
+                  <div class="nav-logo"><img src="img/logo.png" alt="logo">
                   </div>
 								</div>
 
@@ -52,16 +51,13 @@
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
                   <li class="active"><a href="index.jsp">Inicio <span class="sr-only">(current)</span></a></li>
-                  <li><a href="participantes.jsp">Participantes </a></li>
-                  <li><a href="mensaje.jsp">Mensaje</a></li>
-                  <li><a href="sortear.jsp">¡A Jugar!</a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
                   				<c:if test="${not empty pageContext.request.userPrincipal}">
-								    <li><a href="/Login"/>Cerrar Sesión</a></li>
+								    <li><a href="/Login"/>Cerrar SesiÃ³n</a></li>
 								</c:if>
 								<c:if test="${empty pageContext.request.userPrincipal}">
-								    <li><a href="/Login"/>Iniciar Sesión</a></li>
+								    <li><a href="/Login"/>Iniciar SesiÃ³n</a></li>
 								</c:if>
                   </ul>
 								</div><!-- /.navbar-collapse -->
@@ -95,7 +91,7 @@
                                <br />
                                <br />
                                <button onclick="location.href='participantes.jsp';" type="button" class="btn btn-primary" style="margin-right:20px;">Sorteo BÃ¡sico</button>
-                               <button onclick="location.href='login';" type="button" class="btn btn-primary" style="margin-left:20px;">Registrarse</button>
+                               <button onclick="location.href='/Login';" type="button" class="btn btn-primary" style="margin-left:20px;">Registrarse</button>
                             </div>
                         </div>
                     </div><!-- .col-md-12 close -->

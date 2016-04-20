@@ -67,12 +67,11 @@ public class VerGruposServlet extends HttpServlet {
 		Long id = Long.valueOf(req.getParameter("grupo_id"));
 		String lock = req.getParameter("lock");
 		String item = req.getParameter("item");
-		
-		UserService userservice = UserServiceFactory.getUserService();
-		String nickname = userservice.getCurrentUser().getNickname();
 
 		String v = "true";
 		String f = "false";
+		boolean existe = true;
+		boolean repetido = true;
 		
 		if(lock.equals(v)) {
 			
@@ -82,24 +81,64 @@ public class VerGruposServlet extends HttpServlet {
 			
 			try {
 				User prueba = usao.getUserByNick(item);
-				agrupao.insertAgrupacion(item, id, "", "");
 			}
 			catch (Exception e) {
-				// Si no está registrado, lo registramos y le mandamos un correo informativo con un link al login de google
-				usao.insertUser(item, item+"@gmail.com", "");
-				Functions.getInstance().aviso(item, nickname);
+				existe = false;
 			}
+			
+			try {
+				Agrupaciones testagr = agrupao.getAgrupByUserAndGrupo(item, id);
+			}
+			catch (Exception e1) {
+				repetido = false;
+			}
+			
+			if (existe && !repetido) {
+			agrupao.insertAgrupacion(item, id, "", "");
+			}
+			
+			User usuario = UserDAOImpl.getInstance().getUserByEmail(userservice.getCurrentUser().getEmail());
+			List<Agrupaciones> agrupuser = AgrupacionesDAOImpl.getInstance().getAgrupacionesByUser(usuario.getNick());
+			List<Grupo> grupos = new ArrayList<Grupo>();
+			HashMap<Long, Agrupaciones[] > agrupacionesporgrupo = new HashMap<Long, Agrupaciones[] >();
+			
+	
+			for (Agrupaciones temp: agrupuser){
+				grupos.add(GrupoDAOImpl.getInstance().getGrupoById(temp.getGrupo()));
+				List<Agrupaciones> agrupacionesdelgrupo = AgrupacionesDAOImpl.getInstance().getAgrupacionesByGrupo(temp.getGrupo());
+				agrupacionesporgrupo.put(temp.getGrupo(), agrupacionesdelgrupo.toArray(new Agrupaciones[agrupacionesdelgrupo.size()]));
+			}
+			
+			req.getSession().setAttribute("usuario", usuario);
+			req.getSession().setAttribute("grupos", grupos);
+			req.getSession().setAttribute("agrupaciones", agrupacionesporgrupo);
 						
-			resp.sendRedirect("/Grupos");	
+			resp.sendRedirect("grupos.jsp");	
 		}				
 		
 		if (lock.equals(f)) {
 			
 			Agrupaciones seleccion = agrupao.getAgrupByUserAndGrupo(user, id);
 			
-			agrupao.deleteAgrupacion(seleccion);
+			agrupao.deleteAgrupacion(seleccion);	
+			
+			User usuario = UserDAOImpl.getInstance().getUserByEmail(userservice.getCurrentUser().getEmail());
+			List<Agrupaciones> agrupuser = AgrupacionesDAOImpl.getInstance().getAgrupacionesByUser(usuario.getNick());
+			List<Grupo> grupos = new ArrayList<Grupo>();
+			HashMap<Long, Agrupaciones[] > agrupacionesporgrupo = new HashMap<Long, Agrupaciones[] >();
+			
+	
+			for (Agrupaciones temp: agrupuser){
+				grupos.add(GrupoDAOImpl.getInstance().getGrupoById(temp.getGrupo()));
+				List<Agrupaciones> agrupacionesdelgrupo = AgrupacionesDAOImpl.getInstance().getAgrupacionesByGrupo(temp.getGrupo());
+				agrupacionesporgrupo.put(temp.getGrupo(), agrupacionesdelgrupo.toArray(new Agrupaciones[agrupacionesdelgrupo.size()]));
+			}
+			
+			req.getSession().setAttribute("usuario", usuario);
+			req.getSession().setAttribute("grupos", grupos);
+			req.getSession().setAttribute("agrupaciones", agrupacionesporgrupo);
 						
-			resp.sendRedirect("/Grupos");		
+			resp.sendRedirect("grupos.jsp");	
 		}
 	}
 }

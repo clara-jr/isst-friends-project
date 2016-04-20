@@ -54,7 +54,7 @@
 									<span class="icon-bar"></span>
 								  </button>
                   <div class="nav-logo">
-                  <a href="#"><img src="img/logo.png" alt="logo"></a>
+                  <img src="img/logo.png" alt="logo">
                   </div>
 								</div>
 
@@ -64,7 +64,6 @@
                   <li><a href="index.jsp">Inicio</a></li>
                   <li><a href="participantes.jsp">Participantes</a></li>
                   <li class="active"><a href="mensaje.jsp">Mensaje <span class="sr-only">(current)</span></a></li>
-                  <li><a href="sortear.jsp">¡A Jugar!</a></li>
                   </ul>
 								  <ul class="nav navbar-nav dcha">
                   				<c:if test="${not empty pageContext.request.userPrincipal}">

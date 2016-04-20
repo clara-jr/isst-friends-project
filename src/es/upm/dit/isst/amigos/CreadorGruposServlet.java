@@ -2,6 +2,11 @@ package es.upm.dit.isst.amigos;
 
 import java.io.IOException;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Arrays;
+import java.util.Properties;
+
 import es.upm.dit.isst.amigos.dao.*;
 import es.upm.dit.isst.amigos.model.*;
 import es.upm.dit.isst.amigos.logic.*;
@@ -27,19 +32,24 @@ public class CreadorGruposServlet extends HttpServlet {
 		
 		UserDAO userdao = UserDAOImpl.getInstance();
 		GrupoDAO gruposdao = GrupoDAOImpl.getInstance();
-		AgrupacionesDAO agrupdao = AgrupacionesDAOImpl.getInstance();
+		AgrupacionesDAO agrupdao = AgrupacionesDAOImpl.getInstance();		
 		
 		Grupo grupo = gruposdao.insertGrupo(groupname, nickname, maxprice, date);
 		Long id = grupo.getId();
-		System.out.println(id);
 		for(int i=1; i<=participants_int; i++) {
 			try { 
-				User user = userdao.getUserByNick(req.getParameter("username"+i)); // Comprueba que los usuarios existen 
-				agrupdao.insertAgrupacion(req.getParameter("username"+i), id, ""); 
-			} catch(Exception e) {
-				// Si alguno no está registrado, lo registramos y le mandamos un correo informativo con un link al login de google
+				User user = userdao.getUserByNick(req.getParameter("username"+i)); // Comprueba que los usuarios existen
+				try {
+					Agrupaciones testagr = agrupdao.getAgrupByUserAndGrupo(req.getParameter("username"+i), id);
+				}
+				catch (Exception e1) {
+					agrupdao.insertAgrupacion(req.getParameter("username"+i), id, "");
+				}
+ 
+			} catch(Exception e2) {
 				userdao.insertUser(req.getParameter("username"+i), req.getParameter("username"+i)+"@gmail.com", "");
 				Functions.getInstance().aviso(req.getParameter("username"+i), nickname);
+				continue;
 			}
 		}
 		
