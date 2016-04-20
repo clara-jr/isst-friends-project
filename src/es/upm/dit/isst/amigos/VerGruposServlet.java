@@ -82,7 +82,7 @@ public class VerGruposServlet extends HttpServlet {
 			
 			try {
 				User prueba = usao.getUserByNick(item);
-				agrupao.insertAgrupacion(item, id, "");
+				agrupao.insertAgrupacion(item, id, "", "");
 			}
 			catch (Exception e) {
 				// Si no está registrado, lo registramos y le mandamos un correo informativo con un link al login de google
