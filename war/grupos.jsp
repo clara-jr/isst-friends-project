@@ -89,7 +89,7 @@
                                <div class="row">
                                 <c:forEach items="${grupos}" var="grupo">
                                   <div class="col-md-6">
-                                 	<p>${grupo.nombre} (${grupo.fecha})</p>
+                                 	<p>${grupo.nombre} (${grupo.fecha}) Precio Max: (${grupo.preciomax})</p>
                                      <ul style="list-style:none; padding-left:0px; color:#AFB8B8;">
                                       <c:forEach items="${agrupaciones[grupo.id]}" var="agrupacion">
                                        <li>
