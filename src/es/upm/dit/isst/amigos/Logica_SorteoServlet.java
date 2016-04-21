@@ -42,6 +42,10 @@ public class Logica_SorteoServlet extends HttpServlet {
 			usernames[i-1] = req.getParameter("username"+i);
 			emails[i-1] = req.getParameter("email"+i);
 			if (req.getParameter("excl"+i) != "") {
+				if (Integer.valueOf(req.getParameter("excl"+i)) > participants_int){
+					resp.getWriter().println("Ha metido algún número en exclusión mayor al número de participantes");
+					return;
+				}
 				usernames_excls[i-1] = usernames[Integer.parseInt(req.getParameter("excl"+i)) - 1];
 			}
 			else {
