@@ -163,7 +163,7 @@
                                	   
                                	   <div class="form-group clonedInput" id="usernames" style="max-width:200px;">
                                	   	<label for="exampleInputName">Nombre de usuario</label>
-                               	   	<input type="text" class="form-control" id="exampleInputName1" name="username1" placeholder="Nombre"/><br/>
+                               	   	<input type="text" class="form-control" id="exampleInputName1" name="username1" value="${fn:substringBefore(pageContext.request.userPrincipal.name,'@')}" placeholder="Nombre" readonly = "readonly"/><br/>
                                	   	<input type="text" class="form-control" id="exampleInputName2" name="username2" placeholder="Nombre"/><br/>
                                	   	<input type="text" class="form-control" id="exampleInputName3" name="username3" placeholder="Nombre"/><br/>
                                	   	</div>

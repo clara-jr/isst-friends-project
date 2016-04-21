@@ -53,7 +53,7 @@ public class Logica_SorteoServlet extends HttpServlet {
 			}
 		}
 		String[] randomizedArray = Functions.getInstance().asignador(usernames, usernames_excls);
-
+		
 		Functions.getInstance().enviarEmail(randomizedArray, msg, money, date, mod_name, emails, usernames);
 		
 		resp.sendRedirect("index.html");
