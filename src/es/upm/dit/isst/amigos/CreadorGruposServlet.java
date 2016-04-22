@@ -1,7 +1,6 @@
 package es.upm.dit.isst.amigos;
 
 import java.io.IOException;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
@@ -36,6 +35,22 @@ public class CreadorGruposServlet extends HttpServlet {
 		
 		Grupo grupo = gruposdao.insertGrupo(groupname, nickname, maxprice, date);
 		Long id = grupo.getId();
+		
+		for(int i=1; i<=participants_int; i++) {
+			if (req.getParameter("excl"+i) != "" ){
+				try{
+					Integer.valueOf(req.getParameter("excl"+i));
+				}catch(Exception e){
+					resp.getWriter().println("Has introducido un valor no numérico en el campo de exclusiones");
+					return;
+				}	
+					if (Integer.parseInt(req.getParameter("excl"+i)) > participants_int) {				
+						resp.getWriter().println("Ha metido algún número en exclusión mayor al número de participantes");
+						return;		
+					}				
+			}
+		}
+		
 		for(int i=1; i<=participants_int; i++) {
 			try { 
 				User user = userdao.getUserByNick(req.getParameter("username"+i)); // Comprueba que los usuarios existen
@@ -43,7 +58,9 @@ public class CreadorGruposServlet extends HttpServlet {
 					Agrupaciones testagr = agrupdao.getAgrupByUserAndGrupo(req.getParameter("username"+i), id);
 				}
 				catch (Exception e1) {
+
 					agrupdao.insertAgrupacion(req.getParameter("username"+i), id, "", req.getParameter("username"+req.getParameter("excl"+i)));
+
 				}
  
 			} catch(Exception e2) {
