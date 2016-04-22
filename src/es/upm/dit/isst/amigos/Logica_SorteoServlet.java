@@ -42,7 +42,13 @@ public class Logica_SorteoServlet extends HttpServlet {
 			usernames[i-1] = req.getParameter("username"+i);
 			emails[i-1] = req.getParameter("email"+i);
 			if (req.getParameter("excl"+i) != "") {
-				if (Integer.valueOf(req.getParameter("excl"+i)) > participants_int){
+				try{
+					Integer.valueOf(req.getParameter("excl"+i));
+				}catch(Exception e){
+					resp.getWriter().println("Has introducido un valor no numérico en el campo de exclusiones");
+					return;
+				}
+				if (Integer.parseInt(req.getParameter("excl"+i)) > participants_int){
 					resp.getWriter().println("Ha metido algún número en exclusión mayor al número de participantes");
 					return;
 				}
@@ -56,6 +62,6 @@ public class Logica_SorteoServlet extends HttpServlet {
 		
 		Functions.getInstance().enviarEmail(randomizedArray, msg, money, date, mod_name, emails, usernames);
 		
-		resp.sendRedirect("index.html");
+		resp.sendRedirect("index");
 	}
 }
