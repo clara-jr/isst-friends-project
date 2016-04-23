@@ -37,6 +37,7 @@ public class CreadorGruposServlet extends HttpServlet {
 		
 		UserDAO userdao = UserDAOImpl.getInstance();
 		GrupoDAO gruposdao = GrupoDAOImpl.getInstance();
+
 		AgrupacionesDAO agrupdao = AgrupacionesDAOImpl.getInstance();			
 
 		for(int i=1; i<=participants_int; i++) {
@@ -69,7 +70,9 @@ public class CreadorGruposServlet extends HttpServlet {
 					Agrupaciones testagr = agrupdao.getAgrupByUserAndGrupo(req.getParameter("username"+i), id);
 				}
 				catch (Exception e1) {
+
 					agrupdao.insertAgrupacion(req.getParameter("username"+i), id, "", req.getParameter("username"+req.getParameter("excl"+i)));
+
 				}
  
 			} catch(Exception e2) {
