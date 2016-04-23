@@ -7,6 +7,8 @@ import es.upm.dit.isst.amigos.model.*;
 
 import javax.servlet.http.*;
 
+import org.apache.tools.ant.taskdefs.Sleep;
+
 @SuppressWarnings("serial")
 public class Com_AmigoInvisible_isstServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -21,10 +23,31 @@ public class Com_AmigoInvisible_isstServlet extends HttpServlet {
 		dao.insertUser("Nacho4", "email4", "social4");
 		
 		
-		/*ListasDeseosDAOImpl listasdao = ListasDeseosDAOImpl.getInstance();
+		
+		
+		
+		ListasDeseosDAOImpl listasdao = ListasDeseosDAOImpl.getInstance();
 		GrupoDAOImpl gruposdao = GrupoDAOImpl.getInstance();
 		AgrupacionesDAOImpl agrupdao = AgrupacionesDAOImpl.getInstance();
 		
+		agrupdao.insertAgrupacion("pepe", Long.valueOf(8557), "", "");
+		
+		try {
+			Thread.sleep(20);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Agrupaciones prueba = agrupdao.getAgrupByUserAndGrupo("pepe", Long.valueOf(8557));
+		
+		
+		
+		prueba.setAmigoinv("nene");
+		
+		agrupdao.updateAgrupacion(prueba);
+		
+		
+		/*
 		ListasDeseos lista = listasdao.insertLista("nachoperegrino94", "Un juguete");
 		ListasDeseos lista2 = listasdao.insertLista("nachoperegrino94", "Otro juguete");
 		Grupo grupo = gruposdao.insertGrupo("prueba","clarajimenezrecio", "30", "5/5/2015");

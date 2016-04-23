@@ -47,14 +47,17 @@ public class Listas_DeseosServlet extends HttpServlet {
 			
 			try {
 				dao.getItem(req.getUserPrincipal().toString(), item);
-				dao.insertLista(req.getUserPrincipal().toString(), item);
+				req.getSession().setAttribute("error", "¡Ese deseo ya está en la lista!");
+				resp.sendRedirect("avisos.jsp");
 			}
 			catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			resp.sendRedirect("/listas_deseos");
+				dao.insertLista(req.getUserPrincipal().toString(), item);
+				try {
+					Thread.sleep(200);
+				} catch (InterruptedException e1) {
+				}
+				resp.sendRedirect("/listas_deseos");
+			}			
 		}				
 		
 		if (lock.equals(f)) {
@@ -64,7 +67,10 @@ public class Listas_DeseosServlet extends HttpServlet {
 			if (item != null) {
 				dao.removeLista(seleccion);
 			}
-			
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e1) {
+			}
 			resp.sendRedirect("/listas_deseos");
 		}
 	}

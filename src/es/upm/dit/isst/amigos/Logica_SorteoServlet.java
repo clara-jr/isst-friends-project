@@ -42,6 +42,16 @@ public class Logica_SorteoServlet extends HttpServlet {
 			usernames[i-1] = req.getParameter("username"+i);
 			emails[i-1] = req.getParameter("email"+i);
 			if (req.getParameter("excl"+i) != "") {
+				try{
+					Integer.valueOf(req.getParameter("excl"+i));
+				}catch(Exception e){
+					req.getSession().setAttribute("error", "¡Has introducido un valor no numérico en el campo de exclusiones!");
+					resp.sendRedirect("avisos.jsp");
+				}
+				if (Integer.parseInt(req.getParameter("excl"+i)) > participants_int){
+					req.getSession().setAttribute("error", "¡Algún número en exclusiones es mayor que el número de participantes!");
+					resp.sendRedirect("avisos.jsp");	
+				}
 				usernames_excls[i-1] = usernames[Integer.parseInt(req.getParameter("excl"+i)) - 1];
 			}
 			else {
@@ -49,9 +59,9 @@ public class Logica_SorteoServlet extends HttpServlet {
 			}
 		}
 		String[] randomizedArray = Functions.getInstance().asignador(usernames, usernames_excls);
-
+		
 		Functions.getInstance().enviarEmail(randomizedArray, msg, money, date, mod_name, emails, usernames);
 		
-		resp.sendRedirect("index.html");
+		resp.sendRedirect("index");
 	}
 }

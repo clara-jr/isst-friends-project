@@ -10,7 +10,11 @@ import javax.servlet.http.*;
 public class IndexServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		resp.setContentType("text/plain");
-		resp.sendRedirect("index.jsp");
+		
+		if (req.getUserPrincipal() != null){
+			resp.sendRedirect("/Grupos");
+		}
+		else resp.sendRedirect("index.jsp");
 	}
 }
 
