@@ -165,7 +165,9 @@
                                   <input type="email" class="form-control" id="exampleInputEmail3" name="email3" placeholder="E-mail"/><br/>
                                 </div>
                                 <div class="form-group" id="excls">
-                                  <label for="exampleInput">Excluir <span class="glyphicon glyphicon-question-sign"></span></label>
+                                  <label for="exampleInput">Excluir <div id= "popup" style="display:inline;" class= "popupHover"> <span style="display:inline;" class="glyphicon glyphicon-question-sign"></span> 
+                                     <div id="info" class="popupBox">Si un miembro no quiere regalar a otro, deberás poner aquí el número de su izquierda
+                                     en este formulario. </div></div></label>
                                   <input type="text" class="form-control" name="excl1" id="exampleInput1"/><br/>
                                   <input type="text" class="form-control" name="excl2" id="exampleInput2"/><br/>
                                   <input type="text" class="form-control" name="excl3" id="exampleInput3"/><br/>

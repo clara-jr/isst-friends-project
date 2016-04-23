@@ -94,7 +94,7 @@ public class VerGruposServlet extends HttpServlet {
 			}
 			
 			if (existe && !repetido) {
-			agrupao.insertAgrupacion(item, id, "");
+			agrupao.insertAgrupacion(item, id, "", "");
 			}
 			
 			User usuario = UserDAOImpl.getInstance().getUserByEmail(userservice.getCurrentUser().getEmail());
