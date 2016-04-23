@@ -4,7 +4,6 @@ package es.upm.dit.isst.amigos;
  *
  */
 import java.io.IOException;
-import java.util.Random;
 
 import javax.servlet.http.*;
 
@@ -12,19 +11,6 @@ import es.upm.dit.isst.amigos.logic.*;
 
 @SuppressWarnings("serial")
 public class Logica_SorteoServlet extends HttpServlet {
-	
-	public static String[] Randomize(String[] arr) {
-		String[] randomizedArray = new String[arr.length];
-	    System.arraycopy(arr, 0, randomizedArray, 0, arr.length);
-	    Random rgen = new Random();
-	    for (int i = 0; i < randomizedArray.length; i++) {
-	    	int randomPosition = rgen.nextInt(randomizedArray.length);
-		    String temp = randomizedArray[i];
-		    randomizedArray[i] = randomizedArray[randomPosition];
-		    randomizedArray[randomPosition] = temp;
-	    }
-	    return randomizedArray;
-	}
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		resp.setContentType("text/plain");
@@ -45,12 +31,12 @@ public class Logica_SorteoServlet extends HttpServlet {
 				try{
 					Integer.valueOf(req.getParameter("excl"+i));
 				}catch(Exception e){
-					resp.getWriter().println("Has introducido un valor no numérico en el campo de exclusiones");
-					return;
+					req.getSession().setAttribute("error", "¡Has introducido un valor no numérico en el campo de exclusiones!");
+					resp.sendRedirect("avisos.jsp");
 				}
 				if (Integer.parseInt(req.getParameter("excl"+i)) > participants_int){
-					resp.getWriter().println("Ha metido algún número en exclusión mayor al número de participantes");
-					return;
+					req.getSession().setAttribute("error", "¡Algún número en exclusiones es mayor que el número de participantes!");
+					resp.sendRedirect("avisos.jsp");	
 				}
 				usernames_excls[i-1] = usernames[Integer.parseInt(req.getParameter("excl"+i)) - 1];
 			}

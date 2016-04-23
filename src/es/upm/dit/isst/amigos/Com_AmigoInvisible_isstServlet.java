@@ -14,6 +14,7 @@ public class Com_AmigoInvisible_isstServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		resp.setContentType("text/plain");
+
 		
 		UserDAOImpl dao = UserDAOImpl.getInstance();
 		
@@ -22,10 +23,12 @@ public class Com_AmigoInvisible_isstServlet extends HttpServlet {
 		dao.insertUser("Nacho3", "email3", "social3");
 		dao.insertUser("Nacho4", "email4", "social4");
 		
+
 		ListasDeseosDAOImpl listasdao = ListasDeseosDAOImpl.getInstance();
 		GrupoDAOImpl gruposdao = GrupoDAOImpl.getInstance();
 		AgrupacionesDAOImpl agrupdao = AgrupacionesDAOImpl.getInstance();
 		
+
 		Grupo grupo1 = gruposdao.insertGrupo("prueba1", "nachoperegrino94", "30", "07/07/07");
 		Grupo grupo2 = gruposdao.insertGrupo("prueba2", "nachoperegrino94", "30", "07/07/07");
 		Grupo grupo3 = gruposdao.insertGrupo("prueba3", "pepe", "30", "07/07/07");
@@ -74,57 +77,24 @@ public class Com_AmigoInvisible_isstServlet extends HttpServlet {
 		/*
 		ListasDeseos lista = listasdao.insertLista("nachoperegrino94", "Un juguete");
 		ListasDeseos lista2 = listasdao.insertLista("nachoperegrino94", "Otro juguete");
+
+		listasdao.insertLista("nachoperegrino94", "Un juguete");
+		listasdao.insertLista("nachoperegrino94", "Otro juguete");
+		listasdao.insertLista("clarajimenezrecio", "Un juguete");
+		listasdao.insertLista("clarajimenezrecio", "Otro juguete");
+		listasdao.insertLista("skyle94", "Un juguete");
+		listasdao.insertLista("skyle94", "Otro juguete");
+
 		Grupo grupo = gruposdao.insertGrupo("prueba","clarajimenezrecio", "30", "5/5/2015");
-		Agrupaciones agrup = agrupdao.insertAgrupacion("clarajimenezrecio", grupo.getId(), "");
-		agrupdao.insertAgrupacion("nachoperegrino94", grupo.getId(), "");
-		agrupdao.insertAgrupacion("Linda", grupo.getId(), "");
-		agrupdao.insertAgrupacion("Javier", grupo.getId(), "");
-		agrupdao.insertAgrupacion("Penelope", grupo.getId(), ""); */
+		agrupdao.insertAgrupacion("clarajimenezrecio", grupo.getId(), "nachoperegrino94", null);
+		agrupdao.insertAgrupacion("nachoperegrino94", grupo.getId(), "skyle94", null);
+		agrupdao.insertAgrupacion("skyle94", grupo.getId(), "clarajimenezrecio", null);
+		Grupo grupo2 = gruposdao.insertGrupo("prueba2","nachoperegrino94", "60", "5/5/2016");
+		agrupdao.insertAgrupacion("clarajimenezrecio", grupo2.getId(), "skyle94", null);
+		agrupdao.insertAgrupacion("nachoperegrino94", grupo2.getId(), "clarajimenezrecio", null);
+		agrupdao.insertAgrupacion("skyle94", grupo2.getId(), "nachoperegrino94", null);
 		
-		
-				
-		/*User usuario = userdao.getUserByNick("nachoperegrino94");
-		//Login log1 = logindao.getLoginByUser("nachoperegrino94");
-		List<ListasDeseos> list1 = listasdao.getListaByUser("nachoperegrino94");
-		Grupo grup1 = gruposdao.getGrupoById(grupo.getId());
-		
-		//List<Grupo> grup2 = gruposdao.getGrupoByModerador("nachoperegrino94");
-		List<Agrupaciones> agrup1 = agrupdao.getAgrupacionesByUser("nachoperegrino94");
-		Grupo grup3 = gruposdao.getGrupoById(agrup1.get(0).getGrupo());*/
-		
-		
-				
 		resp.getWriter().println("Hello, world");
-		/*resp.getWriter().println("Hola " + usuario.getNick());
-		resp.getWriter().println("Email: " + usuario.toString());
-		
-		resp.getWriter().println("Ahora meteremos datos en la db y los mostraremos a continuación:");
-		resp.getWriter().println("LOGIN:");
-		resp.getWriter().println("LISTAS:");
-		for(ListasDeseos temp: list1){
-			resp.getWriter().println(temp.getUser());
-			resp.getWriter().println(temp.getItem());
-		}
-		resp.getWriter().println("GRUPOS:");*/
-		//resp.getWriter().println(grup1.getFecha());
-		//resp.getWriter().println(grup1.getModerador());
-		//resp.getWriter().println(grup1.getPreciomax());
-		
-		/*for(Grupo temp: grup2){
-			resp.getWriter().println(temp.getFecha());
-			resp.getWriter().println(temp.getModerador());
-			resp.getWriter().println(temp.getPreciomax());
-			resp.getWriter().println(temp.getId());
-		}
-		
-		resp.getWriter().println("AGRUPACIONES:");
-		for(Agrupaciones temp: agrup1){
-			resp.getWriter().println(temp.getAmigoinv());
-			resp.getWriter().println(temp.getUser());
-			resp.getWriter().println(temp.getGrupo());
-			resp.getWriter().println(temp.getId());
-		}*/
-
-
+		*/
 	}
 }

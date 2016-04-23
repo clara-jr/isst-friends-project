@@ -103,7 +103,7 @@
                                    </div>
                                    <div class="form-group" style="max-width:200px;">
                                      <label for="exampleInputDate">Fecha <span class="glyphicon glyphicon-calendar"></span></label>
-                                     <input type="text" class="form-control" name="date"><br/>
+                                     <input type="date" class="form-control" name="date"><br/>
                                    </div>
                                  </div>
                                  <br />
@@ -119,9 +119,15 @@
                                	   
                                	   <div class="form-group clonedInput" id="usernames" style="max-width:200px;">
                                	   	<label for="exampleInputName">Nombre de usuario</label>
+<<<<<<< HEAD
                                	   	<input type="text" class="form-control" id="exampleInputName1" name="username1" value="${fn:substringBefore(pageContext.request.userPrincipal.name,'@')}" placeholder="Nombre" readonly = "readonly"/><br/>
                                	   	<input type="text" class="form-control" id="exampleInputName2" name="username2" placeholder="Nombre"/><br/>
                                	   	<input type="text" class="form-control" id="exampleInputName3" name="username3" placeholder="Nombre"/><br/>
+=======
+                               	   	<input type="text" required class="form-control" id="exampleInputName1" name="username1" value="${fn:substringBefore(pageContext.request.userPrincipal.name,'@')}" placeholder="Nombre" readonly = "readonly"/><br/>
+                               	   	<input type="text" required class="form-control" id="exampleInputName2" name="username2" placeholder="Nombre"/><br/>
+                               	   	<input type="text" required class="form-control" id="exampleInputName3" name="username3" placeholder="Nombre"/><br/>
+>>>>>>> fb707908d3cc4c7d4a67277d0a8a7c15d02a5f06
                                	   	</div>
                                	   	
                                	   	<div class="form-group" id="adds" style="max-width:150px;">
@@ -132,7 +138,9 @@
                                	   	</div>
                                	   	
                                    <div class="form-group" id="excls" style="max-width:350px;">
-                                     <label for="exampleInput">Excluir <span class="glyphicon glyphicon-question-sign"></span></label>
+                                     <label for="exampleInput">Excluir <div id= "popup" style="display:inline;" class= "popupHover"> <span style="display:inline;" class="glyphicon glyphicon-question-sign"></span> 
+                                     <div id="info" class="popupBox">Si un miembro no quiere regalar a otro, deberás poner aquí el número de su izquierda
+                                     en este formulario. </div></div></label>
                                      <input type="text" class="form-control" name="excl1" id="exampleInput1"/><br/>
                                      <input type="text" class="form-control" name="excl2" id="exampleInput2"/><br/>
                                      <input type="text" class="form-control" name="excl3" id="exampleInput3"/><br/>
