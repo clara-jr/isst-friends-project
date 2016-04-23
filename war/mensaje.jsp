@@ -76,7 +76,7 @@
                                 <div class="form-group" style="max-width:600px; margin-left:auto; margin-right:auto;">
                                   <label for="exampleInputDate">Elige el día en el que se repartirán los regalos:
                                   <span class="glyphicon glyphicon-calendar"></span></label>
-                                  <input type="text" class="form-control" id="exampleInputDate" name="date">
+                                  <input type="date" class="form-control" id="exampleInputDate" name="date">
                                 </div>
                                 <div class="form-group" style="max-width:600px; margin-left:auto; margin-right:auto;">
                                   <label for="exampleInputMessage">Escribe el mensaje que recibiréis:</label>
