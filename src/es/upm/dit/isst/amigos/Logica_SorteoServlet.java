@@ -45,12 +45,12 @@ public class Logica_SorteoServlet extends HttpServlet {
 				try{
 					Integer.valueOf(req.getParameter("excl"+i));
 				}catch(Exception e){
-					resp.getWriter().println("Has introducido un valor no numérico en el campo de exclusiones");
-					return;
+					req.getSession().setAttribute("error", "¡Has introducido un valor no numérico en el campo de exclusiones!");
+					resp.sendRedirect("avisos.jsp");
 				}
 				if (Integer.parseInt(req.getParameter("excl"+i)) > participants_int){
-					resp.getWriter().println("Ha metido algún número en exclusión mayor al número de participantes");
-					return;
+					req.getSession().setAttribute("error", "¡Algún número en exclusiones es mayor que el número de participantes!");
+					resp.sendRedirect("avisos.jsp");	
 				}
 				usernames_excls[i-1] = usernames[Integer.parseInt(req.getParameter("excl"+i)) - 1];
 			}

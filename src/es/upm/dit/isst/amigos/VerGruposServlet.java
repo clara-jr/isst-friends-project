@@ -112,8 +112,22 @@ public class VerGruposServlet extends HttpServlet {
 			req.getSession().setAttribute("usuario", usuario);
 			req.getSession().setAttribute("grupos", grupos);
 			req.getSession().setAttribute("agrupaciones", agrupacionesporgrupo);
-						
-			resp.sendRedirect("grupos.jsp");	
+			
+			if (existe == false) {
+				req.getSession().setAttribute("error", "¡Ese usuario no existe!");
+				resp.sendRedirect("avisos.jsp");
+			}
+			else if (repetido == true) {
+				req.getSession().setAttribute("error", "¡Ese usuario ya está en el grupo!");
+				resp.sendRedirect("avisos.jsp");
+			}
+			else {
+				try {
+					Thread.sleep(200);
+				} catch (InterruptedException e1) {
+				}
+				resp.sendRedirect("grupos.jsp");	
+			}
 		}				
 		
 		if (lock.equals(f)) {
@@ -138,6 +152,10 @@ public class VerGruposServlet extends HttpServlet {
 			req.getSession().setAttribute("grupos", grupos);
 			req.getSession().setAttribute("agrupaciones", agrupacionesporgrupo);
 						
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e1) {
+			}
 			resp.sendRedirect("grupos.jsp");	
 		}
 	}
