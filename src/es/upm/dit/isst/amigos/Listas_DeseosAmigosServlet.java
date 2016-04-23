@@ -10,6 +10,7 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
 import es.upm.dit.isst.amigos.dao.*;
+import es.upm.dit.isst.amigos.logic.Functions;
 import es.upm.dit.isst.amigos.model.*;
 
 @SuppressWarnings("serial")
@@ -72,6 +73,7 @@ public class Listas_DeseosAmigosServlet extends HttpServlet {
 		ListasDeseos seleccion = dao.getItem(user, item);
 		if (item != null) {
 			dao.removeLista(seleccion);
+			Functions.getInstance().aviso_eliminado(user, item, userservice.getCurrentUser().getNickname());
 		}
 		try {
 			Thread.sleep(200);
