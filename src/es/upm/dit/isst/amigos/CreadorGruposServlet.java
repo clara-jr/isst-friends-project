@@ -74,6 +74,12 @@ public class CreadorGruposServlet extends HttpServlet {
  
 			} catch(Exception e2) {
 				userdao.insertUser(req.getParameter("username"+i), req.getParameter("username"+i)+"@gmail.com", "");
+				try {
+					Agrupaciones testagr = agrupdao.getAgrupByUserAndGrupo(req.getParameter("username"+i), id);
+				}
+				catch (Exception e1) {
+					agrupdao.insertAgrupacion(req.getParameter("username"+i), id, "", req.getParameter("username"+req.getParameter("excl"+i)));
+				}
 				Functions.getInstance().aviso(req.getParameter("username"+i), nickname);
 				continue;
 			}
