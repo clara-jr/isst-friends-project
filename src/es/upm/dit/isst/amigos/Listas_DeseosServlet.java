@@ -28,7 +28,7 @@ public class Listas_DeseosServlet extends HttpServlet {
 		else{
 			
 			User usuario = UserDAOImpl.getInstance().getUserByEmail(userservice.getCurrentUser().getEmail());
-			List<ListasDeseos> deseos = ListasDeseosDAOImpl.getInstance().getListaByUser(usuario.getEmail());
+			List<ListasDeseos> deseos = ListasDeseosDAOImpl.getInstance().getListaByUser(usuario.getNick());
 	
 			req.getSession().setAttribute("deseos", new ArrayList<ListasDeseos>(deseos));
 						
@@ -44,14 +44,13 @@ public class Listas_DeseosServlet extends HttpServlet {
 		String f = "false";
 		
 		if(lock.equals(v)) {
-			
 			try {
-				dao.getItem(req.getUserPrincipal().toString(), item);
+				dao.getItem(userservice.getCurrentUser().getNickname(), item);
 				req.getSession().setAttribute("error", "¡Ese deseo ya está en la lista!");
 				resp.sendRedirect("avisos.jsp");
 			}
 			catch (Exception e) {
-				dao.insertLista(req.getUserPrincipal().toString(), item);
+				dao.insertLista(userservice.getCurrentUser().getNickname(), item);
 				try {
 					Thread.sleep(200);
 				} catch (InterruptedException e1) {
@@ -61,8 +60,7 @@ public class Listas_DeseosServlet extends HttpServlet {
 		}				
 		
 		if (lock.equals(f)) {
-			
-			ListasDeseos seleccion = dao.getItem(req.getUserPrincipal().toString(), item);
+			ListasDeseos seleccion = dao.getItem(userservice.getCurrentUser().getNickname(), item);
 			
 			if (item != null) {
 				dao.removeLista(seleccion);

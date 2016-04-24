@@ -40,38 +40,35 @@
                                 <p>Si no se te ocurre nada para regalar por el amigo invisible, no te preocupes, aquí encontrarás algunas ideas </p>
                                 <br />
                                 <div class="row">
-                                  <div class="col-md-6">
-                                    <p>Lista de deseos de Cristina</p>
-                                      <ul style="list-style:none; padding-left:0px; color:#AFB8B8;">
-                                        <li>Pendientes</li>
-                                        <li>Guantes</li>
-                                        <li>Monedero</li>
-                                      </ul>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <p>Lista de deseos de Pablo</p>
-                                      <ul style="list-style:none; padding-left:0px; color:#AFB8B8;">
-                                        <li>Dixit <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
-                                        <li>Exploding Kittens <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
-                                        <li>Funda iPhone <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
-                                        <li>Disco Dire Straits <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
-                                      </ul>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <p>Lista de deseos de RocÃ­o</p>
-                                      <ul style="list-style:none; padding-left:0px; color:#AFB8B8;">
-                                        <li>Paraguas <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
-                                        <li>Pashmina <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
-                                        <li>Bolso <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
-                                      </ul>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <p>Lista de deseos de JosÃ© Manuel</p>
-                                      <ul style="list-style:none; padding-left:0px; color:#AFB8B8;">
-                                        <li>Cartera <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
-                                        <li>Corbata <span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></li>
-                                      </ul>
-                                  </div>
+	                                <c:forEach items="${usuarios_inv}" var="usuario">
+	                                 <div class="col-md-6">
+	                                    <p>Lista de deseos de ${usuario.nick}</p>
+	                                    <ul style="list-style:none; padding-left:0px; color:#AFB8B8;">
+	                                    <c:forEach items="${deseos_inv}" var="deseo">
+		                                    <c:if test="${deseo.user == usuario.nick}">
+		                                     	<li>${deseo.item}</li>
+		                                   	</c:if> 
+	                                    </c:forEach>
+	                                    </ul>
+	                                  </div>
+	                                </c:forEach>
+	                                <c:forEach items="${usuarios_v}" var="usuario">
+	                                 <div class="col-md-6">
+	                                    <p>Lista de deseos de ${usuario.nick}</p>
+	                                    <ul style="list-style:none; padding-left:0px; color:#AFB8B8;">
+	                                    <c:forEach items="${deseos_v}" var="deseo">
+		                                    <c:if test="${deseo.user == usuario.nick}">
+		                                     	<li>${deseo.item}
+		                                     	<form method="post" style= "display: inline;">
+		                                     	<input type="hidden" name="user" value='${deseo.user}'>	
+		                                     	<input type="hidden" name="item" value='${deseo.item}'>	                                     
+			                                    <button onclick="this.form.action = 'listas_deseos_amigos';" type="submit" class="btn btn-default" style="margin: 0; padding: 0; background:transparent; border: none;"><span class="glyphicon glyphicon-minus-sign" style="color:red;"></span></button>
+	                                    	    </form></li>
+		                                   	</c:if> 
+	                                    </c:forEach>
+	                                    </ul>
+	                                  </div>
+	                                </c:forEach>
                                 </div>
                                 <br />
                                 <br />

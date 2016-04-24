@@ -66,13 +66,22 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/logica_sorteo</url-pattern>
 	</servlet-mapping>
 
-			<servlet>
+	<servlet>
 		<servlet-name>Listas_Deseos</servlet-name>
 		<servlet-class>es.upm.dit.isst.amigos.Listas_DeseosServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Listas_Deseos</servlet-name>
 		<url-pattern>/listas_deseos</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Listas_DeseosAmigos</servlet-name>
+		<servlet-class>es.upm.dit.isst.amigos.Listas_DeseosAmigosServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Listas_DeseosAmigos</servlet-name>
+		<url-pattern>/listas_deseos_amigos</url-pattern>
 	</servlet-mapping>
 
 	<servlet>

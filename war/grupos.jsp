@@ -50,7 +50,7 @@
                                       <c:forEach items="${agrupaciones[grupo.id]}" var="agrupacion">
                                        <li>
                                        <c:out value="${agrupacion.user}"/>
-                                       	<c:if test="${usuario.nick == grupo.moderador && agrupacion.user != usuario.nick}">
+                                       	<c:if test="${usuario.nick == grupo.moderador && agrupacion.user != usuario.nick && agrupacion.amigoinv == ''}">
 	                                     	<form method="post" style= "display: inline;">
 		                                     	<input type="hidden" name="grupo_id" value='${grupo.id}'>
 		                                     	<input type="hidden" name="usuario" value='${agrupacion.user}'>
@@ -61,7 +61,7 @@
                                        </li>
                                       </c:forEach>
                                      </ul>
-                                     <c:if test="${usuario.nick != grupo.moderador}">
+                                     <c:if test="${usuario.nick != grupo.moderador && agrupaciones[grupo.id][0].amigoinv == ''}">
 	                                   	 <form method="post">
 			                                     	<input type="hidden" name="grupo_id" value='${grupo.id}'>
 			                                     	<input type="hidden" name="usuario" value='${usuario}'>
@@ -74,21 +74,22 @@
 			                                     	<input type="hidden" name="grupo_id" value='${grupo.id}'>			                                     	                                    
 				                                    <button onclick="this.form.action = 'eliminar_grupo';" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign" style="color:red;"></span> Eliminar grupo</button>
 		                                 </form>
-		                                 
-		                                 <form action="/Grupos" method="post">
-                                     		<input type="hidden" name="grupo_id" value='${grupo.id}'>
-                                     		<input type="hidden" name="lock" value="true">	
-	                                    	<input type="text" required name="item" class="form-control" 
-	                                    	style="width:150px; margin-left:auto; margin-right:auto;">
-	                                   	 	<label style="font-size:1.1em;"> @gmail.com </label><br><br>
-	                                    	<input type="submit" value="Añadir" 
-	                                    	type="button" class="btn btn-default"/> 
-                              				<span class="glyphicon glyphicon-plus-sign"></span>
-                              			 </form>
-                              			 <form method="post">
-                                     		<input type="hidden" name="grupo_id" value='${grupo.id}'>	             
-	                                    	<button onclick="this.form.action = 'sorteo_avanzado';" type="submit" class="btn btn-primary">Sortear</button>
-                              			 </form>                              	
+		                                 <c:if test="${agrupaciones[grupo.id][0].amigoinv == ''}">
+			                                 <form action="/Grupos" method="post">
+	                                     		<input type="hidden" name="grupo_id" value='${grupo.id}'>
+	                                     		<input type="hidden" name="lock" value="true">	
+		                                    	<input type="text" required name="item" class="form-control" 
+		                                    	style="width:150px; margin-left:auto; margin-right:auto;">
+		                                   	 	<label style="font-size:1.1em;"> @gmail.com </label><br><br>
+		                                    	<input type="submit" value="Añadir" 
+		                                    	type="button" class="btn btn-default"/> 
+	                              				<span class="glyphicon glyphicon-plus-sign"></span>
+	                              			 </form>
+	                              			 <form method="post">
+	                                     		<input type="hidden" name="grupo_id" value='${grupo.id}'>	             
+		                                    	<button onclick="this.form.action = 'sorteo_avanzado';" type="submit" class="btn btn-primary">Sortear</button>
+	                              			 </form>    
+	                              		</c:if>                          	
 	                                 </c:if>                                 
                                   </div>                                 
                               	</c:forEach>                                
