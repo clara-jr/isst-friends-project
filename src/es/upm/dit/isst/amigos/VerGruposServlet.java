@@ -114,8 +114,9 @@ public class VerGruposServlet extends HttpServlet {
 			req.getSession().setAttribute("agrupaciones", agrupacionesporgrupo);
 			
 			if (existe == false) {
-				req.getSession().setAttribute("error", "¡Ese usuario no existe!");
-				resp.sendRedirect("avisos.jsp");
+				usao.insertUser(req.getParameter("usuario"), req.getParameter("usuario")+"@gmail.com", "");
+				Functions.getInstance().aviso(req.getParameter("usuario"), userservice.getCurrentUser().getNickname());
+				resp.sendRedirect("grupos.jsp");
 			}
 			else if (repetido == true) {
 				req.getSession().setAttribute("error", "¡Ese usuario ya está en el grupo!");
