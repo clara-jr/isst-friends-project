@@ -65,6 +65,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>Logica_Sorteo</servlet-name>
 		<url-pattern>/logica_sorteo</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Logica_SorteoGrupos</servlet-name>
+		<servlet-class>es.upm.dit.isst.amigos.Logica_SorteoGruposServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Logica_SorteoGrupos</servlet-name>
+		<url-pattern>/logica_sorteo_grupos</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>Listas_Deseos</servlet-name>

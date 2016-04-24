@@ -29,6 +29,7 @@ public class CreadorGruposServlet extends HttpServlet {
 		String nickname = userservice.getCurrentUser().getNickname();
 		
 		String groupname = req.getParameter("groupname");
+		String msg = req.getParameter("msg");
 		String maxprice = req.getParameter("maxprice");
 		String date = req.getParameter("date");
 		String participants = req.getParameter("participants");
@@ -61,7 +62,7 @@ public class CreadorGruposServlet extends HttpServlet {
 			}
 		}	
 		if (error == false) {
-			Grupo grupo = gruposdao.insertGrupo(groupname, nickname, maxprice, date);
+			Grupo grupo = gruposdao.insertGrupo(groupname, nickname, maxprice, date, msg); 
 			Long id = grupo.getId();
 		for(int i=1; i<=participants_int; i++) {
 			try { 
@@ -76,7 +77,7 @@ public class CreadorGruposServlet extends HttpServlet {
 				}
  
 			} catch(Exception e2) {
-				userdao.insertUser(req.getParameter("username"+i), req.getParameter("username"+i)+"@gmail.com", "");
+				//userdao.insertUser(req.getParameter("username"+i), req.getParameter("username"+i)+"@gmail.com", "");
 				try {
 					Agrupaciones testagr = agrupdao.getAgrupByUserAndGrupo(req.getParameter("username"+i), id);
 				}

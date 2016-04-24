@@ -149,7 +149,7 @@
                                  <br />
                                  <div class="form-group" style="max-width:600px; margin-left:auto; margin-right:auto;">
                                    <label for="exampleInputMessage">Escribe el mensaje que recibiréis:</label>
-                                   <input type="text" class="form-control" id="exampleInputMessage">
+                                   <input type="text" class="form-control" name="msg" id="exampleInputMessage">
                                  </div>
                                  <br />
                                  <div class="row">
