@@ -10,6 +10,7 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
 import es.upm.dit.isst.amigos.dao.*;
+import es.upm.dit.isst.amigos.logic.Functions;
 import es.upm.dit.isst.amigos.model.*;
 
 @SuppressWarnings("serial")
@@ -38,19 +39,21 @@ public class Listas_DeseosAmigosServlet extends HttpServlet {
 	
 			for (Agrupaciones temp: agrupuser){
 				if (temp.getAmigoinv() != "") {
-					if (userservice.getCurrentUser().getNickname() == GrupoDAOImpl.getInstance().getGrupoById(temp.getGrupo()).getModerador()) {
+					if (GrupoDAOImpl.getInstance().getGrupoById(temp.getGrupo()).getModerador().equals(userservice.getCurrentUser().getNickname())) {
 						List<Agrupaciones> usersingroup = AgrupacionesDAOImpl.getInstance().getAgrupacionesByGrupo(temp.getGrupo());
 						for (Agrupaciones temp2: usersingroup){
-							if (!usuarios_v.contains(UserDAOImpl.getInstance().getUserByNick(temp.getAmigoinv()))) {
+							if (!usuarios_v.contains(UserDAOImpl.getInstance().getUserByNick(temp2.getAmigoinv())) && !usuarios_inv.contains(UserDAOImpl.getInstance().getUserByNick(temp2.getAmigoinv())) && !temp2.getUser().equals(userservice.getCurrentUser().getNickname())) {
 								deseos_v.addAll(ListasDeseosDAOImpl.getInstance().getListaByUser(temp2.getUser()));
 								usuarios_v.add(UserDAOImpl.getInstance().getUserByNick(temp2.getUser()));
 							}
 						}
 					}
 					else {
-						if (!usuarios_inv.contains(UserDAOImpl.getInstance().getUserByNick(temp.getAmigoinv()))) {
-							deseos_inv.addAll(ListasDeseosDAOImpl.getInstance().getListaByUser(temp.getAmigoinv()));
-							usuarios_inv.add(UserDAOImpl.getInstance().getUserByNick(temp.getAmigoinv()));
+						if (temp.getUser().equals(userservice.getCurrentUser().getNickname())) {
+							if (!usuarios_inv.contains(UserDAOImpl.getInstance().getUserByNick(temp.getAmigoinv())) && !usuarios_v.contains(UserDAOImpl.getInstance().getUserByNick(temp.getAmigoinv()))) {
+								deseos_inv.addAll(ListasDeseosDAOImpl.getInstance().getListaByUser(temp.getAmigoinv()));
+								usuarios_inv.add(UserDAOImpl.getInstance().getUserByNick(temp.getAmigoinv()));
+							}
 						}
 					}
 				}
@@ -72,6 +75,7 @@ public class Listas_DeseosAmigosServlet extends HttpServlet {
 		ListasDeseos seleccion = dao.getItem(user, item);
 		if (item != null) {
 			dao.removeLista(seleccion);
+			Functions.getInstance().aviso_eliminado(user, item, userservice.getCurrentUser().getNickname());
 		}
 		try {
 			Thread.sleep(200);
