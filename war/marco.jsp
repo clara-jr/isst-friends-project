@@ -41,10 +41,17 @@
 		              </c:if>
 		              
 		              <c:if test = "${URL == '/amigos.jsp'}">
+<<<<<<< HEAD
+		                  <li class="active"><a href="amigos.jsp">Mis Amigos <span class="sr-only">(current)</span></a></li>
+		              </c:if>
+		              <c:if test = "${URL != '/amigos.jsp'}">
+		                  <li><a href="amigos.jsp">Mis Amigos</a></li>
+=======
 		                  <li class="active"><a href="/listas_deseos_amigos">Mis Amigos <span class="sr-only">(current)</span></a></li>
 		              </c:if>
 		              <c:if test = "${URL != '/amigos.jsp'}">
 		                  <li><a href="/listas_deseos_amigos">Mis Amigos</a></li>
+>>>>>>> fb707908d3cc4c7d4a67277d0a8a7c15d02a5f06
 		              </c:if>
 		              
 		              <c:if test = "${URL == '/chat.jsp'}">

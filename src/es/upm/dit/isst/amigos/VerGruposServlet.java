@@ -93,7 +93,7 @@ public class VerGruposServlet extends HttpServlet {
 				repetido = false;
 			}
 			
-			if (existe && !repetido) {
+			if (!repetido) {
 			agrupao.insertAgrupacion(item, id, "", "");
 			}
 			
@@ -114,8 +114,7 @@ public class VerGruposServlet extends HttpServlet {
 			req.getSession().setAttribute("agrupaciones", agrupacionesporgrupo);
 			
 			if (existe == false) {
-				usao.insertUser(req.getParameter("usuario"), req.getParameter("usuario")+"@gmail.com", "");
-				Functions.getInstance().aviso(req.getParameter("usuario"), userservice.getCurrentUser().getNickname());
+				Functions.getInstance().aviso(user, userservice.getCurrentUser().getNickname());
 				resp.sendRedirect("grupos.jsp");
 			}
 			else if (repetido == true) {
