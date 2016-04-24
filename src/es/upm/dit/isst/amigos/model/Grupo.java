@@ -19,12 +19,14 @@ public class Grupo implements Serializable {
 	private String moderador;
 	private String preciomax;
 	private String fecha;
+	private String msg;
 	
-	public Grupo(String nombre, String moderador, String preciomax, String fecha) {
+	public Grupo(String nombre, String moderador, String preciomax, String fecha, String msg) {
 		this.nombre = nombre;
 		this.moderador = moderador;
 		this.preciomax = preciomax;
 		this.fecha = fecha;
+		this.msg = msg;
 	}
 	
 	public Long getId() {
@@ -37,6 +39,15 @@ public class Grupo implements Serializable {
 	public String getModerador() {
 		return moderador;
 	}
+	
+	public String getMsg() {
+		return msg;
+	}
+	
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -60,6 +71,5 @@ public class Grupo implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
 	
 }

@@ -87,7 +87,7 @@
 	                              			 </form>
 	                              			 <form method="post">
 	                                     		<input type="hidden" name="grupo_id" value='${grupo.id}'>	             
-		                                    	<button onclick="this.form.action = 'sorteo_avanzado';" type="submit" class="btn btn-primary">Sortear</button>
+		                                    	<button onclick="this.form.action = 'logica_sorteo_grupos';" type="submit" class="btn btn-primary">Sortear</button>
 	                              			 </form>    
 	                              		</c:if>                          	
 	                                 </c:if>                                 

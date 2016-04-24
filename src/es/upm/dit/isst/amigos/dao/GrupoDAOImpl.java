@@ -23,9 +23,9 @@ public class GrupoDAOImpl implements GrupoDAO {
 	}
 	
 	@Override
-	public Grupo insertGrupo(String nombre, String moderador, String preciomax, String fecha) {
+	public Grupo insertGrupo(String nombre, String moderador, String preciomax, String fecha, String msg) {
 		EntityManager em = EMFService.get().createEntityManager();
-		Grupo grupoObject = new Grupo(nombre, moderador, preciomax, fecha);
+		Grupo grupoObject = new Grupo(nombre, moderador, preciomax, fecha, msg);
 		em.persist(grupoObject);
 		
 		em.close();
