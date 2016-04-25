@@ -41,8 +41,6 @@ public class Logica_SorteoServlet extends HttpServlet {
 					resp.sendRedirect("avisos.jsp");	
 				}
 				usernames_excls[i-1] = usernames[Integer.parseInt(req.getParameter("excl"+i)) - 1];
-				System.out.println("req.getParameter(excl"+i+"): " + req.getParameter("excl"+i));
-				System.out.println("usernames[Integer.parseInt(req.getParameter(excl"+i+")) - 1]: " + usernames[Integer.parseInt(req.getParameter("excl"+i)) - 1]);
 			}
 			else {
 				usernames_excls[i-1] = "";
