@@ -27,6 +27,8 @@ public class Logica_SorteoServlet extends HttpServlet {
 		for(int i=1; i<=participants_int; i++) {
 			usernames[i-1] = req.getParameter("username"+i);
 			emails[i-1] = req.getParameter("email"+i);
+		}		
+		for(int i=1; i<=participants_int; i++) {			
 			if (req.getParameter("excl"+i) != "") {
 				try{
 					Integer.valueOf(req.getParameter("excl"+i));
@@ -39,6 +41,8 @@ public class Logica_SorteoServlet extends HttpServlet {
 					resp.sendRedirect("avisos.jsp");	
 				}
 				usernames_excls[i-1] = usernames[Integer.parseInt(req.getParameter("excl"+i)) - 1];
+				System.out.println("req.getParameter(excl"+i+"): " + req.getParameter("excl"+i));
+				System.out.println("usernames[Integer.parseInt(req.getParameter(excl"+i+")) - 1]: " + usernames[Integer.parseInt(req.getParameter("excl"+i)) - 1]);
 			}
 			else {
 				usernames_excls[i-1] = "";

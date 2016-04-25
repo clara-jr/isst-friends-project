@@ -93,40 +93,26 @@ public class VerGruposServlet extends HttpServlet {
 				repetido = false;
 			}
 			
-			if (!repetido) {
-			agrupao.insertAgrupacion(item, id, "", "");
-			}
-			
-			User usuario = UserDAOImpl.getInstance().getUserByEmail(userservice.getCurrentUser().getEmail());
-			List<Agrupaciones> agrupuser = AgrupacionesDAOImpl.getInstance().getAgrupacionesByUser(usuario.getNick());
-			List<Grupo> grupos = new ArrayList<Grupo>();
-			HashMap<Long, Agrupaciones[] > agrupacionesporgrupo = new HashMap<Long, Agrupaciones[] >();
-			
-	
-			for (Agrupaciones temp: agrupuser){
-				grupos.add(GrupoDAOImpl.getInstance().getGrupoById(temp.getGrupo()));
-				List<Agrupaciones> agrupacionesdelgrupo = AgrupacionesDAOImpl.getInstance().getAgrupacionesByGrupo(temp.getGrupo());
-				agrupacionesporgrupo.put(temp.getGrupo(), agrupacionesdelgrupo.toArray(new Agrupaciones[agrupacionesdelgrupo.size()]));
-			}
-			
-			req.getSession().setAttribute("usuario", usuario);
-			req.getSession().setAttribute("grupos", grupos);
-			req.getSession().setAttribute("agrupaciones", agrupacionesporgrupo);
-			
-			if (existe == false) {
-				Functions.getInstance().aviso(user, userservice.getCurrentUser().getNickname());
-				resp.sendRedirect("grupos.jsp");
-			}
-			else if (repetido == true) {
-				req.getSession().setAttribute("error", "¡Ese usuario ya está en el grupo!");
-				resp.sendRedirect("avisos.jsp");
+			if (existe) {
+				if (repetido) {
+					req.getSession().setAttribute("error", "¡Ese usuario ya está en el grupo!");
+					resp.sendRedirect("avisos.jsp");
+				}
+				else {
+					agrupao.insertAgrupacion(item, id, "", "");
+					resp.sendRedirect("/Grupos");
+				}
 			}
 			else {
-				try {
-					Thread.sleep(200);
-				} catch (InterruptedException e1) {
+				Functions.getInstance().aviso(item, userservice.getCurrentUser().getNickname());
+				if (repetido) {
+					req.getSession().setAttribute("error", "¡Ese usuario ya está en el grupo!");
+					resp.sendRedirect("avisos.jsp");
 				}
-				resp.sendRedirect("grupos.jsp");	
+				else {
+					agrupao.insertAgrupacion(item, id, "", "");
+					resp.sendRedirect("/Grupos");
+				}
 			}
 		}				
 		
@@ -135,28 +121,12 @@ public class VerGruposServlet extends HttpServlet {
 			Agrupaciones seleccion = agrupao.getAgrupByUserAndGrupo(user, id);
 			
 			agrupao.deleteAgrupacion(seleccion);	
-			
-			User usuario = UserDAOImpl.getInstance().getUserByEmail(userservice.getCurrentUser().getEmail());
-			List<Agrupaciones> agrupuser = AgrupacionesDAOImpl.getInstance().getAgrupacionesByUser(usuario.getNick());
-			List<Grupo> grupos = new ArrayList<Grupo>();
-			HashMap<Long, Agrupaciones[] > agrupacionesporgrupo = new HashMap<Long, Agrupaciones[] >();
-			
-	
-			for (Agrupaciones temp: agrupuser){
-				grupos.add(GrupoDAOImpl.getInstance().getGrupoById(temp.getGrupo()));
-				List<Agrupaciones> agrupacionesdelgrupo = AgrupacionesDAOImpl.getInstance().getAgrupacionesByGrupo(temp.getGrupo());
-				agrupacionesporgrupo.put(temp.getGrupo(), agrupacionesdelgrupo.toArray(new Agrupaciones[agrupacionesdelgrupo.size()]));
-			}
-			
-			req.getSession().setAttribute("usuario", usuario);
-			req.getSession().setAttribute("grupos", grupos);
-			req.getSession().setAttribute("agrupaciones", agrupacionesporgrupo);
 						
 			try {
 				Thread.sleep(200);
 			} catch (InterruptedException e1) {
 			}
-			resp.sendRedirect("grupos.jsp");	
+			resp.sendRedirect("/Grupos");	
 		}
 	}
 }
