@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Properties;
 
 import es.upm.dit.isst.amigos.dao.*;
@@ -51,8 +53,8 @@ public class CreadorGruposServlet extends HttpServlet {
 					error = true;
 				}	
 				try {
-					if (Integer.parseInt(req.getParameter("excl"+i)) > participants_int) {				
-						req.getSession().setAttribute("error", "¡Algún número en exclusiones es mayor que el número de participantes!");
+					if (Integer.parseInt(req.getParameter("excl"+i)) > participants_int || Integer.parseInt(req.getParameter("excl"+i)) <= 0) {				
+						req.getSession().setAttribute("error", "¡Algún número en exclusiones no se corresponde con ningún participante!");
 						resp.sendRedirect("avisos.jsp");
 						error = true;
 					}
@@ -62,6 +64,22 @@ public class CreadorGruposServlet extends HttpServlet {
 			}
 		}	
 		if (error == false) {
+			List<Integer> exclusioneslist = new ArrayList<Integer>();
+			
+			for(int i = 1; i <= participants_int; i++){
+				exclusioneslist.add(Integer.valueOf(req.getParameter("excl"+i)));
+			}
+			for(int i = 0; i < participants_int; i++) {
+				Integer numveces = Collections.frequency(exclusioneslist, exclusioneslist.get(i));
+				if (numveces.equals(Integer.valueOf(participants_int))){
+					resp.sendRedirect("https://www.youtube.com/watch?v=TJL4Y3aGPuA"); // TROLOLOLO
+					return;
+				} else if(numveces.equals(Integer.valueOf(participants_int - 1)) && exclusioneslist.get(exclusioneslist.get(i)).equals(exclusioneslist.get(i))){
+					resp.sendRedirect("https://www.youtube.com/watch?v=TJL4Y3aGPuA"); // TROLOLOLO
+					return;
+				}
+			}
+			
 			Grupo grupo = gruposdao.insertGrupo(groupname, nickname, maxprice, date, msg); 
 			Long id = grupo.getId();
 		for(int i=1; i<=participants_int; i++) {
