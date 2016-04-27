@@ -47,10 +47,9 @@ public class Logica_SorteoServlet extends HttpServlet {
 					return;
 				}
 				usernames_excls[i-1] = usernames[Integer.parseInt(req.getParameter("excl"+i)) - 1];
-				System.out.println(usernames_excls[i-1]);
+				//System.out.println(usernames_excls[i-1]);
 				cont++;
 				if (i > 1 && usernames_excls[i-1].equals(usernames_excls[i-2])) {
-					System.out.println(usernames_excls[i-2]);
 					contExcl++;
 				}
 			}
@@ -62,7 +61,7 @@ public class Logica_SorteoServlet extends HttpServlet {
 			resp.sendRedirect("https://www.youtube.com/watch?v=TJL4Y3aGPuA"); // TROLOLOLO
 		}
 		
-		if (cont >= participants_int - 1){ //Suficientes exclusiones como para poder provocar errores
+		/*if (cont >= participants_int - 1){ //Suficientes exclusiones como para poder provocar errores
 			List<Integer> exclusioneslist = new ArrayList<Integer>();
 			for(int i = 1; i <= participants_int; i++){
 				try {
@@ -78,7 +77,7 @@ public class Logica_SorteoServlet extends HttpServlet {
 					return;
 				}
 			}
-		} //No parece que funcione
+		} //No parece que funcione */
 		
 		String[] randomizedArray = Functions.getInstance().asignador(usernames, usernames_excls);
 		try {
