@@ -48,7 +48,7 @@
 		              		  </c:if>
 		              		  
 		              		  <c:if test = "${error == '¡Has introducido un valor no numérico en el campo de exclusiones!'
-		              		   || error == '¡Algún número en exclusiones es mayor que el número de participantes!'}">
+		              		   || error == '¡Algún número en exclusiones es inválido!'}">
                                 <form action ="/Grupos" method="get">
                               	<input type="submit" value="Volver"
                               	 type="button" class="btn btn-default"/> 

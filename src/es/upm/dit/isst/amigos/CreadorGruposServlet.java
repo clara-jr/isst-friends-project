@@ -49,8 +49,8 @@ public class CreadorGruposServlet extends HttpServlet {
 					error = true;
 				}	
 				try {
-					if (Integer.parseInt(req.getParameter("excl"+i)) > participants_int) {				
-						req.getSession().setAttribute("error", "¡Algún número en exclusiones es mayor que el número de participantes!");
+					if (Integer.parseInt(req.getParameter("excl"+i)) > participants_int || Integer.parseInt(req.getParameter("excl"+i)) < 1) {				
+						req.getSession().setAttribute("error", "¡Algún número en exclusiones es inválido!");
 						resp.sendRedirect("avisos.jsp");
 						error = true;
 					}
