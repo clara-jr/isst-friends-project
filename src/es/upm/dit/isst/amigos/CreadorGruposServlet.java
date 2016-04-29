@@ -63,6 +63,7 @@ public class CreadorGruposServlet extends HttpServlet {
 			}
 		}	
 		if (error == false) {
+
  			List<Integer> exclusioneslist = new ArrayList<Integer>();
   			
   			for(int i = 1; i <= participants_int; i++){
