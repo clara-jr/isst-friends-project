@@ -1,10 +1,13 @@
 package es.upm.dit.isst.amigos.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
+import com.google.appengine.api.datastore.Text;
 
 @Entity
 public class Chat implements Serializable {
@@ -16,11 +19,11 @@ public class Chat implements Serializable {
 	private Long grupo;
 	private String from;
 	private String to;
-	private String conversacion;
+	private Text conversacion;
 	private Boolean leidofrom;
 	private Boolean leidoto;
 	
-	public Chat(Long grupo, String from, String to, String conversacion, boolean leidofrom, boolean leidoto){
+	public Chat(Long grupo, String from, String to, Text conversacion, boolean leidofrom, boolean leidoto){
 		this.grupo = grupo;
 		this.from = from;
 		this.to = to;
@@ -61,11 +64,11 @@ public class Chat implements Serializable {
 		this.to = to;
 	}
 
-	public String getConversacion() {
+	public Text getConversacion() {
 		return conversacion;
 	}
 
-	public void setConversacion(String conversacion) {
+	public void setConversacion(Text conversacion) {
 		this.conversacion = conversacion;
 	}
 
@@ -83,6 +86,11 @@ public class Chat implements Serializable {
 
 	public void setLeidoto(Boolean leidoto) {
 		this.leidoto = leidoto;
+	}
+	
+	public String[] getConversacionParsed(){
+		String texto = conversacion.getValue();
+		return texto.split(";[(]•_•[)];");
 	}
 
 	
