@@ -44,9 +44,13 @@
                                   <br />
                                  <div class="row">
                                 <c:forEach items="${grupos}" var="grupo">
-                                  <div class="col-md-6">
-                                 	<a href=/conversacion <p> ${grupo.nombre} </a></p>
+                                  <div class="col-md-12">
+                                  	<form method="get" style= "display: inline;">
+		                               <input type="hidden" name="grupo_id" value='${grupo.id}'>                                    
+			                           <button onclick="this.form.action = 'conversacion';" type="submit" class="btn btn-default" style="margin: 0; padding: 0; background:transparent; border: none; color:#428bca">${grupo.nombre}</button>
+	                                </form>
                             </div>
+                            <br />
                             </c:forEach>
                             </div>
                         </div>

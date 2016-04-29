@@ -37,27 +37,35 @@
                     <div class="col-md-12">
                         <div class="block-top">
                             <div class="service-header">
-                                <p> Estos son tus chats en este grupo. ¡Manda un mensaje a </br />
+                                <p> Estos son tus chats en el grupo <c:out value="${grupo.nombre}" />. ¡Manda un mensaje a </br />
                                 tu amigo invisible o al destinatario de tu regalo!
                                  </p>
                                   <br />
                                  <div class="row">
                                   <div class="col-md-6">
                                  	<p><u> ¡Chatea con quien te regala! </u> </p> <br />
-                                 	<p> TODO: Mostrar esta conversación </p> <br />                               	
+                                 	<c:forEach items="${conver_invi}" var="msg">
+	                                  <p> <c:out value="${msg}" /> </p> <br />
+	                           		</c:forEach>                               	
                                  	<div class="form-group">
                                  	<form method="post">
-                                     <input type="text" class="form-control" required placeholder="Escribe un mensaje" name="conv1"><br/>
+                                 	 <input type="hidden" name="conver" value='invisible'>
+                                 	 <input type="hidden" name="grupo_id" value='${grupo.id}'>
+                                     <input type="text" class="form-control" required placeholder="Escribe un mensaje" name="conv_invi"><br/>
                                      <button type="submit" class="btn btn-default" onclick="this.form.action='/conversacion'"> Enviar </button>
                                    </form></div>                                   
                                  </div>
                                  
                                  <div class="col-md-6">
                                  	<p><u> ¡Chatea con quien recibe tu regalo! </u> </p> <br />
-                                 	<p> TODO: Mostrar esta conversación </p> <br />
+                                 	<c:forEach items="${conver_vi}" var="msg">
+	                                  <p> <c:out value="${msg}" /> </p> <br />
+	                           		</c:forEach>
                                  	<div class="form-group">
                                  	<form method="post">
-                                     <input type="text" class="form-control" required placeholder="Escribe un mensaje" name="conv2"><br/>
+                                 	 <input type="hidden" name="conver" value='visible'>
+                                 	 <input type="hidden" name="grupo_id" value='${grupo.id}'>
+                                     <input type="text" class="form-control" required placeholder="Escribe un mensaje" name="conv_vi"><br/>
                                      <button type="submit" class="btn btn-default" onclick="this.form.action='/conversacion'"> Enviar </button>
                                    </form></div>                            
                                    </div>
