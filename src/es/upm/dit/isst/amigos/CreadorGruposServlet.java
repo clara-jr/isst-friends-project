@@ -63,20 +63,27 @@ public class CreadorGruposServlet extends HttpServlet {
 			}
 		}	
 		if (error == false) {
-			List<Integer> exclusioneslist = new ArrayList<Integer>();
-			
-			for(int i = 1; i <= participants_int; i++){
-				exclusioneslist.add(Integer.valueOf(req.getParameter("excl"+i)));
-			}
-			for(int i = 0; i < participants_int; i++) {
-				Integer numveces = Collections.frequency(exclusioneslist, exclusioneslist.get(i));
-				if (numveces.equals(Integer.valueOf(participants_int))){
-					resp.sendRedirect("https://www.youtube.com/watch?v=TJL4Y3aGPuA"); // TROLOLOLO
-					return;
-				} else if(numveces.equals(Integer.valueOf(participants_int - 1)) && exclusioneslist.get(exclusioneslist.get(i)).equals(exclusioneslist.get(i))){
-					resp.sendRedirect("https://www.youtube.com/watch?v=TJL4Y3aGPuA"); // TROLOLOLO
-					return;
-				}
+ 			List<Integer> exclusioneslist = new ArrayList<Integer>();
+  			
+  			for(int i = 1; i <= participants_int; i++){
+ 				try {
+ 					exclusioneslist.add(Integer.valueOf(req.getParameter("excl"+i)));
+ 				} catch (Exception e) {
+ 					exclusioneslist.add(0);
+ 				}
+  			}
+  			for(int i = 0; i < participants_int; i++) {
+ 				Integer numveces = 0;
+ 				if (!exclusioneslist.get(i).equals(0)){
+ 					numveces = Collections.frequency(exclusioneslist, exclusioneslist.get(i));
+ 				}
+  				if (numveces.equals(Integer.valueOf(participants_int))){
+  					resp.sendRedirect("https://www.youtube.com/watch?v=TJL4Y3aGPuA"); // TROLOLOLO
+  					return;
+ 				} else if(numveces.equals(Integer.valueOf(participants_int - 1)) && !exclusioneslist.get(exclusioneslist.get(i)-1).equals(exclusioneslist.get(i))){
+  					resp.sendRedirect("https://www.youtube.com/watch?v=TJL4Y3aGPuA"); // TROLOLOLO
+  					return;
+  				}
 			}
 			
 			Grupo grupo = gruposdao.insertGrupo(groupname, nickname, maxprice, date, msg); 

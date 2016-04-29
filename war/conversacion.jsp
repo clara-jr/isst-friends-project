@@ -37,17 +37,31 @@
                     <div class="col-md-12">
                         <div class="block-top">
                             <div class="service-header">
-                                <p>Si todavía tienes dudas sobre cuál es el mejor regalo que puedes hacer, </br>
-                                  es tu oportunidad para hablar con tu amigo invisible de forma completamente anónima. </br>
-                                  Aquí tienes una lista de todos los grupos a los que estás unido:
+                                <p> Estos son tus chats en este grupo. ¡Manda un mensaje a </br />
+                                tu amigo invisible o al destinatario de tu regalo!
                                  </p>
                                   <br />
                                  <div class="row">
-                                <c:forEach items="${grupos}" var="grupo">
                                   <div class="col-md-6">
-                                 	<a href=/conversacion <p> ${grupo.nombre} </a></p>
-                            </div>
-                            </c:forEach>
+                                 	<p><u> ¡Chatea con quien te regala! </u> </p> <br />
+                                 	<p> TODO: Mostrar esta conversación </p> <br />                               	
+                                 	<div class="form-group">
+                                 	<form method="post">
+                                     <input type="text" class="form-control" required placeholder="Escribe un mensaje" name="conv1"><br/>
+                                     <button type="submit" class="btn btn-default" onclick="this.form.action='/conversacion'"> Enviar </button>
+                                   </form></div>                                   
+                                 </div>
+                                 
+                                 <div class="col-md-6">
+                                 	<p><u> ¡Chatea con quien recibe tu regalo! </u> </p> <br />
+                                 	<p> TODO: Mostrar esta conversación </p> <br />
+                                 	<div class="form-group">
+                                 	<form method="post">
+                                     <input type="text" class="form-control" required placeholder="Escribe un mensaje" name="conv2"><br/>
+                                     <button type="submit" class="btn btn-default" onclick="this.form.action='/conversacion'"> Enviar </button>
+                                   </form></div>                            
+                                   </div>
+                                   
                             </div>
                         </div>
                         </div>

@@ -62,24 +62,6 @@ public class Logica_SorteoServlet extends HttpServlet {
 			resp.sendRedirect("https://www.youtube.com/watch?v=TJL4Y3aGPuA"); // TROLOLOLO
 		}
 		
-		if (cont >= participants_int - 1){ //Suficientes exclusiones como para poder provocar errores
-			List<Integer> exclusioneslist = new ArrayList<Integer>();
-			for(int i = 1; i <= participants_int; i++){
-				try {
-					exclusioneslist.add(Integer.parseInt(req.getParameter("excl"+i)) - 1);
-				} catch (NumberFormatException e) {
-					exclusioneslist.add(0);
-				}
-			}
-			for(int i = 0; i < participants_int; i++) {
-				Integer numveces = Collections.frequency(exclusioneslist, exclusioneslist.get(i));
-				if(numveces.equals(Integer.valueOf(participants_int - 1)) && exclusioneslist.get(exclusioneslist.get(i)).equals(exclusioneslist.get(i))){
-					resp.sendRedirect("https://www.youtube.com/watch?v=TJL4Y3aGPuA"); // TROLOLOLO
-					return;
-				}
-			}
-		} //No parece que funcione
-		
 		String[] randomizedArray = Functions.getInstance().asignador(usernames, usernames_excls);
 		try {
 			if (randomizedArray.equals(null)) ;
