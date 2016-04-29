@@ -47,7 +47,15 @@ public class Logica_SorteoGruposServlet extends HttpServlet {
 			n++;
 		}
 		
-		String[] randomizedArray = Functions.getInstance().asignador(usernames, usernames_excls);
+		String[] randomizedArray = Functions.getInstance().asignador(usernames, usernames_excls);		
+		if (randomizedArray.equals(null)){
+			/*for(Agrupaciones temp : agrupaciones){
+				agrupacionesdao.deleteAgrupacion(temp);
+			}
+			grupodao.deleteGrupo(grupo);*/
+			resp.sendRedirect("https://www.youtube.com/watch?v=TJL4Y3aGPuA"); // TROLOLOLO
+			return;
+		}
 		
 		for(int i=0; i<participants_int; i++) {
 			for (Agrupaciones b: agrupaciones){
