@@ -18,12 +18,38 @@ public class Com_AmigoInvisible_isstServlet extends HttpServlet {
 		
 		UserDAOImpl dao = UserDAOImpl.getInstance();
 		
+		ChatDAOImpl chatdao = ChatDAOImpl.getInstance();
+		
 		dao.insertUser("Nacho1", "email1", "social1");
 		dao.insertUser("Nacho2", "email2", "social2");
 		dao.insertUser("Nacho3", "email3", "social3");
 		dao.insertUser("Nacho4", "email4", "social4");
 		
-
+		Chat chat = chatdao.insertChat(Long.valueOf(5845), "pepe", "nacho", true, true);
+		
+		chat = chatdao.insertMensaje(chat, "hola", "pepe");
+		chat = chatdao.insertMensaje(chat, "hola", "nacho");
+		chat = chatdao.insertMensaje(chat, "que tal?", "pepe");
+		chat = chatdao.insertMensaje(chat, "bien", "nacho");
+		
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Chat chat2 = chatdao.getChatByFromAndGrupo(Long.valueOf(5845), "pepe");
+		
+		for (String temp: chat2.getConversacionParsed()){
+			resp.getWriter().println(temp);
+		}
+		
+		for (String temp: chat.getConversacionParsed()){
+			resp.getWriter().println(temp);
+		}
+		
+/*
 		ListasDeseosDAOImpl listasdao = ListasDeseosDAOImpl.getInstance();
 		GrupoDAOImpl gruposdao = GrupoDAOImpl.getInstance();
 		AgrupacionesDAOImpl agrupdao = AgrupacionesDAOImpl.getInstance();
@@ -32,10 +58,10 @@ public class Com_AmigoInvisible_isstServlet extends HttpServlet {
 		Grupo grupo1 = gruposdao.insertGrupo("prueba1", "nachoperegrino94", "30", "07/07/07", "");
 		Grupo grupo2 = gruposdao.insertGrupo("prueba2", "nachoperegrino94", "30", "07/07/07", "");
 		Grupo grupo3 = gruposdao.insertGrupo("prueba3", "pepe", "30", "07/07/07", "");
-		Grupo grupo4 = gruposdao.insertGrupo("prueba4", "pepe", "30", "07/07/07", "");
+		Grupo grupo4 = gruposdao.insertGrupo("prueba4", "pepe", "30", "07/07/07", "");*/
 
 		
-		agrupdao.insertAgrupacion("pepe", grupo1.getId(), "", "");
+		/*agrupdao.insertAgrupacion("pepe", grupo1.getId(), "", "");
 		agrupdao.insertAgrupacion("lola", grupo1.getId(), "", "");
 		agrupdao.insertAgrupacion("pepo", grupo1.getId(), "", "");
 		agrupdao.insertAgrupacion("nachoperegrino94", grupo1.getId(), "", "");
@@ -54,7 +80,7 @@ public class Com_AmigoInvisible_isstServlet extends HttpServlet {
 		agrupdao.insertAgrupacion("pepe", grupo4.getId(), "", "");
 		agrupdao.insertAgrupacion("lola", grupo4.getId(), "", "");
 		agrupdao.insertAgrupacion("pepo", grupo4.getId(), "", "");
-		agrupdao.insertAgrupacion("nachoperegrino94", grupo4.getId(), "", "");
+		agrupdao.insertAgrupacion("nachoperegrino94", grupo4.getId(), "", "");*/
 
 		
 		

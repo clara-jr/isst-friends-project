@@ -20,9 +20,7 @@ public class AgrupacionesDAOImpl implements AgrupacionesDAO {
 			instance = new AgrupacionesDAOImpl();
 		return instance;
 	}
-	
-	// FALTA AÑADIR UN METODO PARA UPDATEAR UN ENTITY Y AÑADIR SU AMIGO INVISIBLE
-	
+		
 	@Override
 
 	public Agrupaciones insertAgrupacion(String user, Long grupo, String amigoinv, String exclusion ) {
