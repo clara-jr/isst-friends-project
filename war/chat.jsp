@@ -38,16 +38,18 @@
                         <div class="block-top">
                             <div class="service-header">
                                 <p>Si todavía tienes dudas sobre cuál es el mejor regalo que puedes hacer, </br>
-                                  es tu oportunidad para hablar con tu amigo invisible de forma completamente anónima </br>
+                                  es tu oportunidad para hablar con tu amigo invisible de forma completamente anónima. </br>
+                                  Aquí tienes una lista de todos los grupos a los que estás unido:
                                  </p>
                                   <br />
-                                 <ul style="list-style:none; padding-left:0px; color:#AFB8B8;">
-                                   <li><a href="chat.jsp"><span class="glyphicon glyphicon-envelope"></span> Chatear con Cristina</a></li> <br />
-                                   <li><a href="chat.jsp"><span class="glyphicon glyphicon-envelope"></span> Chatear con Pablo</a></li> <br />
-                                   <li><a href="chat.jsp"><span class="glyphicon glyphicon-envelope"></span> Chatear con Rocío</a></li> <br />
-                                   <li><a href="chat.jsp"><span class="glyphicon glyphicon-envelope"></span> Chatear con José Manuel</a></li>
-                                 </ul>
+                                 <div class="row">
+                                <c:forEach items="${grupos}" var="grupo">
+                                  <div class="col-md-6">
+                                 	<a href=/conversacion <p> ${grupo.nombre} </a></p>
                             </div>
+                            </c:forEach>
+                            </div>
+                        </div>
                         </div>
                     </div><!-- .col-md-12 close -->
                 </div><!-- row close -->

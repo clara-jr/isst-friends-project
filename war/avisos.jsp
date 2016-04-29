@@ -29,11 +29,11 @@
                     <div class="col-md-12">
                         <div class="block-top">
                             <div class="service-header">
-                              <p>Error:</p>
-                                <c:out value="${error}" />                             
-                              <br /><br />
                               
                               <c:if test = "${error == '¡Ese deseo ya está en la lista!'}">
+                                <p>Error:</p>
+                                <c:out value="${error}" />                             
+                              	<br /><br />
                                 <form action ="/listas_deseos" method="get">
                               	<input type="submit" value="Volver"
                               	 type="button" class="btn btn-default"/> 
@@ -41,6 +41,9 @@
 		              		  </c:if>
 		              		  
 		              		  <c:if test = "${error == '¡Ese usuario no existe!' || error == '¡Ese usuario ya está en el grupo!'}">
+                                <p>Error:</p>
+                                <c:out value="${error}" />                             
+                              	<br /><br />
                                 <form action ="/Grupos" method="get">
                               	<input type="submit" value="Volver"
                               	 type="button" class="btn btn-default"/> 
@@ -49,7 +52,19 @@
 		              		  
 		              		  <c:if test = "${error == '¡Has introducido un valor no numérico en el campo de exclusiones!'
 		              		   || error == '¡Algún número en exclusiones no se corresponde con ningún participante!'}">
+                                <p>Error:</p>
+                                <c:out value="${error}" />                             
+                              	<br /><br />
                                 <form action ="/Grupos" method="get">
+                              	<input type="submit" value="Volver"
+                              	 type="button" class="btn btn-default"/> 
+                              	</form>             
+		              		  </c:if>
+		              		  
+		              		  <c:if test = "${error == '¡Mensaje enviado!'}">
+                                <c:out value="${error}" />                             
+                              	<br /><br />
+                                <form action ="/conversacion" method="get">
                               	<input type="submit" value="Volver"
                               	 type="button" class="btn btn-default"/> 
                               	</form>             

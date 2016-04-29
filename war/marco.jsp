@@ -47,13 +47,12 @@
 		                  <li><a href="/listas_deseos_amigos">Mis Amigos</a></li>
 		              </c:if>
 		              
-		              <c:if test = "${URL == '/chat.jsp'}">
+		              <c:if test = "${(URL == '/chat.jsp') || (URL == '/conversacion.jsp')}">
 		                  <li class="active"><a href="chat.jsp">Chat <span class="sr-only">(current)</span></a></li>
 		              </c:if>
-		              <c:if test = "${URL != '/chat.jsp'}">
-		                  <li><a href="chat.jsp">Chat</a></li>
+		              <c:if test = "${(URL != '/chat.jsp') && (URL != '/conversacion.jsp')}">
+		                  <li><a href="/chat">Chat</a></li>
 		              </c:if>
-		            
 	              </c:if>
 	              
 	              <!-- Si el usuario NO está logueado -->

@@ -5,8 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.json.*;
-
 import com.google.appengine.api.datastore.Text;
 
 import es.upm.dit.isst.amigos.model.Agrupaciones;
