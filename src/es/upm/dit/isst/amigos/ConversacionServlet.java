@@ -14,6 +14,7 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
 import es.upm.dit.isst.amigos.dao.*;
+import es.upm.dit.isst.amigos.logic.Functions;
 import es.upm.dit.isst.amigos.model.*;
 
 @SuppressWarnings("serial")
@@ -81,6 +82,7 @@ public class ConversacionServlet extends HttpServlet {
 		Agrupaciones agrupacion_invi = agrupao.getAgrupByAmiInvAndGrupo(autor, id);
 		
 		if(conver.equals("visible")) {
+			Functions.getInstance().chat(agrupacion_vi.getAmigoinv(), grupodao.getGrupoById(id).getNombre());
 			Chat chat = new Chat(id, autor, autor, null, false, false);
 			try {
 				chat = chatdao.getChatByFromAndGrupo(id, autor);
@@ -121,6 +123,7 @@ public class ConversacionServlet extends HttpServlet {
 		}
 		
 		else if(conver.equals("invisible")) {
+			Functions.getInstance().chat(agrupacion_invi.getUser(), grupodao.getGrupoById(id).getNombre());
 			Chat chat = new Chat(id, autor, autor, null, false, false);
 			try {
 				chat = chatdao.getChatByToAndGrupo(id, autor);
