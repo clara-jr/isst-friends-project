@@ -34,7 +34,7 @@
 
         <section id="service">
             <div class="container">
-                <div class="row">
+                <div class="row portfolio">
                     <div class="col-md-12">
                         <div class="block-top">
                             <div class="service-header">
