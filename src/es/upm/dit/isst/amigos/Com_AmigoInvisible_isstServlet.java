@@ -27,10 +27,19 @@ public class Com_AmigoInvisible_isstServlet extends HttpServlet {
 		
 		Chat chat = chatdao.insertChat(Long.valueOf(5845), "pepe", "nacho", true, true);
 		
-		chat = chatdao.insertMensaje(chat, "hola", "pepe");
+		GrupoDAOImpl gruposdao = GrupoDAOImpl.getInstance();
+		AgrupacionesDAOImpl agrupdao = AgrupacionesDAOImpl.getInstance();
+		
+
+		Grupo grupo1 = gruposdao.insertGrupo("prueba1", "nachoperegrino94", "30", "07/07/07", "");
+		
+		agrupdao.insertAgrupacion("test1", grupo1.getId(), "test2", "");
+		agrupdao.insertAgrupacion("test2", grupo1.getId(), "test1", "");
+		
+		/*chat = chatdao.insertMensaje(chat, "hola", "pepe");
 		chat = chatdao.insertMensaje(chat, "hola", "nacho");
 		chat = chatdao.insertMensaje(chat, "que tal?", "pepe");
-		chat = chatdao.insertMensaje(chat, "bien", "nacho");
+		chat = chatdao.insertMensaje(chat, "bien", "nacho");*/
 		
 		try {
 			Thread.sleep(500);
@@ -39,7 +48,7 @@ public class Com_AmigoInvisible_isstServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		Chat chat2 = chatdao.getChatByFromAndGrupo(Long.valueOf(5845), "pepe");
+		/*Chat chat2 = chatdao.getChatByFromAndGrupo(Long.valueOf(5845), "pepe");
 		
 		for (String temp: chat2.getConversacionParsed()){
 			resp.getWriter().println(temp);
@@ -47,7 +56,7 @@ public class Com_AmigoInvisible_isstServlet extends HttpServlet {
 		
 		for (String temp: chat.getConversacionParsed()){
 			resp.getWriter().println(temp);
-		}
+		}*/
 		
 /*
 		ListasDeseosDAOImpl listasdao = ListasDeseosDAOImpl.getInstance();
