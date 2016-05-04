@@ -60,7 +60,6 @@ public class Logica_SorteoServlet extends HttpServlet {
 		if (contExcl == (participants_int - 1)){ //Todos excluyen al mismo
 			resp.sendRedirect("https://www.youtube.com/watch?v=TJL4Y3aGPuA"); // TROLOLOLO
 		}
-				
 		String[] randomizedArray = Functions.getInstance().asignador(usernames, usernames_excls);
 		try {
 			if (randomizedArray.equals(null)) ;

@@ -47,13 +47,12 @@
 		                  <li><a href="/listas_deseos_amigos">Mis Amigos</a></li>
 		              </c:if>
 		              
-		              <c:if test = "${URL == '/chat.jsp'}">
+		              <c:if test = "${(URL == '/chat.jsp') || (URL == '/conversacion.jsp')}">
 		                  <li class="active"><a href="chat.jsp">Chat <span class="sr-only">(current)</span></a></li>
 		              </c:if>
-		              <c:if test = "${URL != '/chat.jsp'}">
-		                  <li><a href="chat.jsp">Chat</a></li>
+		              <c:if test = "${(URL != '/chat.jsp') && (URL != '/conversacion.jsp')}">
+		                  <li><a href="/chat">Chat</a></li>
 		              </c:if>
-		            
 	              </c:if>
 	              
 	              <!-- Si el usuario NO está logueado -->
@@ -84,11 +83,22 @@
             		</c:if>                 
                   </ul>
 								  <ul class="nav navbar-nav dcha">
+								<c:if test="${not empty gruposnoleidos}">
+									<li> <label for="exampleInput" ><div id= "popup" class= "popupHover"><span class="glyphicon glyphicon-envelope"></span>
+                                     <div id="info" class="popupBox" style="z-index:1; top:20px;"> Tienes mensajes nuevos</div></div></label>
+										<c:forEach items="${gruposnoleidos}" var="gruponoleido">
+											<a href="/conversacion?grupo_id=${gruponoleido.id}" style="display: inline;"/><c:out value="${gruponoleido.nombre}"/></a>
+										</c:forEach>
+										<label for="exampleInput" ><div id= "popup" class= "popupHover"><span class="glyphicon glyphicon-envelope"></span>
+                                     <div id="info" class="popupBox" style="z-index:1; top:20px;"> Tienes mensajes nuevos</div></div></label>
+									</li>
+								
+								</c:if>
  				  				<c:if test="${not empty pageContext.request.userPrincipal}">
-								    <li><a href="/Login"/>Cerrar Sesión</a></li>
+								    <li><a href="/Login"/ style="display: inline;">Cerrar Sesión</a></li>
 								</c:if>
 								<c:if test="${empty pageContext.request.userPrincipal}">
-								    <li><a href="/Login"/>Iniciar Sesión</a></li>
+								    <li><a href="/Login"/ style="display: inline;">Iniciar Sesión</a></li>
 								</c:if>
                   </ul>
 								</div><!-- /.navbar-collapse -->

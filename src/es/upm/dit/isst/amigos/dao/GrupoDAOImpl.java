@@ -29,7 +29,6 @@ public class GrupoDAOImpl implements GrupoDAO {
 		em.persist(grupoObject);
 		
 		em.close();
-		
 		return grupoObject;
 	}
 

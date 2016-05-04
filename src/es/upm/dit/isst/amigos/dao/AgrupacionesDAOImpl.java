@@ -20,9 +20,7 @@ public class AgrupacionesDAOImpl implements AgrupacionesDAO {
 			instance = new AgrupacionesDAOImpl();
 		return instance;
 	}
-	
-	// FALTA AÑADIR UN METODO PARA UPDATEAR UN ENTITY Y AÑADIR SU AMIGO INVISIBLE
-	
+		
 	@Override
 
 	public Agrupaciones insertAgrupacion(String user, Long grupo, String amigoinv, String exclusion ) {
@@ -65,6 +63,19 @@ public class AgrupacionesDAOImpl implements AgrupacionesDAO {
 		Query q = em.createQuery("SELECT m FROM Agrupaciones m WHERE m.user = :user AND m.grupo = :grupo");
 		q.setParameter("grupo", grupo);
 		q.setParameter("user", user);
+		
+		Agrupaciones agrupaciones = (Agrupaciones) q.getSingleResult();
+		em.close();
+		return agrupaciones;
+	}
+	
+	@Override
+	public Agrupaciones getAgrupByAmiInvAndGrupo(String amigoinv, Long grupo) {
+		EntityManager em = EMFService.get().createEntityManager();
+
+		Query q = em.createQuery("SELECT m FROM Agrupaciones m WHERE m.amigoinv = :amigoinv AND m.grupo = :grupo");
+		q.setParameter("grupo", grupo);
+		q.setParameter("amigoinv", amigoinv);
 		
 		Agrupaciones agrupaciones = (Agrupaciones) q.getSingleResult();
 		em.close();
