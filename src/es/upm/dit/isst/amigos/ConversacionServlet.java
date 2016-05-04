@@ -42,6 +42,8 @@ public class ConversacionServlet extends HttpServlet {
 			
 			try {
 				Chat chat_vi = chatdao.getChatByFromAndGrupo(id, user);
+				chat_vi.setLeidofrom(true);
+				chatdao.updateChat(chat_vi);
 				String[] conver_vi = chat_vi.getConversacionParsed();
 				List lista_vi = new ArrayList();
 				lista_vi = Arrays.asList(conver_vi);
@@ -54,6 +56,8 @@ public class ConversacionServlet extends HttpServlet {
 			
 			try {
 				Chat chat_invi = chatdao.getChatByToAndGrupo(id, user);
+				chat_invi.setLeidoto(true);
+				chatdao.updateChat(chat_invi);
 				String[] conver_invi = chat_invi.getConversacionParsed();
 				List lista_invi = new ArrayList();
 				lista_invi = Arrays.asList(conver_invi);
@@ -83,16 +87,17 @@ public class ConversacionServlet extends HttpServlet {
 		
 		if(conver.equals("visible")) {
 			Functions.getInstance().chat(agrupacion_vi.getAmigoinv(), grupodao.getGrupoById(id).getNombre());
-			Chat chat = new Chat(id, autor, autor, null, false, false);
+			Chat chat;
 			try {
 				chat = chatdao.getChatByFromAndGrupo(id, autor);
 			}
 			catch (Exception e) {
-				chatdao.insertChat(id, autor, agrupacion_vi.getAmigoinv(), true, true);
-				chat = chatdao.getChatByFromAndGrupo(id, autor);
+				chat = chatdao.insertChat(id, autor, agrupacion_vi.getAmigoinv(), true, true);
 			}
 			mensaje = req.getParameter("conv_vi");
 			chatdao.insertMensaje(chat, mensaje, "anónimo");
+			chat.setLeidoto(false);
+			chatdao.updateChat(chat);
 			
 			Grupo grupo = grupodao.getGrupoById(id);
 			try {
@@ -124,16 +129,17 @@ public class ConversacionServlet extends HttpServlet {
 		
 		else if(conver.equals("invisible")) {
 			Functions.getInstance().chat(agrupacion_invi.getUser(), grupodao.getGrupoById(id).getNombre());
-			Chat chat = new Chat(id, autor, autor, null, false, false);
+			Chat chat;
 			try {
 				chat = chatdao.getChatByToAndGrupo(id, autor);
 			}
 			catch (Exception e) {
-				chatdao.insertChat(id, agrupacion_invi.getUser(), autor, true, true);
-				chat = chatdao.getChatByToAndGrupo(id, autor);
+				chat = chatdao.insertChat(id, agrupacion_invi.getUser(), autor, true, true);
 			}
 			mensaje = req.getParameter("conv_invi");
 			chatdao.insertMensaje(chat, mensaje, autor);
+			chat.setLeidofrom(false);
+			chatdao.updateChat(chat);
 			
 			Grupo grupo = grupodao.getGrupoById(id);
 			try {

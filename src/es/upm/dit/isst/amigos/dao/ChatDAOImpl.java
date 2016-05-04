@@ -94,4 +94,13 @@ public class ChatDAOImpl implements ChatDAO {
 		return chat;
 	}
 
+	@Override
+	public void updateChat(Chat chat) {
+		EntityManager em = EMFService.get().createEntityManager();
+		
+		em.merge(chat);
+		em.close();
+		return;		
+	}
+
 }

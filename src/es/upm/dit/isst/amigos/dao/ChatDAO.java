@@ -23,6 +23,8 @@ public interface ChatDAO {
 	
 	public Chat insertMensaje(Chat chat, String mensaje, String autor);
 	
+	public void updateChat(Chat chat);
+	
 	
 	
 	
