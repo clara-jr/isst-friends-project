@@ -48,7 +48,6 @@ public class Functions {
 			excl = false;
 			n++;
 			if (n >= 100){
-				System.out.println(0);
 				return null; //Demasiados intentos, quizá no se pueda realizar el sorteo
 			}
 		    for (int i = 0; i < randomizedArray.length; i++) {
@@ -57,13 +56,11 @@ public class Functions {
 			    	if (id_in < randomizedArray.length - 1) {
 			    		if (randomizedArray[id_in+1] == usernames_excls[i]) {
 				    		excl = true;
-				    		System.out.println(1);
 						}
 			    	}
 			    	else {
 			    		if (randomizedArray[0] == usernames_excls[i]) {
 				    		excl = true;
-				    		System.out.println(2);
 						}
 			    	}
 				}

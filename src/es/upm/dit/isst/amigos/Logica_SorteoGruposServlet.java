@@ -47,12 +47,27 @@ public class Logica_SorteoGruposServlet extends HttpServlet {
 			n++;
 		}
 		
+		for(int i = 0; i < usernames.length; i++){
+			for(int j = i+1; j < usernames.length; j++){
+				if(usernames[i].equals(usernames[j])){
+					req.getSession().setAttribute("error", "¡Has introducido dos nombres iguales!");
+					resp.sendRedirect("avisos.jsp");
+					return;
+				}
+			}
+		}
+		for(int i = 0; i < emails.length; i++){
+			for(int j = i+1; j < emails.length; j++){
+				if(emails[i].equals(emails[j])){
+					req.getSession().setAttribute("error", "¡Has introducido dos email iguales!");
+					resp.sendRedirect("avisos.jsp");
+					return;
+				}
+			}
+		}
+		
 		String[] randomizedArray = Functions.getInstance().asignador(usernames, usernames_excls);		
 		if (randomizedArray.equals(null)){
-			/*for(Agrupaciones temp : agrupaciones){
-				agrupacionesdao.deleteAgrupacion(temp);
-			}
-			grupodao.deleteGrupo(grupo);*/
 			resp.sendRedirect("https://www.youtube.com/watch?v=TJL4Y3aGPuA"); // TROLOLOLO
 			return;
 		}
