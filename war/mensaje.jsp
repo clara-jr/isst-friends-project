@@ -67,25 +67,25 @@
                               <input type="hidden" name="participants" value='<%= participants %>'>
                                 <div class="form-group" style="max-width:600px; margin-left:auto; margin-right:auto;">
                                   <label for="exampleInputName">¿Quién es el organizador del sorteo?</label>
-                                  <input type="text" class="form-control" id="exampleInputName" name="mod_name">
+                                  <input type="text" class="form-control" id="exampleInputName" name="mod_name" required>
                                 </div>
                                 <div class="form-group" style="max-width:600px; margin-left:auto; margin-right:auto;">
                                   <label for="exampleInputMoney">Define la cuantía máxima de los regalos:</label>
-                                  <input type="text" class="form-control" id="exampleInputMoney" name="money">
+                                  <input type="text" class="form-control" id="exampleInputMoney" name="money" required>
                                 </div>
                                 <div class="form-group" style="max-width:600px; margin-left:auto; margin-right:auto;">
                                   <label for="exampleInputDate">Elige el día en el que se repartirán los regalos:
                                   <span class="glyphicon glyphicon-calendar"></span></label>
-                                  <input type="date" class="form-control" id="exampleInputDate" name="date">
+                                  <input type="date" class="form-control" id="exampleInputDate" name="date" required>
                                 </div>
                                 <div class="form-group" style="max-width:600px; margin-left:auto; margin-right:auto;">
                                   <label for="exampleInputMessage">Escribe el mensaje que recibiréis:</label>
-                                  <input type="text" class="form-control" id="exampleInputMessage" name="msg">
+                                  <input type="text" class="form-control" id="exampleInputMessage" name="msg" required>
                                 </div>
                                 <br />
                                 <div class="row">
                                   <div class="col-md-6">
-                                    <button type="submit" class="btn btn-default" onclick="this.form.action='participantes.jsp'"><span class="glyphicon glyphicon-circle-arrow-left"></span> Anterior</button>
+                                    <a href="/participantes.jsp"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-left"></span> Anterior</button></a>
                                   </div>
                                   <div class="col-md-6">
                                     <button type="submit" class="btn btn-default" onclick="this.form.action='sortear.jsp'">Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span></button>

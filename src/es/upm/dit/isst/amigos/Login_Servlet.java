@@ -19,9 +19,11 @@ public class Login_Servlet extends HttpServlet {
 
 		UserService userService = UserServiceFactory.getUserService();
 		String url = userService.createLoginURL("/login_final");
+		req.getSession().setAttribute("urllogin", url);
 
 		if (req.getUserPrincipal() != null){
 			url = userService.createLogoutURL("/index");
+			req.getSession().setAttribute("urllogin", url);
 		}
 
 		resp.sendRedirect(url);
