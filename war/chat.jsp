@@ -49,6 +49,11 @@
 		                               <input type="hidden" name="grupo_id" value='${grupo.id}'>                                    
 			                           <button onclick="this.form.action = 'conversacion';" type="submit" class="btn btn-default" style="margin: 0; padding: 0; background:transparent; border: none; color:#428bca">${grupo.nombre}</button>
 	                                </form>
+	                                <c:if test="${fn:contains(gruposnoleidos, grupo.id)}">
+		                                <label for="exampleInput" ><div id= "popup" class= "popupHover" style= "display: inline; position: relative"><span class="glyphicon glyphicon-envelope"></span>
+	                                     <div id="info" class="popupBox" style="z-index:1; top:20px; width: 150px;" align="left"> Tienes mensajes nuevos en este grupo. Click para consultar.</div></div></label>								
+										
+									</c:if>
                             </div>
                             <br />
                             </c:forEach>
