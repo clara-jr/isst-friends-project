@@ -50,6 +50,7 @@ public class Filtro implements Filter {
 	
 			List<Chat> chatsfrom;
 			List<Chat> chatsto;
+
 			Set<Long> noleidos = new HashSet<Long>();
 			
 			chatsfrom = chatdao.getChatByFrom(userservice.getCurrentUser().getNickname());
@@ -73,7 +74,6 @@ public class Filtro implements Filter {
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		this.filterConfig = filterConfig;
-
 	}
 
 }

@@ -94,9 +94,7 @@
 	                  <li class="active"><a href="sortear.jsp">¡A Jugar! <span class="sr-only">(current)</span></a></li>
             		  </c:if>
             		</c:if>                 
-                  </ul>
-                  
-                
+                  </ul>     
 								  <ul class="nav navbar-nav dcha">								
  				  				<c:if test="${not empty pageContext.request.userPrincipal}">
 								    <li><a href="/Login"/ style="display: inline;">Cerrar Sesión</a></li>
