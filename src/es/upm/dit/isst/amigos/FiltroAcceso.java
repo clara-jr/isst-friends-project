@@ -9,6 +9,7 @@ import java.util.Set;
 
 
 
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -24,7 +25,7 @@ import es.upm.dit.isst.amigos.model.*;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-public class Filtro implements Filter {
+public class FiltroAcceso implements Filter {
 
 	FilterConfig filterConfig = null;
 	
@@ -40,33 +41,17 @@ public class Filtro implements Filter {
 
 		HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
-		
-		if (req.getUserPrincipal() != null ){
-			UserService userservice = UserServiceFactory.getUserService();
-			
-			
-			ChatDAOImpl chatdao = ChatDAOImpl.getInstance();
-			GrupoDAOImpl grupodao = GrupoDAOImpl.getInstance();
-	
-			List<Chat> chatsfrom;
-			List<Chat> chatsto;
-			Set<Long> noleidos = new HashSet<Long>();
-			
-			chatsfrom = chatdao.getChatByFrom(userservice.getCurrentUser().getNickname());
-			chatsto = chatdao.getChatByTo(userservice.getCurrentUser().getNickname());
-	
-			for (Chat temp : chatsfrom){
-				if (!temp.getLeidofrom()){
-					noleidos.add(temp.getGrupo());
-				}
+
+        if (req.getUserPrincipal() == null ){			
+			if (!(req.getRequestURI().equals("/index.jsp") || req.getRequestURI().equals("/index") || req.getRequestURI().equals("/participantes.jsp") || req.getRequestURI().equals("/mensaje.jsp") ||
+					req.getRequestURI().equals("/sortear.jsp") || req.getRequestURI().equals("/logica_sorteo") || req.getRequestURI().equals("/avisos.jsp") || req.getRequestURI().equals("/") || req.getRequestURI().equals("/Login") ||
+					req.getRequestURI().equals(((String)req.getSession().getAttribute("urllogin")).split("\\?")[0]))){
+				req.getSession().setAttribute("error", "No estas logueado, por lo que no puedes acceder a esta página");
+				resp.sendRedirect("avisos.jsp");
+				return;
 			}
-			for (Chat temp : chatsto){
-				if (!temp.getLeidoto()){
-					noleidos.add(temp.getGrupo());
-				}
-			}
-			req.getSession().setAttribute("gruposnoleidos", noleidos);
 		}
+
 		filterChain.doFilter(request, response);
 	}
 
