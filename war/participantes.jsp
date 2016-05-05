@@ -138,9 +138,9 @@
                                   <label for="exampleInput">Excluir <div id= "popup" style="display:inline;" class= "popupHover"> <span style="display:inline;" class="glyphicon glyphicon-question-sign"></span> 
                                      <div id="info" class="popupBox">Si un miembro no quiere regalar a otro, deberás poner aquí el número de su izquierda
                                      en este formulario. </div></div></label>
-                                  <input type="number" name="quantity" min="1" max="3" class="form-control" name="excl1" id="exampleInput1"/><br/>
-                                  <input type="number" name="quantity" min="1" max="3" class="form-control" name="excl2" id="exampleInput2"/><br/>
-                                  <input type="number" name="quantity" min="1" max="3" class="form-control" name="excl3" id="exampleInput3"/><br/>
+                                  <input type="number" min="1" max="3" class="form-control" name="excl1" id="exampleInput1"/><br/>
+                                  <input type="number" min="1" max="3" class="form-control" name="excl2" id="exampleInput2"/><br/>
+                                  <input type="number" min="1" max="3" class="form-control" name="excl3" id="exampleInput3"/><br/>
                                 </div>
                                 <p style="margin-top:20px;">
                                 <button type="button" class="btn btn-default" style="margin-top:20px;" id="btnAdd">

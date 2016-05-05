@@ -51,7 +51,7 @@
 		              <c:if test = "${(URL == '/chat.jsp') || (URL == '/conversacion.jsp')}">
 		                  <li class="active"><a href="/chat">Chat
 		                   <c:if test="${not empty gruposnoleidos}">
-							    <label for="exampleInput" style="display: inline;"><div id= "popup" class= "popupHover" style="display: inline; position: relative;"><span class="glyphicon glyphicon-envelope" style="color:steelblue"></span>
+							    <label for="exampleInput" style="display: inline;"><div id= "popup" class= "popupHover" style="display: inline; position: relative;"><span class="glyphicon glyphicon-envelope" style="color:blue"></span>
 	                   		    <div id="info" class="popupBox" style="z-index:1; top:20px; width: 150px; left: 0px"> Tienes mensajes nuevos.</div></div></label>													
 					 	   </c:if>
 		                  <span class="sr-only">(current)</span></a>
@@ -60,7 +60,7 @@
 		              <c:if test = "${(URL != '/chat.jsp') && (URL != '/conversacion.jsp')}">
 		                  <li><a href="/chat">Chat 
 			                  <c:if test="${not empty gruposnoleidos}">
-							    <label for="exampleInput" style="display: inline;"><div id= "popup" class= "popupHover" style="display: inline; position: relative;"><span class="glyphicon glyphicon-envelope" style="color:steelblue"></span>
+							    <label for="exampleInput" style="display: inline;"><div id= "popup" class= "popupHover" style="display: inline; position: relative;"><span class="glyphicon glyphicon-envelope" style="color:blue"></span>
 	                   		    <div id="info" class="popupBox" style="z-index:1; top:20px; width: 150px; left: 0px"> Tienes mensajes nuevos.</div></div></label>													
 					 	      </c:if>
 			                  </a>
