@@ -61,6 +61,28 @@
                               	</form>             
 		              		  </c:if>
 		              		  
+		              		  <c:if test = "${error == '¡Has introducido dos nombres iguales!'
+		              		   || error == '¡Has introducido dos email iguales!'}">
+                                <p>Error:</p>
+                                <c:out value="${error}" />                             
+                              	<br /><br />
+                                <form action ="/Grupos" method="get">
+                              	<input type="submit" value="Volver"
+                              	 type="button" class="btn btn-default"/> 
+                              	</form>             
+		              		  </c:if>
+		              		  
+		              		  <c:if test = "${error == '¡Has introducido dos nombres iguales en los participantes!'
+		              		   || error == '¡Has introducido dos emails iguales!'}">
+                                <p>Error:</p>
+                                <c:out value="${error}" />                             
+                              	<br /><br />
+                                <form action ="/participantes.jsp" method="get">
+                              	<input type="submit" value="Volver"
+                              	 type="button" class="btn btn-default"/> 
+                              	</form>             
+		              		  </c:if>
+		              		  
 		              		  <c:if test = "${error == '¡Mensaje enviado!'}">
                                 <c:out value="${error}" />                             
                               	<br /><br />
