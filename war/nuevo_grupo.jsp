@@ -55,6 +55,12 @@
                 $('#exampleInput' + num).after(newExcl);
                 $('#exampleInput' + newNum).before("</br>");
                 
+				// Actualiza el valor maximo de los input de excluir
+                
+                for (i = 1; i <= newNum; i++) {
+                	$('#exampleInput' + i).attr('max', newNum);
+				}
+                
                 // enable the "remove" button
                 $('#btnDel').removeAttr('disabled');
             });
@@ -69,6 +75,12 @@
                 $('#excls').find('br:last').remove();
                 
                 $('#participants').val(num-1);
+                
+            	 // Actualiza el valor maximo de los input de excluir
+
+                for (i = 1; i <= num-1; i++) {
+                	$('#exampleInput' + i).attr('max', num-1);
+				}
  
                 // if only one element remains, disable the "remove" button
                 if (num == 4)
@@ -121,8 +133,8 @@
                                	   	<label for="exampleInputName">Nombre de usuario</label>
 
                                	   	<input type="text" required class="form-control" id="exampleInputName1" name="username1" value="${fn:substringBefore(pageContext.request.userPrincipal.name,'@')}" placeholder="Nombre" readonly = "readonly"/><br/>
-                               	   	<input type="text" required class="form-control" id="exampleInputName2" name="username2" placeholder="Nombre"/><br/>
-                               	   	<input type="text" required class="form-control" id="exampleInputName3" name="username3" placeholder="Nombre"/><br/>
+                               	   	<input type="text" required class="form-control" id="exampleInputName2" name="username2" placeholder="Nombre" required/><br/>
+                               	   	<input type="text" required class="form-control" id="exampleInputName3" name="username3" placeholder="Nombre" required/><br/>
                                	   	</div>
                                	   	
                                	   	<div class="form-group" id="adds" style="max-width:150px;">
@@ -136,9 +148,9 @@
                                      <label for="exampleInput">Excluir <div id= "popup" class= "popupHover"  style="position:absolute;top:10px;left:0px;"> <span style="display:inline;" class="glyphicon glyphicon-question-sign"></span> 
                                      <div id="info" class="popupBox" style="position:absolute;top:10px;left:0px;">Si un miembro no quiere regalar a otro, deberás poner aquí el número de su izquierda
                                      en este formulario. </div></div></label>
-                                     <input type="text" class="form-control" name="excl1" id="exampleInput1"/><br/>
-                                     <input type="text" class="form-control" name="excl2" id="exampleInput2"/><br/>
-                                     <input type="text" class="form-control" name="excl3" id="exampleInput3"/><br/>
+                                     <input type="number" name="quantity" min="0" class="form-control" name="excl1" id="exampleInput1"/><br/>
+                                     <input type="number" name="quantity" min="0" class="form-control" name="excl2" id="exampleInput2"/><br/>
+                                     <input type="number" name="quantity" min="0" class="form-control" name="excl3" id="exampleInput3"/><br/>
                                    </div>
                                  </div>
                                  <p style="margin-top:20px;">
@@ -155,7 +167,7 @@
                                  <br />
                                  <div class="row">
                                    <div class="col-md-6">
-                                     <button type="submit" class="btn btn-default" onclick="this.form.action='Grupos'"><span class="glyphicon glyphicon-circle-arrow-left"></span> Anterior</button>
+                                     <a href="/Grupos"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-left"></span> Anterior</button></a>
                                    </div>
                                    <div class="col-md-6">
                                      <button type="submit" class="btn btn-default" onclick="this.form.action= 'creadorgrupos'">Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span></button>

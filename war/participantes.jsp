@@ -54,6 +54,12 @@
                 $('#exampleInput' + num).after(newExcl);
                 $('#exampleInput' + newNum).before("</br>");
                 
+                // Actualiza el valor maximo de los input de excluir
+                
+                for (i = 1; i <= newNum; i++) {
+                	$('#exampleInput' + i).attr('max', newNum);
+				}
+                
                 // enable the "remove" button
                 $('#btnDel').removeAttr('disabled');
  
@@ -72,6 +78,12 @@
                 $('#excls').find('br:last').remove();
                 
                 $('#participants').val(num-1);
+                
+                // Actualiza el valor maximo de los input de excluir
+
+                for (i = 1; i <= num-1; i++) {
+                	$('#exampleInput' + i).attr('max', num-1);
+				}
                 
                 // enable the "add" button
                 //$('#btnAdd').removeAttr('disabled');
@@ -112,23 +124,23 @@
                                </div>
                                 <div class="form-group clonedInput" id="usernames">
                                   <label for="exampleInputName">Nombre</label>
-                                  <input type="text" class="form-control" id="exampleInputName1" name="username1" placeholder="Nombre"/><br/>
-                                  <input type="text" class="form-control" id="exampleInputName2" name="username2" placeholder="Nombre"/><br/>
-                                  <input type="text" class="form-control" id="exampleInputName3" name="username3" placeholder="Nombre"/><br/>
+                                  <input type="text" class="form-control" id="exampleInputName1" name="username1" placeholder="Nombre" required/><br/>
+                                  <input type="text" class="form-control" id="exampleInputName2" name="username2" placeholder="Nombre" required/><br/>
+                                  <input type="text" class="form-control" id="exampleInputName3" name="username3" placeholder="Nombre" required/><br/>
                                 </div>
                                 <div class="form-group" id="emails">
                                   <label for="exampleInputEmail">Correo electrónico</label>
-                                  <input type="email" class="form-control" id="exampleInputEmail1" name="email1" placeholder="E-mail"/><br/>
-                                  <input type="email" class="form-control" id="exampleInputEmail2" name="email2" placeholder="E-mail"/><br/>
-                                  <input type="email" class="form-control" id="exampleInputEmail3" name="email3" placeholder="E-mail"/><br/>
+                                  <input type="email" class="form-control" id="exampleInputEmail1" name="email1" placeholder="E-mail" required/><br/>
+                                  <input type="email" class="form-control" id="exampleInputEmail2" name="email2" placeholder="E-mail" required/><br/>
+                                  <input type="email" class="form-control" id="exampleInputEmail3" name="email3" placeholder="E-mail" required/><br/>
                                 </div>
                                 <div class="form-group" id="excls">
                                   <label for="exampleInput">Excluir <div id= "popup" style="display:inline;" class= "popupHover"> <span style="display:inline;" class="glyphicon glyphicon-question-sign"></span> 
                                      <div id="info" class="popupBox">Si un miembro no quiere regalar a otro, deberás poner aquí el número de su izquierda
                                      en este formulario. </div></div></label>
-                                  <input type="text" class="form-control" name="excl1" id="exampleInput1"/><br/>
-                                  <input type="text" class="form-control" name="excl2" id="exampleInput2"/><br/>
-                                  <input type="text" class="form-control" name="excl3" id="exampleInput3"/><br/>
+                                  <input type="number" name="quantity" min="1" max="3" class="form-control" name="excl1" id="exampleInput1"/><br/>
+                                  <input type="number" name="quantity" min="1" max="3" class="form-control" name="excl2" id="exampleInput2"/><br/>
+                                  <input type="number" name="quantity" min="1" max="3" class="form-control" name="excl3" id="exampleInput3"/><br/>
                                 </div>
                                 <p style="margin-top:20px;">
                                 <button type="button" class="btn btn-default" style="margin-top:20px;" id="btnAdd">
@@ -139,7 +151,7 @@
                                 <br />
                                 <div class="row">
                                   <div class="col-md-6">
-                                    <button type="submit" class="btn btn-default" onclick="this.form.action='index.jsp'"><span class="glyphicon glyphicon-circle-arrow-left"></span> Anterior</button>
+                                    <a href="/index.jsp"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-left"></span> Anterior</button></a>
                                   </div>
                                   <div class="col-md-6">
                                     <button type="submit" class="btn btn-default" onclick="this.form.action='mensaje.jsp'">Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span></button>
