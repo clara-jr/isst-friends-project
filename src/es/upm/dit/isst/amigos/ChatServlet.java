@@ -37,14 +37,18 @@ public class ChatServlet extends HttpServlet {
 			User usuario = UserDAOImpl.getInstance().getUserByEmail(userservice.getCurrentUser().getEmail());
 			List<Agrupaciones> agrupuser = AgrupacionesDAOImpl.getInstance().getAgrupacionesByUser(usuario.getNick());
 			List<Grupo> grupos = new ArrayList<Grupo>();
+			HashMap<Long, Agrupaciones[] > agrupacionesporgrupo = new HashMap<Long, Agrupaciones[] >();
+			
 	
 			for (Agrupaciones temp: agrupuser){
-				if (temp.getAmigoinv() != "")
-					grupos.add(GrupoDAOImpl.getInstance().getGrupoById(temp.getGrupo()));
+				grupos.add(GrupoDAOImpl.getInstance().getGrupoById(temp.getGrupo()));
+				List<Agrupaciones> agrupacionesdelgrupo = AgrupacionesDAOImpl.getInstance().getAgrupacionesByGrupo(temp.getGrupo());
+				agrupacionesporgrupo.put(temp.getGrupo(), agrupacionesdelgrupo.toArray(new Agrupaciones[agrupacionesdelgrupo.size()]));
 			}
 			
 			req.getSession().setAttribute("usuario", usuario);
 			req.getSession().setAttribute("grupos", grupos);
+			req.getSession().setAttribute("agrupaciones", agrupacionesporgrupo);
 						
 			resp.sendRedirect("chat.jsp");		
 			

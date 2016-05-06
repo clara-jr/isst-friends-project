@@ -24,7 +24,7 @@ public class ConversacionServlet extends HttpServlet {
 	AgrupacionesDAO agrupao = AgrupacionesDAOImpl.getInstance();
 	UserDAO usao = UserDAOImpl.getInstance();
 	ChatDAOImpl chatdao = ChatDAOImpl.getInstance();
-	
+
 	UserService userservice = UserServiceFactory.getUserService();
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
