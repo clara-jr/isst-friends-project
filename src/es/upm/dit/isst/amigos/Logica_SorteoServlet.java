@@ -4,9 +4,7 @@ package es.upm.dit.isst.amigos;
  *
  */
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+
 
 import javax.servlet.http.*;
 
@@ -30,32 +28,50 @@ public class Logica_SorteoServlet extends HttpServlet {
 			usernames[i-1] = req.getParameter("username"+i);
 			emails[i-1] = req.getParameter("email"+i);
 		}
+		for(int i = 0; i < usernames.length; i++){
+			for(int j = i+1; j < usernames.length; j++){
+				if(usernames[i].equals(usernames[j])){
+					req.getSession().setAttribute("error", "¡Has introducido dos nombres iguales en los participantes!");
+					resp.sendRedirect("avisos.jsp");
+					return;
+				}
+			}
+		}
+		for(int i = 0; i < emails.length; i++){
+			for(int j = i+1; j < emails.length; j++){
+				if(emails[i].equals(emails[j])){
+					req.getSession().setAttribute("error", "¡Has introducido dos emails iguales!");
+					resp.sendRedirect("avisos.jsp");
+					return;
+				}
+			}
+		}
+		boolean emptyInput = false;
 		int contExcl = 0;
-		int cont = 0;
 		for(int i=1; i<=participants_int; i++) {			
-			if (req.getParameter("excl"+i) != "") {
-				try{
-					Integer.valueOf(req.getParameter("excl"+i));
-				}catch(Exception e){
-					req.getSession().setAttribute("error", "¡Has introducido un valor no numérico en el campo de exclusiones!");
-					resp.sendRedirect("avisos.jsp");
-					return;
-				}
-				if (Integer.parseInt(req.getParameter("excl"+i)) > participants_int || Integer.parseInt(req.getParameter("excl"+i)) <= 0){
-					req.getSession().setAttribute("error", "¡Algún número en exclusiones no se corresponde con ningún participante!");
-					resp.sendRedirect("avisos.jsp");
-					return;
-				}
-				usernames_excls[i-1] = usernames[Integer.parseInt(req.getParameter("excl"+i)) - 1];
+			try{
+				Integer.valueOf(req.getParameter("excl"+i));
+			}catch(Exception e){
+				usernames_excls[i-1] = "";
+				emptyInput = true;
 
-				cont++;
+				req.getSession().setAttribute("error", "¡Has introducido un valor no numérico en el campo de exclusiones!");
+				resp.sendRedirect("avisos.jsp");
+				return;
+			}
+			if (Integer.parseInt(req.getParameter("excl"+i)) > participants_int || Integer.parseInt(req.getParameter("excl"+i)) <= 0){
+				req.getSession().setAttribute("error", "¡Algún número en exclusiones no se corresponde con ningún participante!");
+				resp.sendRedirect("avisos.jsp");
+				return;
+			}
+
+			if (!emptyInput) {
+				usernames_excls[i-1] = usernames[Integer.parseInt(req.getParameter("excl"+i)) - 1];
 				if (i > 1 && usernames_excls[i-1].equals(usernames_excls[i-2])) {
 					contExcl++;
-				}
+				}	
 			}
-			else {
-				usernames_excls[i-1] = "";
-			}
+			emptyInput = false;
 		}
 		if (contExcl == (participants_int - 1)){ //Todos excluyen al mismo
 			resp.sendRedirect("https://www.youtube.com/watch?v=TJL4Y3aGPuA"); // TROLOLOLO

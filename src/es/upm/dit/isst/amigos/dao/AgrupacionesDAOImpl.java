@@ -68,6 +68,19 @@ public class AgrupacionesDAOImpl implements AgrupacionesDAO {
 		em.close();
 		return agrupaciones;
 	}
+	
+	@Override
+	public Agrupaciones getAgrupByAmiInvAndGrupo(String amigoinv, Long grupo) {
+		EntityManager em = EMFService.get().createEntityManager();
+
+		Query q = em.createQuery("SELECT m FROM Agrupaciones m WHERE m.amigoinv = :amigoinv AND m.grupo = :grupo");
+		q.setParameter("grupo", grupo);
+		q.setParameter("amigoinv", amigoinv);
+		
+		Agrupaciones agrupaciones = (Agrupaciones) q.getSingleResult();
+		em.close();
+		return agrupaciones;
+	}
 
 	
 	@Override

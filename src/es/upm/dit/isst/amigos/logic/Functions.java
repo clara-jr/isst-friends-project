@@ -48,7 +48,6 @@ public class Functions {
 			excl = false;
 			n++;
 			if (n >= 100){
-				System.out.println(0);
 				return null; //Demasiados intentos, quizá no se pueda realizar el sorteo
 			}
 		    for (int i = 0; i < randomizedArray.length; i++) {
@@ -57,13 +56,11 @@ public class Functions {
 			    	if (id_in < randomizedArray.length - 1) {
 			    		if (randomizedArray[id_in+1] == usernames_excls[i]) {
 				    		excl = true;
-				    		System.out.println(1);
 						}
 			    	}
 			    	else {
 			    		if (randomizedArray[0] == usernames_excls[i]) {
 				    		excl = true;
-				    		System.out.println(2);
 						}
 			    	}
 				}
@@ -109,12 +106,26 @@ public class Functions {
 		}
 	}
 	
+	public void chat(String nick, String grupo) throws IOException{
+		Message msg_results = new MimeMessage(Session.getDefaultInstance(new Properties(), null));
+		try {
+			msg_results.setFrom(new InternetAddress("isst-amigoinvisible@isst-grupo17-amigos-1284.appspotmail.com", "Amigo Invisible")); // nombre (nombre@...) y dominio (...@aplicacion) de la app en GAE
+			msg_results.addRecipient(Message.RecipientType.TO,  new InternetAddress(nick+"@gmail.com", "Participante en el amigo invisible"));
+			msg_results.setSubject("Nuevo mensaje en el chat del Amigo Invisible");
+			msg_results.setText("Hola " + nick + " , has recibido un nuevo mensaje en el chat del grupo " + grupo + " del Amigo Invisible");
+			Transport.send(msg_results);
+		} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+		}
+	}
+	
 	public void aviso_eliminado(String nick, String item, String mod_name) throws IOException{
 		Message msg_results = new MimeMessage(Session.getDefaultInstance(new Properties(), null));
 		try {
 			msg_results.setFrom(new InternetAddress("isst-amigoinvisible@isst-grupo17-amigos-1284.appspotmail.com", "Amigo Invisible")); // nombre (nombre@...) y dominio (...@aplicacion) de la app en GAE
 			msg_results.addRecipient(Message.RecipientType.TO,  new InternetAddress(nick+"@gmail.com", "Participante en el amigo invisible"));
-			msg_results.setSubject("Invitación para pertenecer a un grupo del Amigo Invisible");
+			msg_results.setSubject("Eliminación de un deseo de tu lista del Amigo Invisible");
 			msg_results.setText("Hola " + nick + " , el moderador de uno de tus grupos, " + mod_name + " ha eliminado el siguiente deseo de tu lista de deseos: " + item);
 			Transport.send(msg_results);
 		} catch (MessagingException e) {

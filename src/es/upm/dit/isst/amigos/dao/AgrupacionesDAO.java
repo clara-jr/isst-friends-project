@@ -18,4 +18,6 @@ public interface AgrupacionesDAO {
 	public List<Agrupaciones> getAgrupacionesByGrupo(Long grupo);
 	
 	public Agrupaciones getAgrupByUserAndGrupo(String user, Long grupo);
+	
+	public Agrupaciones getAgrupByAmiInvAndGrupo(String amigoinv, Long grupo);
 }

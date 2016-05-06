@@ -16,12 +16,18 @@ public interface ChatDAO {
 	
 	public Chat getChatByToAndGrupo(Long grupo, String to);
 	
+	public List<Chat> getChatByGrupo(Long grupo);
+	
+	public void deleteChat(Chat chat);
+	
 	/*
 	 * autor: El que escribe el mensaje. No importa si es el que regala o al que regalan, simplemente el que escribe el mensaje.
 	 * mensaje: El mensaje que se escribe.
 	 */
 	
 	public Chat insertMensaje(Chat chat, String mensaje, String autor);
+	
+	public void updateChat(Chat chat);
 	
 	
 	

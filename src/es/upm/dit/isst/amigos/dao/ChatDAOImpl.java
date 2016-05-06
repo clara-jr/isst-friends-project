@@ -94,4 +94,39 @@ public class ChatDAOImpl implements ChatDAO {
 		return chat;
 	}
 
+	@Override
+	public void updateChat(Chat chat) {
+		EntityManager em = EMFService.get().createEntityManager();
+		
+		em.merge(chat);
+		em.close();
+		return;		
+	}
+
+	@Override
+	public List<Chat> getChatByGrupo(Long grupo) {
+		EntityManager em = EMFService.get().createEntityManager();
+
+		Query q = em.createQuery("SELECT m FROM Chat m WHERE m.grupo = :grupo");
+		q.setParameter("grupo", grupo);
+		List<Chat> chats = q.getResultList();
+		em.close();
+		
+		return chats;
+	}
+
+	@Override
+	public void deleteChat(Chat chat) {
+		EntityManager em = EMFService.get().createEntityManager();
+
+		Query q = em.createQuery("SELECT m FROM Chat m WHERE m.id = :id");
+		q.setParameter("id", chat.getId());
+		Chat chatelim = (Chat) q.getSingleResult();
+		
+		em.remove(chatelim);
+		em.close();
+		return;
+		
+	}
+
 }

@@ -15,6 +15,7 @@
 								  </button>
                   <div class="nav-logo">
                   <img src="img/logo.png" alt="logo">
+                  <br>                  
                   </div>
 								</div>
 
@@ -48,10 +49,22 @@
 		              </c:if>
 		              
 		              <c:if test = "${(URL == '/chat.jsp') || (URL == '/conversacion.jsp')}">
-		                  <li class="active"><a href="chat.jsp">Chat <span class="sr-only">(current)</span></a></li>
+		                  <li class="active"><a href="/chat">Chat
+		                   <c:if test="${not empty gruposnoleidos}">
+							    <label for="exampleInput" style="display: inline;"><div id= "popup" class= "popupHover" style="display: inline; position: relative;"><span class="glyphicon glyphicon-envelope" style="color:blue"></span>
+	                   		    <div id="info" class="popupBox" style="z-index:1; top:20px; width: 150px; left: 0px"> Tienes mensajes nuevos.</div></div></label>													
+					 	   </c:if>
+		                  <span class="sr-only">(current)</span></a>
+		                  </li>
 		              </c:if>
 		              <c:if test = "${(URL != '/chat.jsp') && (URL != '/conversacion.jsp')}">
-		                  <li><a href="/chat">Chat</a></li>
+		                  <li><a href="/chat">Chat 
+			                  <c:if test="${not empty gruposnoleidos}">
+							    <label for="exampleInput" style="display: inline;"><div id= "popup" class= "popupHover" style="display: inline; position: relative;"><span class="glyphicon glyphicon-envelope" style="color:blue"></span>
+	                   		    <div id="info" class="popupBox" style="z-index:1; top:20px; width: 150px; left: 0px"> Tienes mensajes nuevos.</div></div></label>													
+					 	      </c:if>
+			                  </a>
+		                  </li>
 		              </c:if>
 	              </c:if>
 	              
@@ -81,13 +94,13 @@
 	                  <li class="active"><a href="sortear.jsp">¡A Jugar! <span class="sr-only">(current)</span></a></li>
             		  </c:if>
             		</c:if>                 
-                  </ul>
-								  <ul class="nav navbar-nav dcha">
+                  </ul>     
+								  <ul class="nav navbar-nav dcha">								
  				  				<c:if test="${not empty pageContext.request.userPrincipal}">
-								    <li><a href="/Login"/>Cerrar Sesión</a></li>
+								    <li><a href="/Login"/ style="display: inline;">Cerrar Sesión</a></li>
 								</c:if>
 								<c:if test="${empty pageContext.request.userPrincipal}">
-								    <li><a href="/Login"/>Iniciar Sesión</a></li>
+								    <li><a href="/Login"/ style="display: inline;">Iniciar Sesión</a></li>
 								</c:if>
                   </ul>
 								</div><!-- /.navbar-collapse -->
