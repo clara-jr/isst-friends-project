@@ -39,7 +39,8 @@ public class ChatServlet extends HttpServlet {
 			List<Grupo> grupos = new ArrayList<Grupo>();
 	
 			for (Agrupaciones temp: agrupuser){
-				grupos.add(GrupoDAOImpl.getInstance().getGrupoById(temp.getGrupo()));
+				if (temp.getAmigoinv() != "")
+					grupos.add(GrupoDAOImpl.getInstance().getGrupoById(temp.getGrupo()));
 			}
 			
 			req.getSession().setAttribute("usuario", usuario);

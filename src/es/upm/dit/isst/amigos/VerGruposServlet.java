@@ -77,6 +77,7 @@ public class VerGruposServlet extends HttpServlet {
 			
 			if (item.equals("Rick Astley")) {
 				resp.sendRedirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ"); // NEVER GONNA GIVE YOU UP!
+				return;
 			}
 			
 			try {
