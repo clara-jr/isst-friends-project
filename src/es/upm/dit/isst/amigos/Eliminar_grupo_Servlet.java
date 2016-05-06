@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.upm.dit.isst.amigos.dao.AgrupacionesDAOImpl;
+import es.upm.dit.isst.amigos.dao.ChatDAOImpl;
 import es.upm.dit.isst.amigos.dao.GrupoDAOImpl;
 import es.upm.dit.isst.amigos.model.Agrupaciones;
+import es.upm.dit.isst.amigos.model.Chat;
 import es.upm.dit.isst.amigos.model.Grupo;
 
 @SuppressWarnings("serial")
@@ -21,6 +23,7 @@ public class Eliminar_grupo_Servlet extends HttpServlet {
 		
 		AgrupacionesDAOImpl agrupdao = AgrupacionesDAOImpl.getInstance();
 		GrupoDAOImpl grupodao = GrupoDAOImpl.getInstance();
+		ChatDAOImpl chatdao = ChatDAOImpl.getInstance();
 		
 		List<Agrupaciones> elimagrup = agrupdao.getAgrupacionesByGrupo(grupo_id);
 		Grupo elimgrupo = grupodao.getGrupoById(grupo_id);
@@ -29,6 +32,11 @@ public class Eliminar_grupo_Servlet extends HttpServlet {
 			agrupdao.deleteAgrupacion(temp);
 		}
 		grupodao.deleteGrupo(elimgrupo);
+		List<Chat> chatlist = chatdao.getChatByGrupo(grupo_id);
+		for (Chat temp : chatlist){
+			chatdao.deleteChat(temp);
+		}
+		
 				
 		resp.sendRedirect("/Grupos");
 		

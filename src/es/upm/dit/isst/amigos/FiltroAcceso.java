@@ -41,6 +41,11 @@ public class FiltroAcceso implements Filter {
 
 		HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
+        
+        if(req.getRequestURI().matches("^/_ah/(.*)")){
+        	filterChain.doFilter(request, response);
+        	return;
+        }
 
         if (req.getUserPrincipal() == null ){			
 			if (!(req.getRequestURI().equals("/index.jsp") || req.getRequestURI().equals("/index") || req.getRequestURI().equals("/participantes.jsp") || req.getRequestURI().equals("/mensaje.jsp") ||
