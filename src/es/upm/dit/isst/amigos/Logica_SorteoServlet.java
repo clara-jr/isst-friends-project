@@ -54,6 +54,7 @@ public class Logica_SorteoServlet extends HttpServlet {
 			}catch(Exception e){
 				usernames_excls[i-1] = "";
 				emptyInput = true;
+
 				req.getSession().setAttribute("error", "¡Has introducido un valor no numérico en el campo de exclusiones!");
 				resp.sendRedirect("avisos.jsp");
 				return;
@@ -63,7 +64,7 @@ public class Logica_SorteoServlet extends HttpServlet {
 				resp.sendRedirect("avisos.jsp");
 				return;
 			}
-			
+
 			if (!emptyInput) {
 				usernames_excls[i-1] = usernames[Integer.parseInt(req.getParameter("excl"+i)) - 1];
 				if (i > 1 && usernames_excls[i-1].equals(usernames_excls[i-2])) {
