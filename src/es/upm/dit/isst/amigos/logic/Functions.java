@@ -98,7 +98,7 @@ public class Functions {
 			msg_results.setFrom(new InternetAddress("isst-amigoinvisible@isst-grupo17-amigos-1284.appspotmail.com", "Amigo Invisible")); // nombre (nombre@...) y dominio (...@aplicacion) de la app en GAE
 			msg_results.addRecipient(Message.RecipientType.TO,  new InternetAddress(nick+"@gmail.com", "Participante en el amigo invisible"));
 			msg_results.setSubject("Invitación para pertenecer a un grupo del Amigo Invisible");
-			msg_results.setText("Hola " + nick + " , " + mod_name + " ha organizado un sorteo por el Amigo Invisible en nuestra aplicación y para aceptar la participación en el mismo, debes pinchar en el siguiente enlace: \n http://1-dot-isst-grupo17-amigos-1284.appspot.com/Login");
+			msg_results.setText("Hola " + nick + " , " + mod_name + " ha organizado un sorteo por el Amigo Invisible en nuestra aplicación y le ha invitado. Para acceder, y poder eliminarte del grupo desde la aplicación en caso de no querer participar, debes pinchar en el siguiente enlace: \n http://1-dot-isst-grupo17-amigos-1284.appspot.com/Login");
 			Transport.send(msg_results);
 		} catch (MessagingException e) {
 				// TODO Auto-generated catch block
