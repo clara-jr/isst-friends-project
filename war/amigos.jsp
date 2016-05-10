@@ -54,6 +54,7 @@
 	                                  </div>
 	                              </div>
 	                              <div class="row">
+	                              <br />
 	                              <p>(Si eres moderador de algún grupo, podrás ver las listas de los integrantes del grupo y eliminar items a continuación)</p>
 	                              <br />
 	                                </c:forEach>
