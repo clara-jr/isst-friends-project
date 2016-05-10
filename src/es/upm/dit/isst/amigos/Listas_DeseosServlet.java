@@ -3,6 +3,7 @@ package es.upm.dit.isst.amigos;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.*;
 
@@ -27,7 +28,7 @@ public class Listas_DeseosServlet extends HttpServlet {
 		}
 		else{
 			
-			User usuario = UserDAOImpl.getInstance().getUserByEmail(userservice.getCurrentUser().getEmail());
+			User usuario = UserDAOImpl.getInstance().getUserByEmail(userservice.getCurrentUser().getEmail().toLowerCase(Locale.ENGLISH));
 			List<ListasDeseos> deseos = ListasDeseosDAOImpl.getInstance().getListaByUser(usuario.getNick());
 	
 			req.getSession().setAttribute("deseos", new ArrayList<ListasDeseos>(deseos));
@@ -45,12 +46,12 @@ public class Listas_DeseosServlet extends HttpServlet {
 		
 		if(lock.equals(v)) {
 			try {
-				dao.getItem(userservice.getCurrentUser().getNickname(), item);
+				dao.getItem(userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH), item);
 				req.getSession().setAttribute("error", "¡Ese deseo ya está en la lista!");
 				resp.sendRedirect("avisos.jsp");
 			}
 			catch (Exception e) {
-				dao.insertLista(userservice.getCurrentUser().getNickname(), item);
+				dao.insertLista(userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH), item);
 				try {
 					Thread.sleep(200);
 				} catch (InterruptedException e1) {
@@ -60,7 +61,7 @@ public class Listas_DeseosServlet extends HttpServlet {
 		}				
 		
 		if (lock.equals(f)) {
-			ListasDeseos seleccion = dao.getItem(userservice.getCurrentUser().getNickname(), item);
+			ListasDeseos seleccion = dao.getItem(userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH).toLowerCase(Locale.ENGLISH), item);
 			
 			if (item != null) {
 				dao.removeLista(seleccion);

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,8 +38,9 @@ public class ConversacionServlet extends HttpServlet {
 		
 		else {
 			Long id = Long.valueOf(req.getParameter("grupo_id"));
-			String user = userservice.getCurrentUser().getNickname();
+			String user = userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH);
 			Grupo grupo = grupodao.getGrupoById(id);
+			String userto = agrupao.getAgrupByUserAndGrupo(user, id).getAmigoinv();
 			
 			try {
 				Chat chat_vi = chatdao.getChatByFromAndGrupo(id, user);
@@ -48,10 +50,12 @@ public class ConversacionServlet extends HttpServlet {
 				List lista_vi = new ArrayList();
 				lista_vi = Arrays.asList(conver_vi);
 				req.getSession().setAttribute("conver_vi", lista_vi);
+				req.getSession().setAttribute("userto", userto);
 			}
 			catch (Exception e) {
 				String[] conver_vi = null;
 				req.getSession().setAttribute("conver_vi", conver_vi);
+				req.getSession().setAttribute("userto", userto);
 			}
 			
 			try {
@@ -80,7 +84,7 @@ public class ConversacionServlet extends HttpServlet {
 		String conver = req.getParameter("conver");
 		Long id = Long.valueOf(req.getParameter("grupo_id"));
 		String mensaje = "";
-		String autor = userservice.getCurrentUser().getNickname();
+		String autor = userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH);
 		
 		Agrupaciones agrupacion_vi = agrupao.getAgrupByUserAndGrupo(autor, id);
 		Agrupaciones agrupacion_invi = agrupao.getAgrupByAmiInvAndGrupo(autor, id);

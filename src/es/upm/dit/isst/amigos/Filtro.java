@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
+
 
 
 
@@ -53,8 +55,8 @@ public class Filtro implements Filter {
 
 			Set<Long> noleidos = new HashSet<Long>();
 			
-			chatsfrom = chatdao.getChatByFrom(userservice.getCurrentUser().getNickname());
-			chatsto = chatdao.getChatByTo(userservice.getCurrentUser().getNickname());
+			chatsfrom = chatdao.getChatByFrom(userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH));
+			chatsto = chatdao.getChatByTo(userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH));
 	
 			for (Chat temp : chatsfrom){
 				if (!temp.getLeidofrom()){

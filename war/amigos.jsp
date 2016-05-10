@@ -38,6 +38,7 @@
                         <div class="block-top">
                             <div class="service-header">
                                 <p>Si no se te ocurre nada para regalar por el amigo invisible, no te preocupes, aquí encontrarás algunas ideas </p>
+                               
                                 <br />
                                 <div class="row">
 	                                <c:forEach items="${usuarios_inv}" var="usuario">
@@ -51,6 +52,10 @@
 	                                    </c:forEach>
 	                                    </ul>
 	                                  </div>
+	                              </div>
+	                              <div class="row">
+	                              <p>(Si eres moderador de algún grupo, podrás ver las listas de los integrantes del grupo y eliminar items a continuación)</p>
+	                              <br />
 	                                </c:forEach>
 	                                <c:forEach items="${usuarios_v}" var="usuario">
 	                                 <div class="col-md-6">
