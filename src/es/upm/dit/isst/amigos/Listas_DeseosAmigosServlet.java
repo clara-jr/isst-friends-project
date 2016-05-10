@@ -3,6 +3,7 @@ package es.upm.dit.isst.amigos;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.*;
 
@@ -28,7 +29,7 @@ public class Listas_DeseosAmigosServlet extends HttpServlet {
 		}
 		else{
 			
-			User usuario = UserDAOImpl.getInstance().getUserByEmail(userservice.getCurrentUser().getEmail());
+			User usuario = UserDAOImpl.getInstance().getUserByEmail(userservice.getCurrentUser().getEmail().toLowerCase(Locale.ENGLISH));
 			
 			List<Agrupaciones> agrupuser = AgrupacionesDAOImpl.getInstance().getAgrupacionesByUser(usuario.getNick());
 			
@@ -39,17 +40,17 @@ public class Listas_DeseosAmigosServlet extends HttpServlet {
 	
 			for (Agrupaciones temp: agrupuser){
 				if (temp.getAmigoinv() != "") {
-					if (GrupoDAOImpl.getInstance().getGrupoById(temp.getGrupo()).getModerador().equals(userservice.getCurrentUser().getNickname())) {
+					if (GrupoDAOImpl.getInstance().getGrupoById(temp.getGrupo()).getModerador().equals(userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH))) {
 						List<Agrupaciones> usersingroup = AgrupacionesDAOImpl.getInstance().getAgrupacionesByGrupo(temp.getGrupo());
 						for (Agrupaciones temp2: usersingroup){
-							if (!usuarios_v.contains(UserDAOImpl.getInstance().getUserByNick(temp2.getAmigoinv())) && !usuarios_inv.contains(UserDAOImpl.getInstance().getUserByNick(temp2.getAmigoinv())) && !temp2.getUser().equals(userservice.getCurrentUser().getNickname())) {
+							if (!usuarios_v.contains(UserDAOImpl.getInstance().getUserByNick(temp2.getAmigoinv())) && !usuarios_inv.contains(UserDAOImpl.getInstance().getUserByNick(temp2.getAmigoinv())) && !temp2.getUser().equals(userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH))) {
 								deseos_v.addAll(ListasDeseosDAOImpl.getInstance().getListaByUser(temp2.getUser()));
 								usuarios_v.add(UserDAOImpl.getInstance().getUserByNick(temp2.getUser()));
 							}
 						}
 					}
 					else {
-						if (temp.getUser().equals(userservice.getCurrentUser().getNickname())) {
+						if (temp.getUser().equals(userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH))) {
 							if (!usuarios_inv.contains(UserDAOImpl.getInstance().getUserByNick(temp.getAmigoinv())) && !usuarios_v.contains(UserDAOImpl.getInstance().getUserByNick(temp.getAmigoinv()))) {
 								deseos_inv.addAll(ListasDeseosDAOImpl.getInstance().getListaByUser(temp.getAmigoinv()));
 								usuarios_inv.add(UserDAOImpl.getInstance().getUserByNick(temp.getAmigoinv()));
@@ -75,7 +76,7 @@ public class Listas_DeseosAmigosServlet extends HttpServlet {
 		ListasDeseos seleccion = dao.getItem(user, item);
 		if (item != null) {
 			dao.removeLista(seleccion);
-			Functions.getInstance().aviso_eliminado(user, item, userservice.getCurrentUser().getNickname());
+			Functions.getInstance().aviso_eliminado(user, item, userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH));
 		}
 		try {
 			Thread.sleep(200);

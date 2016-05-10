@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Locale;
 import java.util.Properties;
 
 import es.upm.dit.isst.amigos.dao.*;
@@ -28,7 +29,7 @@ public class CreadorGruposServlet extends HttpServlet {
 		}
 		
 		UserService userservice = UserServiceFactory.getUserService();
-		String nickname = userservice.getCurrentUser().getNickname();
+		String nickname = userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH);
 		
 		String groupname = req.getParameter("groupname");
 		String msg = req.getParameter("msg");
