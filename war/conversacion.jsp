@@ -59,7 +59,7 @@
                                  </div>
                                  
                                  <div class="col-md-6">
-                                 	<p><u> ¡Chatea con quien recibe tu regalo! </u> </p> <br />
+                                 	<p><u> ¡Chatea con quien recibe tu regalo: ${userto}! </u> </p> <br />
                                  	<div class="scroll" style="height: 400px; overflow: auto; background-color: #F2F2F2; border: 3px solid #E6E6E6; word-wrap: break-word">
                                  	<c:forEach items="${conver_vi}" var="msg">
 	                                  <p style=" color: #2E9AFE;"> <c:out value="${msg}" /> </p> <br />

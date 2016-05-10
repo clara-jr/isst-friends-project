@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -40,7 +41,7 @@ public class VerGruposServlet extends HttpServlet {
 		
 		else {
 			
-			User usuario = UserDAOImpl.getInstance().getUserByEmail(userservice.getCurrentUser().getEmail());
+			User usuario = UserDAOImpl.getInstance().getUserByEmail(userservice.getCurrentUser().getEmail().toLowerCase(Locale.ENGLISH));
 			List<Agrupaciones> agrupuser = AgrupacionesDAOImpl.getInstance().getAgrupacionesByUser(usuario.getNick());
 			List<Grupo> grupos = new ArrayList<Grupo>();
 			HashMap<Long, Agrupaciones[] > agrupacionesporgrupo = new HashMap<Long, Agrupaciones[] >();
@@ -105,13 +106,14 @@ public class VerGruposServlet extends HttpServlet {
 				}
 			}
 			else {
-				Functions.getInstance().aviso(item, userservice.getCurrentUser().getNickname());
+				Functions.getInstance().aviso(item, userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH));
 				if (repetido) {
 					req.getSession().setAttribute("error", "¡Ese usuario ya está en el grupo!");
 					resp.sendRedirect("avisos.jsp");
 				}
 				else {
 					agrupao.insertAgrupacion(item, id, "", "");
+					UserDAOImpl.getInstance().insertUser(item, item+"@gmail.com", "");
 					resp.sendRedirect("/Grupos");
 				}
 			}
