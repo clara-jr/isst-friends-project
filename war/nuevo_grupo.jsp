@@ -111,7 +111,7 @@
                                    </div>
                                    <div class="form-group" style="max-width:200px;">
                                      <label for="exampleInputMoney">Importe máximo</label>
-                                     <input type="text" class="form-control" name=maxprice><br/>
+                                     <input type="number" min="1" class="form-control" name=maxprice><br/>
                                    </div>
                                    <div class="form-group" style="max-width:200px;">
                                      <label for="exampleInputDate">Fecha <span class="glyphicon glyphicon-calendar"></span></label>
@@ -132,7 +132,7 @@
                                	   <div class="form-group clonedInput" id="usernames" style="max-width:200px;">
                                	   	<label for="exampleInputName">Nombre de usuario</label>
 
-                               	   	<input type="text" required class="form-control" id="exampleInputName1" name="username1" value="${fn:substringBefore(pageContext.request.userPrincipal.name,'@')}" placeholder="Nombre" readonly = "readonly"/><br/>
+                               	   	<input type="text" required class="form-control" id="exampleInputName1" name="username1" value="${fn:toLowerCase(fn:substringBefore(pageContext.request.userPrincipal.name,'@'))}" placeholder="Nombre" readonly = "readonly"/><br/>
                                	   	<input type="text" required class="form-control" id="exampleInputName2" name="username2" placeholder="Nombre" required/><br/>
                                	   	<input type="text" required class="form-control" id="exampleInputName3" name="username3" placeholder="Nombre" required/><br/>
                                	   	</div>
@@ -145,12 +145,17 @@
                                	   	</div>
                                	   	
                                    <div class="form-group" id="excls" style="max-width:350px;">
+<<<<<<< HEAD
                                      <label for="exampleInput">Excluir <div id= "popup" class= "popupHover"  style="display:inline;"> <span style="display:inline;" class="glyphicon glyphicon-question-sign"></span> 
                                      <div id="info" class="popupBox" style="display:inline;">Si un miembro no quiere regalar a otro, deberás poner aquí el número de su izquierda
+=======
+                                     <label for="exampleInput">Excluir <div id= "popup" class= "popupHover"  style="position:relative; display:inline"> <span style="display:inline;" class="glyphicon glyphicon-question-sign"></span> 
+                                     <div id="info" class="popupBox" style="z-index:1; top:10px;left:0px; width: 150px">Si un miembro no quiere regalar a otro, deberás poner aquí el número de su izquierda
+>>>>>>> 9dd128ea1f1af88a60ad0814aa35bb031dd43cbe
                                      en este formulario. </div></div></label>
-                                     <input type="number" min="1" class="form-control" name="excl1" id="exampleInput1"/><br/>
-                                     <input type="number" min="1" class="form-control" name="excl2" id="exampleInput2"/><br/>
-                                     <input type="number" min="1" class="form-control" name="excl3" id="exampleInput3"/><br/>
+                                     <input type="number" min="1" max="3" class="form-control" name="excl1" id="exampleInput1"/><br/>
+                                     <input type="number" min="1" max="3" class="form-control" name="excl2" id="exampleInput2"/><br/>
+                                     <input type="number" min="1" max="3" class="form-control" name="excl3" id="exampleInput3"/><br/>
                                    </div>
                                  </div>
                                  <p style="margin-top:20px;">

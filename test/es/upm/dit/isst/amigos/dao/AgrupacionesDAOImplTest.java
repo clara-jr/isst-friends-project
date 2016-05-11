@@ -20,7 +20,6 @@ public class AgrupacionesDAOImplTest {
 	@Before
 	public void setUp() {
 		helper.setUp();
-		
 	}
 
 	@After

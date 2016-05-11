@@ -31,10 +31,11 @@ public class Com_AmigoInvisible_isstServlet extends HttpServlet {
 		AgrupacionesDAOImpl agrupdao = AgrupacionesDAOImpl.getInstance();
 		
 
-		Grupo grupo1 = gruposdao.insertGrupo("prueba1", "nachoperegrino94", "30", "07/07/07", "");
+		Grupo grupo1 = gruposdao.insertGrupo("prueba1", "test1", "30", "07/07/07", "");
 		
 		agrupdao.insertAgrupacion("test1", grupo1.getId(), "test2", "");
-		agrupdao.insertAgrupacion("test2", grupo1.getId(), "test1", "");
+		agrupdao.insertAgrupacion("test2", grupo1.getId(), "nachoperegrino94", "");
+		agrupdao.insertAgrupacion("nachoperegrino94", grupo1.getId(), "test1", "");
 		
 		/*chat = chatdao.insertMensaje(chat, "hola", "pepe");
 		chat = chatdao.insertMensaje(chat, "hola", "nacho");

@@ -1,6 +1,7 @@
 package es.upm.dit.isst.amigos;
 
 import java.io.IOException;
+import java.util.Locale;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +21,8 @@ public class Login_final_Servlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		UserService userService = UserServiceFactory.getUserService();
 
-		String email = userService.getCurrentUser().getEmail();
-		String nick = userService.getCurrentUser().getNickname();
+		String email = userService.getCurrentUser().getEmail().toLowerCase(Locale.ENGLISH);
+		String nick = userService.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH);
 		
 		dao.insertUser(nick, email, "");
 		

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Locale;
 import java.util.Properties;
 
 import es.upm.dit.isst.amigos.dao.*;
@@ -28,7 +29,7 @@ public class CreadorGruposServlet extends HttpServlet {
 		}
 		
 		UserService userservice = UserServiceFactory.getUserService();
-		String nickname = userservice.getCurrentUser().getNickname();
+		String nickname = userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH);
 		
 		String groupname = req.getParameter("groupname");
 		String msg = req.getParameter("msg");
@@ -89,30 +90,30 @@ public class CreadorGruposServlet extends HttpServlet {
 			
 			Grupo grupo = gruposdao.insertGrupo(groupname, nickname, maxprice, date, msg); 
 			Long id = grupo.getId();
-		for(int i=1; i<=participants_int; i++) {
-			try { 
-				User user = userdao.getUserByNick(req.getParameter("username"+i)); // Comprueba que los usuarios existen
-				try {
-					Agrupaciones testagr = agrupdao.getAgrupByUserAndGrupo(req.getParameter("username"+i), id);
+			for(int i=1; i<=participants_int; i++) {
+				try { 
+					User user = userdao.getUserByNick(req.getParameter("username"+i)); // Comprueba que los usuarios existen
+					try {
+						Agrupaciones testagr = agrupdao.getAgrupByUserAndGrupo(req.getParameter("username"+i), id);
+					}
+					catch (Exception e1) {
+						agrupdao.insertAgrupacion(req.getParameter("username"+i), id, "", req.getParameter("username"+req.getParameter("excl"+i)));
+					}
+	 
+				} catch(Exception e2) {					
+					try {
+						Agrupaciones testagr = agrupdao.getAgrupByUserAndGrupo(req.getParameter("username"+i), id);
+					}
+					catch (Exception e1) {
+						agrupdao.insertAgrupacion(req.getParameter("username"+i), id, "", req.getParameter("username"+req.getParameter("excl"+i)));
+						userdao.insertUser(req.getParameter("username"+i), req.getParameter("username"+i)+"@gmail.com", "");
+					}
+					Functions.getInstance().aviso(req.getParameter("username"+i), nickname);
+					continue;
 				}
-				catch (Exception e1) {
-					agrupdao.insertAgrupacion(req.getParameter("username"+i), id, "", req.getParameter("username"+req.getParameter("excl"+i)));
-				}
- 
-			} catch(Exception e2) {
-				//userdao.insertUser(req.getParameter("username"+i), req.getParameter("username"+i)+"@gmail.com", "");
-				try {
-					Agrupaciones testagr = agrupdao.getAgrupByUserAndGrupo(req.getParameter("username"+i), id);
-				}
-				catch (Exception e1) {
-					agrupdao.insertAgrupacion(req.getParameter("username"+i), id, "", req.getParameter("username"+req.getParameter("excl"+i)));
-				}
-				Functions.getInstance().aviso(req.getParameter("username"+i), nickname);
-				continue;
 			}
+			resp.sendRedirect("/Grupos");
 		}
-		resp.sendRedirect("/Grupos");
-	}
 	}
 
 }
