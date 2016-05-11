@@ -43,27 +43,27 @@
                                 <div class="row">
 	                                <c:forEach items="${usuarios_inv}" var="usuario">
 	                                 <div class="col-md-6">
-	                                    <p>Lista de deseos de ${usuario.nick}</p>
+	                                    <p>Lista de deseos de ${usuario}</p>
 	                                    <ul style="list-style:none; padding-left:0px; color:#AFB8B8;">
 	                                    <c:forEach items="${deseos_inv}" var="deseo">
-		                                    <c:if test="${deseo.user == usuario.nick}">
+		                                    <c:if test="${deseo.user == usuario}">
 		                                     	<li>${deseo.item}</li>
 		                                   	</c:if> 
 	                                    </c:forEach>
 	                                    </ul>
 	                                  </div>
-	                              </div>
-	                              <div class="row">
-	                              <br />
-	                              <p>(Si eres moderador de algún grupo, podrás ver las listas de los integrantes del grupo y eliminar items a continuación)</p>
-	                              <br />
-	                                </c:forEach>
+	                  				</c:forEach>
+	                             </div>
+	                             <br />
+	                             <p>(Si eres moderador de algún grupo, podrás ver las listas de los integrantes del grupo y eliminar items a continuación)</p>
+	                             <br />
+	                              <div class="row">	                                  
 	                                <c:forEach items="${usuarios_v}" var="usuario">
 	                                 <div class="col-md-6">
-	                                    <p>Lista de deseos de ${usuario.nick}</p>
+	                                    <p>Lista de deseos de ${usuario}</p>
 	                                    <ul style="list-style:none; padding-left:0px; color:#AFB8B8;">
 	                                    <c:forEach items="${deseos_v}" var="deseo">
-		                                    <c:if test="${deseo.user == usuario.nick}">
+		                                    <c:if test="${deseo.user == usuario}">
 		                                     	<li>${deseo.item}
 		                                     	<form method="post" style= "display: inline;">
 		                                     	<input type="hidden" name="user" value='${deseo.user}'>	
