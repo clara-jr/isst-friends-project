@@ -1,4 +1,4 @@
-package es.upm.dit.isst.amigos.dao;
+package es.upm.dit.isst.amigos.test.dao;
 
 import static org.junit.Assert.*;
 
@@ -11,6 +11,7 @@ import org.junit.Test;
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 
+import es.upm.dit.isst.amigos.dao.GrupoDAOImpl;
 import es.upm.dit.isst.amigos.model.Grupo;
 
 public class GrupoDAOImplTest {
