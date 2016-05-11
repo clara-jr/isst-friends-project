@@ -1,4 +1,4 @@
-package es.upm.dit.isst.amigos.logic;
+package es.upm.dit.isst.amigos.test.logic;
 
 import static org.junit.Assert.*;
 
@@ -10,6 +10,8 @@ import org.junit.Test;
 
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
+
+import es.upm.dit.isst.amigos.logic.Functions;
 
 public class FunctionsTest {
 
