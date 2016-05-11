@@ -44,6 +44,7 @@ public class Listas_DeseosAmigosServlet extends HttpServlet {
 						List<Agrupaciones> usersingroup = AgrupacionesDAOImpl.getInstance().getAgrupacionesByGrupo(temp.getGrupo());
 						for (Agrupaciones temp2: usersingroup){
 							if (!usuarios_v.contains(temp2.getUser()) && !usuarios_inv.contains(temp2.getUser()) && !temp2.getUser().equals(userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH))) {
+
 								deseos_v.addAll(ListasDeseosDAOImpl.getInstance().getListaByUser(temp2.getUser()));
 								usuarios_v.add(temp2.getUser());
 							}
