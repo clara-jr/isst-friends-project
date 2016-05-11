@@ -35,27 +35,31 @@ public class Listas_DeseosAmigosServlet extends HttpServlet {
 			
 			List<ListasDeseos> deseos_inv = new ArrayList<ListasDeseos>();
 			List<ListasDeseos> deseos_v = new ArrayList<ListasDeseos>();
-			List<User> usuarios_inv = new ArrayList<User>();
-			List<User> usuarios_v = new ArrayList<User>();
+			List<String> usuarios_inv = new ArrayList<String>();
+			List<String> usuarios_v = new ArrayList<String>();
 	
 			for (Agrupaciones temp: agrupuser){
 				if (temp.getAmigoinv() != "") {
 					if (GrupoDAOImpl.getInstance().getGrupoById(temp.getGrupo()).getModerador().equals(userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH))) {
 						List<Agrupaciones> usersingroup = AgrupacionesDAOImpl.getInstance().getAgrupacionesByGrupo(temp.getGrupo());
 						for (Agrupaciones temp2: usersingroup){
-							if (!usuarios_v.contains(UserDAOImpl.getInstance().getUserByNick(temp2.getUser())) && !usuarios_inv.contains(UserDAOImpl.getInstance().getUserByNick(temp2.getUser())) && !temp2.getUser().equals(userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH))) {
+							if (!usuarios_v.contains(temp2.getUser()) && !usuarios_inv.contains(temp2.getUser()) && !temp2.getUser().equals(userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH))) {
 								deseos_v.addAll(ListasDeseosDAOImpl.getInstance().getListaByUser(temp2.getUser()));
-								usuarios_v.add(UserDAOImpl.getInstance().getUserByNick(temp2.getUser()));
+								usuarios_v.add(temp2.getUser());
 							}
 						}
 					}
-					else {
+				}
+			}
+			for (Agrupaciones temp: agrupuser){
+				if (temp.getAmigoinv() != "") {
+					if (!GrupoDAOImpl.getInstance().getGrupoById(temp.getGrupo()).getModerador().equals(userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH))) {
 						if (temp.getUser().equals(userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH))) {
-							if (!usuarios_inv.contains(UserDAOImpl.getInstance().getUserByNick(temp.getAmigoinv())) && !usuarios_v.contains(UserDAOImpl.getInstance().getUserByNick(temp.getAmigoinv()))) {
+							if (!usuarios_inv.contains(temp.getAmigoinv()) && !usuarios_v.contains(temp.getAmigoinv())) {
 								deseos_inv.addAll(ListasDeseosDAOImpl.getInstance().getListaByUser(temp.getAmigoinv()));
-								usuarios_inv.add(UserDAOImpl.getInstance().getUserByNick(temp.getAmigoinv()));
+								usuarios_inv.add(temp.getAmigoinv());
 							}
-						}
+						}						
 					}
 				}
 			}
