@@ -43,7 +43,7 @@ public class Listas_DeseosAmigosServlet extends HttpServlet {
 					if (GrupoDAOImpl.getInstance().getGrupoById(temp.getGrupo()).getModerador().equals(userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH))) {
 						List<Agrupaciones> usersingroup = AgrupacionesDAOImpl.getInstance().getAgrupacionesByGrupo(temp.getGrupo());
 						for (Agrupaciones temp2: usersingroup){
-							if (!usuarios_v.contains(UserDAOImpl.getInstance().getUserByNick(temp2.getAmigoinv())) && !usuarios_inv.contains(UserDAOImpl.getInstance().getUserByNick(temp2.getAmigoinv())) && !temp2.getUser().equals(userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH))) {
+							if (!usuarios_v.contains(UserDAOImpl.getInstance().getUserByNick(temp2.getUser())) && !usuarios_inv.contains(UserDAOImpl.getInstance().getUserByNick(temp2.getUser())) && !temp2.getUser().equals(userservice.getCurrentUser().getNickname().toLowerCase(Locale.ENGLISH))) {
 								deseos_v.addAll(ListasDeseosDAOImpl.getInstance().getListaByUser(temp2.getUser()));
 								usuarios_v.add(UserDAOImpl.getInstance().getUserByNick(temp2.getUser()));
 							}

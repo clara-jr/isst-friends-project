@@ -52,12 +52,12 @@
 	                                    </c:forEach>
 	                                    </ul>
 	                                  </div>
-	                              </div>
-	                              <div class="row">
-	                              <br />
-	                              <p>(Si eres moderador de algún grupo, podrás ver las listas de los integrantes del grupo y eliminar items a continuación)</p>
-	                              <br />
-	                                </c:forEach>
+	                  				</c:forEach>
+	                             </div>
+	                             <br />
+	                             <p>(Si eres moderador de algún grupo, podrás ver las listas de los integrantes del grupo y eliminar items a continuación)</p>
+	                             <br />
+	                              <div class="row">	                                  
 	                                <c:forEach items="${usuarios_v}" var="usuario">
 	                                 <div class="col-md-6">
 	                                    <p>Lista de deseos de ${usuario.nick}</p>
