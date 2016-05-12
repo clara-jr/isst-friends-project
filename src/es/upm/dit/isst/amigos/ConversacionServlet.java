@@ -99,6 +99,9 @@ public class ConversacionServlet extends HttpServlet {
 				chat = chatdao.insertChat(id, autor, agrupacion_vi.getAmigoinv(), true, true);
 			}
 			mensaje = req.getParameter("conv_vi");
+			if (mensaje.equals("AND I SAY")){
+				resp.sendRedirect("https://www.youtube.com/watch?v=eh7lp9umG2I");
+			}
 			chatdao.insertMensaje(chat, mensaje, "anónimo");
 			chat.setLeidoto(false);
 			chatdao.updateChat(chat);
@@ -141,6 +144,9 @@ public class ConversacionServlet extends HttpServlet {
 				chat = chatdao.insertChat(id, agrupacion_invi.getUser(), autor, true, true);
 			}
 			mensaje = req.getParameter("conv_invi");
+			if (mensaje.equals("AND I SAY")){
+				resp.sendRedirect("https://www.youtube.com/watch?v=eh7lp9umG2I");
+			}
 			chatdao.insertMensaje(chat, mensaje, autor);
 			chat.setLeidofrom(false);
 			chatdao.updateChat(chat);
