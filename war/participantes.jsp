@@ -124,15 +124,15 @@
                                </div>
                                 <div class="form-group clonedInput" id="usernames">
                                   <label for="exampleInputName">Nombre</label>
-                                  <input type="text" class="form-control" id="exampleInputName1" name="username1" placeholder="Nombre" required/><br/>
-                                  <input type="text" class="form-control" id="exampleInputName2" name="username2" placeholder="Nombre" required/><br/>
-                                  <input type="text" class="form-control" id="exampleInputName3" name="username3" placeholder="Nombre" required/><br/>
+                                  <input type="text" class="form-control" id="exampleInputName1" name="username1" placeholder="Nombre" /><br/>
+                                  <input type="text" class="form-control" id="exampleInputName2" name="username2" placeholder="Nombre" /><br/>
+                                  <input type="text" class="form-control" id="exampleInputName3" name="username3" placeholder="Nombre" /><br/>
                                 </div>
                                 <div class="form-group" id="emails">
                                   <label for="exampleInputEmail">Correo electrónico</label>
-                                  <input type="email" class="form-control" id="exampleInputEmail1" name="email1" placeholder="E-mail" required/><br/>
-                                  <input type="email" class="form-control" id="exampleInputEmail2" name="email2" placeholder="E-mail" required/><br/>
-                                  <input type="email" class="form-control" id="exampleInputEmail3" name="email3" placeholder="E-mail" required/><br/>
+                                  <input type="email" class="form-control" id="exampleInputEmail1" name="email1" placeholder="E-mail" /><br/>
+                                  <input type="email" class="form-control" id="exampleInputEmail2" name="email2" placeholder="E-mail" /><br/>
+                                  <input type="email" class="form-control" id="exampleInputEmail3" name="email3" placeholder="E-mail" /><br/>
                                 </div>
                                 <div class="form-group" id="excls">
                                   <label for="exampleInput">Excluir <div id= "popup" class= "popupHover"  style="position:relative; display:inline"> <span style="display:inline;" class="glyphicon glyphicon-question-sign"></span> 
