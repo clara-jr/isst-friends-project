@@ -3,11 +3,8 @@ package es.upm.dit.isst.amigos;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Locale;
-import java.util.Properties;
 
 import es.upm.dit.isst.amigos.dao.*;
 import es.upm.dit.isst.amigos.model.*;
@@ -92,9 +89,9 @@ public class CreadorGruposServlet extends HttpServlet {
 			Long id = grupo.getId();
 			for(int i=1; i<=participants_int; i++) {
 				try { 
-					User user = userdao.getUserByNick(req.getParameter("username"+i)); // Comprueba que los usuarios existen
+					userdao.getUserByNick(req.getParameter("username"+i)); // Comprueba que los usuarios existen
 					try {
-						Agrupaciones testagr = agrupdao.getAgrupByUserAndGrupo(req.getParameter("username"+i), id);
+						agrupdao.getAgrupByUserAndGrupo(req.getParameter("username"+i), id);
 					}
 					catch (Exception e1) {
 						agrupdao.insertAgrupacion(req.getParameter("username"+i), id, "", req.getParameter("username"+req.getParameter("excl"+i)));
@@ -102,7 +99,7 @@ public class CreadorGruposServlet extends HttpServlet {
 	 
 				} catch(Exception e2) {					
 					try {
-						Agrupaciones testagr = agrupdao.getAgrupByUserAndGrupo(req.getParameter("username"+i), id);
+						agrupdao.getAgrupByUserAndGrupo(req.getParameter("username"+i), id);
 					}
 					catch (Exception e1) {
 						agrupdao.insertAgrupacion(req.getParameter("username"+i), id, "", req.getParameter("username"+req.getParameter("excl"+i)));
