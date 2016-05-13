@@ -5,7 +5,6 @@ package es.upm.dit.isst.amigos;
  */
 import java.io.IOException;
 
-
 import javax.servlet.http.*;
 
 import es.upm.dit.isst.amigos.logic.*;

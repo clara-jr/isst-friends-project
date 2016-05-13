@@ -3,7 +3,6 @@ package es.upm.dit.isst.amigos;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -47,7 +46,7 @@ public class ConversacionServlet extends HttpServlet {
 				chat_vi.setLeidofrom(true);
 				chatdao.updateChat(chat_vi);
 				String[] conver_vi = chat_vi.getConversacionParsed();
-				List lista_vi = new ArrayList();
+				List<String> lista_vi = new ArrayList<String>();
 				lista_vi = Arrays.asList(conver_vi);
 				req.getSession().setAttribute("conver_vi", lista_vi);
 				req.getSession().setAttribute("userto", userto);
@@ -63,7 +62,7 @@ public class ConversacionServlet extends HttpServlet {
 				chat_invi.setLeidoto(true);
 				chatdao.updateChat(chat_invi);
 				String[] conver_invi = chat_invi.getConversacionParsed();
-				List lista_invi = new ArrayList();
+				List<String> lista_invi = new ArrayList<String>();
 				lista_invi = Arrays.asList(conver_invi);
 				req.getSession().setAttribute("conver_invi", lista_invi);
 			}
@@ -110,7 +109,7 @@ public class ConversacionServlet extends HttpServlet {
 			try {
 				Chat chat_vi = chatdao.getChatByFromAndGrupo(id, autor);
 				String[] conver_vi = chat_vi.getConversacionParsed();
-				List lista_vi = new ArrayList();
+				List<String> lista_vi = new ArrayList<String>();
 				lista_vi = Arrays.asList(conver_vi);
 				req.getSession().setAttribute("conver_vi", lista_vi);
 			}
@@ -121,7 +120,7 @@ public class ConversacionServlet extends HttpServlet {
 			try {
 				Chat chat_invi = chatdao.getChatByToAndGrupo(id, autor);
 				String[] conver_invi = chat_invi.getConversacionParsed();
-				List lista_invi = new ArrayList();
+				List<String> lista_invi = new ArrayList<String>();
 				lista_invi = Arrays.asList(conver_invi);
 				req.getSession().setAttribute("conver_invi", lista_invi);
 			}
@@ -155,7 +154,7 @@ public class ConversacionServlet extends HttpServlet {
 			try {
 				Chat chat_vi = chatdao.getChatByFromAndGrupo(id, autor);
 				String[] conver_vi = chat_vi.getConversacionParsed();
-				List lista_vi = new ArrayList();
+				List<String> lista_vi = new ArrayList<String>();
 				lista_vi = Arrays.asList(conver_vi);
 				req.getSession().setAttribute("conver_vi", lista_vi);
 			}
@@ -166,7 +165,7 @@ public class ConversacionServlet extends HttpServlet {
 			try {
 				Chat chat_invi = chatdao.getChatByToAndGrupo(id, autor);
 				String[] conver_invi = chat_invi.getConversacionParsed();
-				List lista_invi = new ArrayList();
+				List<String> lista_invi = new ArrayList<String>();
 				lista_invi = Arrays.asList(conver_invi);
 				req.getSession().setAttribute("conver_invi", lista_invi);
 			}
