@@ -1,14 +1,6 @@
 package es.upm.dit.isst.amigos;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-
-
-
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -19,20 +11,12 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.upm.dit.isst.amigos.dao.*;
-import es.upm.dit.isst.amigos.model.*;
-
-import com.google.appengine.api.users.UserService;
-import com.google.appengine.api.users.UserServiceFactory;
-
 public class FiltroAcceso implements Filter {
 
 	FilterConfig filterConfig = null;
 	
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override

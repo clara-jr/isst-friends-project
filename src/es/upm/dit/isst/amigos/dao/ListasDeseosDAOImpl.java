@@ -40,6 +40,7 @@ public class ListasDeseosDAOImpl implements ListasDeseosDAO {
 		
 		Query q = em.createQuery("SELECT m FROM ListasDeseos m WHERE m.user = :user");
 		q.setParameter("user", user);
+		@SuppressWarnings("unchecked")
 		List<ListasDeseos> logueo = q.getResultList();
 		em.close();
 		return logueo;

@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import es.upm.dit.isst.amigos.model.Agrupaciones;
 import es.upm.dit.isst.amigos.model.Grupo;
 
 public class GrupoDAOImpl implements GrupoDAO {
@@ -49,6 +48,7 @@ public class GrupoDAOImpl implements GrupoDAO {
 
 		Query q = em.createQuery("SELECT m FROM Grupo m WHERE m.moderador = :moderador");
 		q.setParameter("moderador", moderador);
+		@SuppressWarnings("unchecked")
 		List<Grupo> grupo = q.getResultList();
 		em.close();
 		return grupo;
