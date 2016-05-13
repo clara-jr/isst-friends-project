@@ -38,8 +38,8 @@
                     <div class="col-md-12">
                         <div class="block-top">
                             <div class="service-header">
-                                <p> Por si eres un despistado aquí tienes los grupos a los que estás apuntado <br />
-                                  ¡No olvides tampoco comprar el regalo antes de la fecha de entrega de regalos!
+                                <p> Por si eres un despistado aquÃ­ tienes los grupos a los que estÃ¡s apuntado <br />
+                                  Â¡No olvides tampoco comprar el regalo antes de la fecha de entrega de regalos!
                                </p>
                                <br />
                                <div class="row">
@@ -81,7 +81,7 @@
 		                                    	<input type="text" required name="item" class="form-control" 
 		                                    	style="width:150px; margin-left:auto; margin-right:auto;">
 		                                   	 	<label style="font-size:1.1em;"> @gmail.com </label><br><br>
-		                                    	<input type="submit" value="Añadir" 
+		                                    	<input type="submit" value="AÃ±adir" 
 		                                    	type="button" class="btn btn-default"/> 
 	                              				<span class="glyphicon glyphicon-plus-sign"></span>
 	                              			 </form>

@@ -14,7 +14,7 @@ import javax.mail.internet.MimeMessage;
 
 public class Functions {
 	
-	private String dominiogae = "amigo-invisible-1264";
+	private String dominiogae = "isst-grupo17-amigos-1287";
 	
 	private static Functions instance;
 	
@@ -56,7 +56,7 @@ public class Functions {
 			    if (usernames_excls[i] != "") {
 			    	int id_in = Arrays.asList(randomizedArray).indexOf(usernames[i]);
 			    	if (id_in < randomizedArray.length - 1) {
-			    		if (randomizedArray[id_in+1].equals( usernames_excls[i])) {
+			    		if (randomizedArray[id_in+1].equals(usernames_excls[i])) {
 				    		excl = true;
 						}
 			    	}
