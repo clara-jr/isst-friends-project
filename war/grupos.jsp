@@ -64,7 +64,7 @@
                                      <c:if test="${usuario.nick != grupo.moderador && agrupaciones[grupo.id][0].amigoinv == ''}">
 	                                   	 <form method="post">
 			                                     	<input type="hidden" name="grupo_id" value='${grupo.id}'>
-			                                     	<input type="hidden" name="usuario" value='${usuario}'>
+			                                     	<input type="hidden" name="usuario" value='${usuario.nick}'>
 			                                     	<input type="hidden" name="lock" value="false">		                                     
 				                                    <button onclick="this.form.action = 'Grupos';" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign" style="color:red;"></span> Salir del grupo</button>
 		                                 </form>
