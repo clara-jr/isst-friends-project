@@ -1,9 +1,7 @@
 package es.upm.dit.isst.amigos;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
@@ -18,7 +16,6 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import es.upm.dit.isst.amigos.dao.*;
 import es.upm.dit.isst.amigos.model.*;
@@ -32,8 +29,6 @@ public class Filtro implements Filter {
 	
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -41,14 +36,12 @@ public class Filtro implements Filter {
 			FilterChain filterChain) throws IOException, ServletException {
 
 		HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse resp = (HttpServletResponse) response;
 		
 		if (req.getUserPrincipal() != null ){
 			UserService userservice = UserServiceFactory.getUserService();
 			
 			
 			ChatDAOImpl chatdao = ChatDAOImpl.getInstance();
-			GrupoDAOImpl grupodao = GrupoDAOImpl.getInstance();
 	
 			List<Chat> chatsfrom;
 			List<Chat> chatsto;

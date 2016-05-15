@@ -38,8 +38,8 @@ public class UserDAOImplTest {
 	@Test
 	public void testGetUserByNick() {
 		UserDAOImpl userdao = UserDAOImpl.getInstance();
-		User user = userdao.insertUser("Pepe", "pepe666", "");
-		user = userdao.insertUser("Juan", "juanito69", "");
+		userdao.insertUser("Pepe", "pepe666", "");
+		userdao.insertUser("Juan", "juanito69", "");
 		assertEquals(userdao.getUserByNick("Pepe").getNick(), "Pepe");
 		assertEquals(userdao.getUserByNick("Pepe").getEmail(), "pepe666");
 		assertEquals(userdao.getUserByNick("Pepe").getPerfilsocial(), "");
@@ -48,8 +48,8 @@ public class UserDAOImplTest {
 	@Test
 	public void testGetUserByEmail() {
 		UserDAOImpl userdao = UserDAOImpl.getInstance();
-		User user = userdao.insertUser("Pepe", "pepe666", "");
-		user = userdao.insertUser("Juan", "juanito69", "");
+		userdao.insertUser("Pepe", "pepe666", "");
+		userdao.insertUser("Juan", "juanito69", "");
 		assertEquals(userdao.getUserByEmail("pepe666").getNick(), "Pepe");
 		assertEquals(userdao.getUserByEmail("pepe666").getEmail(), "pepe666");
 		assertEquals(userdao.getUserByEmail("pepe666").getPerfilsocial(), "");

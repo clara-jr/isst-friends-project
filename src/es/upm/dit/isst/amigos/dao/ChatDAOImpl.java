@@ -7,7 +7,6 @@ import javax.persistence.Query;
 
 import com.google.appengine.api.datastore.Text;
 
-import es.upm.dit.isst.amigos.model.Agrupaciones;
 import es.upm.dit.isst.amigos.model.Chat;
 
 
@@ -41,6 +40,7 @@ public class ChatDAOImpl implements ChatDAO {
 
 		Query q = em.createQuery("SELECT m FROM Chat m WHERE m.from = :from");
 		q.setParameter("from", from);
+		@SuppressWarnings("unchecked")
 		List<Chat> chats = q.getResultList();
 		em.close();
 		return chats;
@@ -52,6 +52,7 @@ public class ChatDAOImpl implements ChatDAO {
 
 		Query q = em.createQuery("SELECT m FROM Chat m WHERE m.to = :to");
 		q.setParameter("to", to);
+		@SuppressWarnings("unchecked")
 		List<Chat> chats = q.getResultList();
 		em.close();
 		return chats;
@@ -109,6 +110,7 @@ public class ChatDAOImpl implements ChatDAO {
 
 		Query q = em.createQuery("SELECT m FROM Chat m WHERE m.grupo = :grupo");
 		q.setParameter("grupo", grupo);
+		@SuppressWarnings("unchecked")
 		List<Chat> chats = q.getResultList();
 		em.close();
 		

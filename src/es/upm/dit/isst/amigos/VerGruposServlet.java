@@ -82,14 +82,14 @@ public class VerGruposServlet extends HttpServlet {
 			}
 			
 			try {
-				User prueba = usao.getUserByNick(item);
+				usao.getUserByNick(item);
 			}
 			catch (Exception e) {
 				existe = false;
 			}
 			
 			try {
-				Agrupaciones testagr = agrupao.getAgrupByUserAndGrupo(item, id);
+				agrupao.getAgrupByUserAndGrupo(item, id);
 			}
 			catch (Exception e1) {
 				repetido = false;

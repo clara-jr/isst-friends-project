@@ -81,9 +81,9 @@ public class ListasDeseosDAOImplTest {
 	@Test
 	public void testGetItem() {
 		ListasDeseosDAOImpl listdao = ListasDeseosDAOImpl.getInstance();
-		ListasDeseos lista = listdao.insertLista("Pepe", "Jamón");
-		lista = listdao.insertLista("Juan", "PS7");
-		lista = listdao.insertLista("Pepe", "Pan");
+		listdao.insertLista("Pepe", "Jamón");
+		listdao.insertLista("Juan", "PS7");
+		listdao.insertLista("Pepe", "Pan");
 		assertEquals(listdao.getItem("Pepe", "Pan").getItem(), "Pan");
 		assertEquals(listdao.getItem("Pepe", "Jamón").getItem(), "Jamón");
 	}

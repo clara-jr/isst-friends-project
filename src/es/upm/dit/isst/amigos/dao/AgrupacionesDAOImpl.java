@@ -40,7 +40,8 @@ public class AgrupacionesDAOImpl implements AgrupacionesDAO {
 
 		Query q = em.createQuery("SELECT m FROM Agrupaciones m WHERE m.user = :user");
 		q.setParameter("user", user);
-		List<Agrupaciones> agrupaciones = q.getResultList();
+		@SuppressWarnings("unchecked")
+		List<Agrupaciones> agrupaciones = (List<Agrupaciones>) q.getResultList();
 		em.close();
 		return agrupaciones;
 	}
@@ -51,6 +52,7 @@ public class AgrupacionesDAOImpl implements AgrupacionesDAO {
 
 		Query q = em.createQuery("SELECT m FROM Agrupaciones m WHERE m.grupo = :grupo");
 		q.setParameter("grupo", grupo);
+		@SuppressWarnings("unchecked")
 		List<Agrupaciones> agrupaciones = q.getResultList();
 		em.close();
 		return agrupaciones;

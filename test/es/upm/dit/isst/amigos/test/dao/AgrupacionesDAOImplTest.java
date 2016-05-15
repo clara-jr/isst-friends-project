@@ -44,7 +44,7 @@ public class AgrupacionesDAOImplTest {
 	public void testGetters() {
 		Long grupo = (long) 1;
 		AgrupacionesDAOImpl agrupao = AgrupacionesDAOImpl.getInstance();
-		Agrupaciones agrup = agrupao.insertAgrupacion("Pepe", grupo, "Amigo", "");
+		agrupao.insertAgrupacion("Pepe", grupo, "Amigo", "");
 		assertEquals(agrupao.getAgrupByUserAndGrupo("Pepe", grupo).getGrupo(), grupo);
 		assertEquals(agrupao.getAgrupByUserAndGrupo("Pepe", grupo).getUser(), "Pepe");
 		assertEquals(agrupao.getAgrupByUserAndGrupo("Pepe", grupo).getAmigoinv(), "Amigo");
@@ -53,7 +53,7 @@ public class AgrupacionesDAOImplTest {
 		assertEquals(agrups.size(), 1);
 		assertEquals(agrups.get(0).getGrupo(), grupo);
 		assertEquals(agrups.get(0).getUser(), "Pepe");
-		agrup = agrupao.insertAgrupacion("Amigo", grupo, "Pepe", "");
+		agrupao.insertAgrupacion("Amigo", grupo, "Pepe", "");
 		agrups = agrupao.getAgrupacionesByGrupo(grupo);
 		assertEquals(agrups.size(), 2);
 		assertEquals(agrups.get(0).getGrupo(), grupo);
