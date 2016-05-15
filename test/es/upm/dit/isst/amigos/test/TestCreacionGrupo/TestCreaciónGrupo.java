@@ -1,3 +1,5 @@
+package es.upm.dit.isst.amigos.test.TestCreacionGrupo;
+
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import static org.junit.Assert.*;
