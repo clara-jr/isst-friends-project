@@ -49,15 +49,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>LoginFinal</servlet-name>
 		<url-pattern>/login_final</url-pattern>
 	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>Com_AmigoInvisible_isst</servlet-name>
-		<servlet-class>es.upm.dit.isst.amigos.Com_AmigoInvisible_isstServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Com_AmigoInvisible_isst</servlet-name>
-		<url-pattern>/com_amigoinvisible_isst</url-pattern>
-	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>VerGrupos</servlet-name>

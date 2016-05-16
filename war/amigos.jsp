@@ -55,7 +55,7 @@
 	                  				</c:forEach>
 	                             </div>
 	                             <br />
-	                             <p style={color:#AFB8B8}>(Si eres moderador de algún grupo, podrás ver las listas de los integrantes del grupo y eliminar items a continuación)</p>
+	                             <p style="color:#81BEF7"><b>(Si eres moderador de algún grupo, podrás ver las listas de los integrantes del grupo y eliminar items a continuación)</b></p>
 	                             <br />
 	                              <div class="row">
 	                                <c:forEach items="${usuarios_v}" var="usuario">
