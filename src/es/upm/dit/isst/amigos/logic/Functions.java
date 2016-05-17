@@ -14,8 +14,8 @@ import javax.mail.internet.MimeMessage;
 
 public class Functions {
 	
-	//private String dominiogae = "isst-grupo17-amigos-1287";
-	private String dominiogae = "isst-grupo17-amigos";
+	private String dominiogae = "amigo-invisible-1264";
+	//private String dominiogae = "isst-grupo17-amigos";
 	
 	private static Functions instance;
 	
